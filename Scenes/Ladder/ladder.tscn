@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://du2y0hi2j4c41"]
+
+[ext_resource type="Script" path="res://Scenes/Ladder/ladder.gd" id="1_6g0jp"]
+[ext_resource type="Texture2D" uid="uid://bvmupm2evdydw" path="res://Assets/TileSet/Ladder.png" id="2_kp2om"]
+[ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="3_eqmc4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n17rg"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddaah"]
+size = Vector2(25, 19)
+
+[node name="Ladder" type="StaticBody2D"]
+script = ExtResource("1_6g0jp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("2_kp2om")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_n17rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ddaah")
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = -44.0
+offset_top = -30.0
+offset_right = 44.0
+offset_bottom = -17.0
+theme_override_fonts/font = ExtResource("3_eqmc4")
+theme_override_font_sizes/font_size = 16
+text = "[F] to interact"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

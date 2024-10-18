@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://wl8fixk3i852"]
+
+[ext_resource type="Texture2D" uid="uid://dlvkeh3lel4p3" path="res://Assets/Effects/spot.png" id="1_dyxi6"]
+
+[node name="Room_light" type="PointLight2D" groups=["clear"]]
+position = Vector2(0.500002, -9.53674e-07)
+scale = Vector2(0.5, 0.5)
+energy = 0.3
+shadow_filter = 1
+shadow_filter_smooth = 40.0
+texture = ExtResource("1_dyxi6")
+texture_scale = 0.6

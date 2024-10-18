@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dui2rws2phbx1"]
+
+[ext_resource type="Texture2D" uid="uid://dbhdeuypuntls" path="res://Assets/objects/CLay Pot.png" id="1_dhx43"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24bde"]
+size = Vector2(8, 5.5)
+
+[node name="pot" type="StaticBody2D" groups=["clear"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_24bde")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -4)
+texture = ExtResource("1_dhx43")

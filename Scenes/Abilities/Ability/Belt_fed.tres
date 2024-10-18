@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://duvhodpno2ef0"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_oppug"]
+[ext_resource type="Texture2D" uid="uid://ck2368c14o6p4" path="res://Assets/Abilities/Chain bullet.png" id="2_xsx15"]
+
+[resource]
+script = ExtResource("1_oppug")
+ability_name = "Belt fed"
+description = "2x fire rate .75x damage"
+texture = ExtResource("2_xsx15")
+unique = true
+rarity = 1
+cost = 60

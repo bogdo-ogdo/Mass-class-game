@@ -1,0 +1,411 @@
+[gd_scene load_steps=22 format=3 uid="uid://cu5irw5yngrsi"]
+
+[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_fqlgg"]
+[ext_resource type="Texture2D" uid="uid://7ngffy2hjll0" path="res://Assets/Player/Goblin_running.png" id="2_isre5"]
+[ext_resource type="Resource" uid="uid://bq4oofxg3pous" path="res://Scenes/Abilities/Ability_inventory.tres" id="2_o8fdp"]
+[ext_resource type="Texture2D" uid="uid://38xnxblv6ccg" path="res://Assets/Player/Goblin_idle.png" id="3_4c0k0"]
+[ext_resource type="PackedScene" uid="uid://c6rheyijs8n4l" path="res://Scenes/weapon/weapon.tscn" id="4_q6ram"]
+[ext_resource type="Texture2D" uid="uid://dy1f3lvtumltt" path="res://Assets/UI/progress_bar_filler.png" id="5_2y74i"]
+[ext_resource type="Texture2D" uid="uid://d1t8jh7ag0x6q" path="res://Assets/Gold/Coin.png" id="5_cx2o8"]
+[ext_resource type="Texture2D" uid="uid://x5tha10n7wx4" path="res://Assets/UI/progress_bar_wrap.png.png" id="6_gv1sl"]
+[ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="6_jyu7f"]
+[ext_resource type="Texture2D" uid="uid://cowsbnx5ja6jf" path="res://Assets/UI/Damaged/player_hit_feedback.png" id="7_em7js"]
+[ext_resource type="Texture2D" uid="uid://bjq8hinio3an7" path="res://Assets/UI/Damaged/blurry Blood Overlay.png" id="8_a5rkc"]
+
+[sub_resource type="Animation" id="Animation_803p1"]
+resource_name = "Idle"
+length = 1.00002
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_4c0k0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_626wt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4ufjs"]
+resource_name = "Run"
+length = 0.500006
+loop_mode = 1
+step = 0.0714286
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_isre5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0714286, 0.142857, 0.214286, 0.285714, 0.357143, 0.428571),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.214286, 0.285714, 0.428571),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, -1), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Weapon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.214286, 0.285714),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5jns"]
+_data = {
+"Idle": SubResource("Animation_803p1"),
+"RESET": SubResource("Animation_626wt"),
+"Run": SubResource("Animation_4ufjs")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v65hl"]
+radius = 14.8936
+height = 69.5652
+
+[sub_resource type="Animation" id="Animation_dv1j7"]
+resource_name = "Player_hit"
+length = 0.200003
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI_Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_em7js")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI_Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI_Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l1s83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI_Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8br1x"]
+_data = {
+"Player_hit": SubResource("Animation_dv1j7"),
+"RESET": SubResource("Animation_l1s83")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t7im"]
+size = Vector2(12, 26)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epq4t"]
+radius = 85.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "sprite", "weapon", "health_bar", "damaged_bar", "mana_bar", "mana_usage_bar", "damaged_timer", "mana_usage_timer", "mana_regen_timer", "camera", "ui_sprite", "ui_anim_player", "low_health_indicator", "gold_lable") groups=["Player"]]
+script = ExtResource("1_fqlgg")
+anim_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+weapon = NodePath("Weapon")
+health_bar = NodePath("ui/Health_bar")
+damaged_bar = NodePath("ui/Health_bar/Damaged_bar")
+mana_bar = NodePath("ui/Mana_bar")
+mana_usage_bar = NodePath("ui/Mana_bar/Mana_usage_bar")
+damaged_timer = NodePath("Damaged")
+mana_usage_timer = NodePath("Mana_usage")
+mana_regen_timer = NodePath("Mana_regen")
+camera = NodePath("Camera2D")
+ui_sprite = NodePath("ui/UI_Sprite2D")
+ui_anim_player = NodePath("ui/UI_AnimationPlayer")
+low_health_indicator = NodePath("ui/Low_health")
+gold_lable = NodePath("ui/Sprite2D/Gold")
+ability_inventory = ExtResource("2_o8fdp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_isre5")
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t5jns")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+scale = Vector2(0.469999, 0.23)
+shape = SubResource("CapsuleShape2D_v65hl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Weapon" parent="." instance=ExtResource("4_q6ram")]
+scale = Vector2(0.6, 0.6)
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ui"]
+position = Vector2(60, 150)
+scale = Vector2(2, 2)
+texture = ExtResource("5_cx2o8")
+
+[node name="Gold" type="Label" parent="ui/Sprite2D"]
+offset_left = 12.5
+offset_top = -12.0
+offset_right = 48.5
+offset_bottom = 14.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="Health_bar" type="TextureProgressBar" parent="ui"]
+clip_contents = true
+layout_direction = 1
+offset_left = 45.0
+offset_top = 45.0
+offset_right = 195.0
+offset_bottom = 60.0
+scale = Vector2(2, 2)
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_over = ExtResource("6_gv1sl")
+texture_progress = ExtResource("5_2y74i")
+tint_over = Color(0.521569, 0.384314, 0.278431, 1)
+tint_progress = Color(0.67451, 0.207843, 0.219608, 1)
+
+[node name="Damaged_bar" type="TextureProgressBar" parent="ui/Health_bar"]
+z_index = -1
+clip_contents = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 60.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("5_2y74i")
+texture_progress = ExtResource("5_2y74i")
+tint_under = Color(0.101961, 0.117647, 0.164706, 1)
+tint_progress = Color(0.952941, 0.533333, 0.513726, 1)
+
+[node name="Mana_bar" type="TextureProgressBar" parent="ui"]
+clip_contents = true
+layout_direction = 1
+offset_left = 45.0
+offset_top = 90.0
+offset_right = 195.0
+offset_bottom = 105.0
+scale = Vector2(2, 2)
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_over = ExtResource("6_gv1sl")
+texture_progress = ExtResource("5_2y74i")
+tint_over = Color(0.494118, 0.352941, 0.54902, 1)
+tint_progress = Color(0.282353, 0.4, 0.568627, 1)
+
+[node name="Mana_usage_bar" type="TextureProgressBar" parent="ui/Mana_bar"]
+z_index = -1
+clip_contents = true
+layout_direction = 1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 15.0
+max_value = 150.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("5_2y74i")
+texture_progress = ExtResource("5_2y74i")
+tint_under = Color(0.192157, 0.0784314, 0.109804, 1)
+tint_progress = Color(0.643137, 0.737255, 0.87451, 1)
+
+[node name="UI_AnimationPlayer" type="AnimationPlayer" parent="ui"]
+libraries = {
+"": SubResource("AnimationLibrary_8br1x")
+}
+
+[node name="UI_Sprite2D" type="Sprite2D" parent="ui"]
+position = Vector2(960, 540)
+texture = ExtResource("7_em7js")
+hframes = 5
+
+[node name="Low_health" type="Sprite2D" parent="ui"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(960, 540)
+texture = ExtResource("8_a5rkc")
+
+[node name="Damaged" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Mana_usage" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Mana_regen" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Player_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_2t7im")
+
+[node name="attraction_radius" type="Area2D" parent="." groups=["player_attract_radius"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attraction_radius"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_epq4t")
+
+[connection signal="shoot" from="." to="Weapon" method="_on_player_shoot"]
+[connection signal="shoot_stop" from="." to="Weapon" method="_on_player_shoot_stop"]
+[connection signal="mana_used" from="Weapon" to="." method="_on_weapon_mana_used"]
+[connection signal="timeout" from="Damaged" to="." method="_on_damaged_timeout"]
+[connection signal="timeout" from="Mana_usage" to="." method="_on_mana_usage_timeout"]
+[connection signal="timeout" from="Mana_regen" to="." method="_on_mana_regen_timeout"]

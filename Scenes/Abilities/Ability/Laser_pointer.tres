@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://b1lr4d4guac6g"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_2q7h1"]
+[ext_resource type="Texture2D" uid="uid://dj13cjlvgek2r" path="res://Assets/Abilities/Laser_pointer.png" id="2_wkmv0"]
+
+[resource]
+script = ExtResource("1_2q7h1")
+ability_name = "Laser pointer"
+description = "Reduces spread by 50% and adds a laser pointer to your weapon"
+texture = ExtResource("2_wkmv0")
+unique = true
+rarity = 1
+cost = 60

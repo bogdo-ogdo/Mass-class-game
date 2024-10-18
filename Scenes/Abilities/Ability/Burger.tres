@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://7yi8ygxusd2j"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_p8vin"]
+[ext_resource type="Texture2D" uid="uid://cw6rgo6jbp5n6" path="res://Assets/Abilities/Burger.png" id="2_t54v3"]
+
+[resource]
+script = ExtResource("1_p8vin")
+ability_name = "Burger"
+description = "+ 3 health, -40% movement speed"
+texture = ExtResource("2_t54v3")
+unique = true
+rarity = 1
+cost = 60

@@ -1,0 +1,389 @@
+[gd_scene load_steps=22 format=3 uid="uid://d2mi006v0avas"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy/Peasant/enemy.gd" id="1_je01r"]
+[ext_resource type="Shader" path="res://Shaders/spawn.gdshader" id="2_m0ukp"]
+[ext_resource type="Texture2D" uid="uid://c0evuycy1jr76" path="res://Assets/Enemy/Knight Pixel Art/Spritesheet/Hero-walk-Sheet.png" id="3_o3wgd"]
+[ext_resource type="Texture2D" uid="uid://con7ukapqwiy6" path="res://Assets/Enemy/Peasant_idle.png" id="4_ajola"]
+[ext_resource type="Texture2D" uid="uid://qxn1k3r7wf5k" path="res://Assets/Enemy/Knight Pixel Art/Spritesheet/Hero-idle-Sheet.png" id="5_8ymu0"]
+[ext_resource type="Texture2D" uid="uid://tr62bj3li6jm" path="res://Assets/Weapons/Ak-47.png" id="6_qiyen"]
+[ext_resource type="AudioStream" uid="uid://wj6jbx6v42xb" path="res://audio/Enemy/human_die.wav" id="6_upke0"]
+[ext_resource type="Texture2D" uid="uid://2pappgmugtue" path="res://Assets/Effects/square.png" id="7_enmli"]
+[ext_resource type="AudioStream" uid="uid://d4c7wbcdnpbmi" path="res://audio/Weapon/gunshot.wav" id="9_t3l6a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8fwc"]
+resource_local_to_scene = true
+shader = ExtResource("2_m0ukp")
+shader_parameter/progress = 0.0
+shader_parameter/noise_desnity = 100.0
+shader_parameter/beam_size = 0.05
+shader_parameter/color = Vector4(0, 1, 1.2, 1)
+
+[sub_resource type="Animation" id="Animation_l4nu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t4o3w"]
+resource_name = "idle"
+length = 1.00005
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ajola")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_1jcki"]
+resource_name = "p_idle"
+length = 2.0001
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_8ymu0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_win4v"]
+resource_name = "p_run"
+length = 1.00002
+loop_mode = 1
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_o3wgd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ybo16"]
+_data = {
+"RESET": SubResource("Animation_l4nu1"),
+"idle": SubResource("Animation_t4o3w"),
+"p_idle": SubResource("Animation_1jcki"),
+"p_run": SubResource("Animation_win4v")
+}
+
+[sub_resource type="Animation" id="Animation_an52m"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:spawn_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_upke0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_klfcq"]
+resource_name = "hit"
+length = 0.0666683
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ge7c1"]
+_data = {
+"die": SubResource("Animation_an52m"),
+"hit": SubResource("Animation_klfcq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyvi7"]
+size = Vector2(9, 6.0625)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_moybg"]
+resource_local_to_scene = true
+shader = ExtResource("2_m0ukp")
+shader_parameter/progress = 0.0
+shader_parameter/noise_desnity = 60.0
+shader_parameter/beam_size = 0.034
+shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isxod"]
+radius = 4.0
+height = 14.0
+
+[node name="Knight" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 69
+script = ExtResource("1_je01r")
+approach_dist = 300.0
+run_dist = 60.0
+gold_drop = Vector2(4, 6)
+move_speed = 50.0
+health = 20.0
+damage = 1.0
+rarity = 1
+reload = Vector2(4, 6)
+attack_type = "Auto"
+shots = Vector2(10, 15)
+flip_h = true
+delay = 0.25
+spread = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 513
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_r8fwc")
+position = Vector2(0, 10)
+texture = ExtResource("3_o3wgd")
+offset = Vector2(0, -10)
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ybo16")
+}
+
+[node name="hit_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ge7c1")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 8.0625)
+shape = SubResource("RectangleShape2D_dyvi7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+path_max_distance = 1000.0
+debug_use_custom = true
+debug_path_custom_color = Color(10, 1, 1, 1)
+
+[node name="Nav_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Attack_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Idle_timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Shot_delay" type="Timer" parent="."]
+one_shot = true
+
+[node name="Gun" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_moybg")
+position = Vector2(0, 4)
+texture = ExtResource("6_qiyen")
+offset = Vector2(4, 0)
+
+[node name="Muzzel" type="Marker2D" parent="Gun"]
+position = Vector2(16, -1)
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+visible = false
+collision_layer = 4
+collision_mask = 4
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Enemy"]]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_isxod")
+
+[node name="collision_damage" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_damage" groups=["Enemy"]]
+position = Vector2(-1, 1)
+shape = SubResource("CapsuleShape2D_isxod")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(50, 0)
+collision_mask = 2
+
+[node name="Hit" type="PointLight2D" parent="."]
+light_mask = 512
+position = Vector2(5.96046e-08, 1.5)
+scale = Vector2(0.375, 0.65625)
+color = Color(3, 0, 0, 1)
+range_item_cull_mask = 512
+texture = ExtResource("7_enmli")
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_t3l6a")
+
+[connection signal="timeout" from="Nav_timer" to="." method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="Attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Idle_timer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Shot_delay" to="." method="_on_shot_delay_timeout"]
+[connection signal="area_entered" from="collision_damage" to="." method="_on_collision_damage_area_entered"]

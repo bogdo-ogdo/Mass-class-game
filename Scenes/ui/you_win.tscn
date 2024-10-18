@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7h8oegwpq7kv"]
+
+[ext_resource type="Texture2D" uid="uid://de5aqbpeteo0t" path="res://Assets/UI/cover_art.png" id="1_ch78a"]
+[ext_resource type="Script" path="res://Scenes/ui/you_win.gd" id="1_pn514"]
+[ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="2_6fs51"]
+[ext_resource type="Theme" uid="uid://bvblhux8phwpi" path="res://resources/ui/button.tres" id="3_lxi03"]
+
+[node name="You_win" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("1_pn514")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ch78a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -44.5
+offset_right = 88.0
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_6fs51")
+theme_override_font_sizes/font_size = 64
+text = "You win!!"
+
+[node name="return" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_lxi03")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.756863, 0.756863, 0.756863, 1)
+theme_override_colors/font_hover_color = Color(0.913725, 0.913725, 0.913725, 1)
+theme_override_fonts/font = ExtResource("2_6fs51")
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
+[connection signal="pressed" from="VBoxContainer/return" to="." method="_on_return_pressed"]

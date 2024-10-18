@@ -1,0 +1,331 @@
+[gd_scene load_steps=31 format=3 uid="uid://cknh7bpsakn48"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy/Peasant/enemy.gd" id="1_m1mju"]
+[ext_resource type="Shader" path="res://Shaders/spawn.gdshader" id="2_5k7qk"]
+[ext_resource type="Texture2D" uid="uid://01xhh0im3r1x" path="res://Assets/Enemy/Mage/Run/Run4.png" id="3_b4bfd"]
+[ext_resource type="Texture2D" uid="uid://h5ns50o2vbj" path="res://Assets/Enemy/Mage/Decomposing/Decomposing1.png" id="3_ffwtd"]
+[ext_resource type="Texture2D" uid="uid://dygiun3csg6j8" path="res://Assets/Enemy/Mage/Idle/Idle2.png" id="5_3kwnv"]
+[ext_resource type="Texture2D" uid="uid://dld3woh2ctgly" path="res://Assets/Enemy/Mage/Decomposing/Decomposing2.png" id="5_6ro26"]
+[ext_resource type="Texture2D" uid="uid://bjxtnvgtw2jkd" path="res://Assets/Enemy/Mage/Decomposing/Decomposing3.png" id="6_rd71b"]
+[ext_resource type="Texture2D" uid="uid://dp8m5dg70cn7b" path="res://Assets/Enemy/Mage/Idle/Idle3.png" id="6_u4m6j"]
+[ext_resource type="Texture2D" uid="uid://cqil3tptcxjd5" path="res://Assets/Enemy/Mage/Decomposing/Decomposing4.png" id="7_bp7n5"]
+[ext_resource type="Texture2D" uid="uid://csxmtgc5lrkar" path="res://Assets/Enemy/Mage/Decomposing/Decomposing5.png" id="8_x4pn5"]
+[ext_resource type="Texture2D" uid="uid://cls7ca2npak3h" path="res://Assets/Enemy/Mage/Decomposing/Decomposing6.png" id="9_mwa0r"]
+[ext_resource type="Texture2D" uid="uid://v7i5cjrs0aa0" path="res://Assets/Enemy/Mage/Run/Run1.png" id="10_5k4cu"]
+[ext_resource type="Texture2D" uid="uid://b8icdq817yijr" path="res://Assets/Enemy/Mage/Run/Run2.png" id="11_tmqg5"]
+[ext_resource type="Texture2D" uid="uid://c6e8d274mrw2a" path="res://Assets/Enemy/Mage/Run/Run3.png" id="12_ddyr8"]
+[ext_resource type="Texture2D" uid="uid://crhj7ox8egomx" path="res://Assets/Enemy/Mage/Run/Run5.png" id="13_vahcq"]
+[ext_resource type="Texture2D" uid="uid://bmkkv2xe15uem" path="res://Assets/Enemy/Mage/Run/Run6.png" id="14_8bupw"]
+[ext_resource type="Texture2D" uid="uid://bjoao34ohdxcj" path="res://Assets/Weapons/Blunderbuss.png" id="15_quehi"]
+[ext_resource type="Texture2D" uid="uid://2pappgmugtue" path="res://Assets/Effects/square.png" id="16_mu4a8"]
+[ext_resource type="AudioStream" uid="uid://wj6jbx6v42xb" path="res://audio/Enemy/human_die.wav" id="17_qh3kd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8fwc"]
+resource_local_to_scene = true
+shader = ExtResource("2_5k7qk")
+shader_parameter/progress = 0.0
+shader_parameter/noise_desnity = 100.0
+shader_parameter/beam_size = 0.15
+shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
+
+[sub_resource type="Animation" id="Animation_v51pr"]
+resource_name = "p_die"
+length = 1.40002
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_ffwtd"), ExtResource("5_6ro26"), ExtResource("6_rd71b"), ExtResource("7_bp7n5"), ExtResource("8_x4pn5"), ExtResource("9_mwa0r"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collision_damage:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collision_damage:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nbu06"]
+resource_name = "p_idle"
+length = 1.00005
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_3kwnv"), ExtResource("6_u4m6j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_m4lcf"]
+resource_name = "p_run"
+length = 0.60001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_5k4cu"), ExtResource("11_tmqg5"), ExtResource("12_ddyr8"), ExtResource("3_b4bfd"), ExtResource("13_vahcq"), ExtResource("14_8bupw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewpy5"]
+_data = {
+"p_die": SubResource("Animation_v51pr"),
+"p_idle": SubResource("Animation_nbu06"),
+"p_run": SubResource("Animation_m4lcf")
+}
+
+[sub_resource type="Animation" id="Animation_gnhnp"]
+resource_name = "die"
+length = 0.70001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:spawn_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("17_qh3kd")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_klfcq"]
+resource_name = "hit"
+length = 0.0666683
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0500001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ge7c1"]
+_data = {
+"die": SubResource("Animation_gnhnp"),
+"hit": SubResource("Animation_klfcq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyvi7"]
+size = Vector2(10.875, 6.0625)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_moybg"]
+resource_local_to_scene = true
+shader = ExtResource("2_5k7qk")
+shader_parameter/progress = 0.0
+shader_parameter/noise_desnity = 60.0
+shader_parameter/beam_size = null
+shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isxod"]
+radius = 6.0
+height = 12.0
+
+[node name="Mage" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 69
+script = ExtResource("1_m1mju")
+approach_dist = 300.0
+run_dist = 60.0
+gold_drop = Vector2(3, 5)
+move_speed = 50.0
+health = 14.0
+damage = 1.0
+reload = Vector2(3, 5)
+attack_type = "Even"
+shots = Vector2(4, 4)
+flip_h = true
+delay = 0.02
+spread = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(64.2471, 128.498, 128.498, 1)
+light_mask = 513
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_r8fwc")
+position = Vector2(0, 1)
+texture = ExtResource("3_ffwtd")
+offset = Vector2(0, -5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ewpy5")
+}
+
+[node name="hit_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ge7c1")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dyvi7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+path_max_distance = 1000.0
+debug_use_custom = true
+debug_path_custom_color = Color(10, 1, 1, 1)
+
+[node name="Nav_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Attack_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Idle_timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Shot_delay" type="Timer" parent="."]
+one_shot = true
+
+[node name="Gun" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_moybg")
+position = Vector2(0, -2)
+texture = ExtResource("15_quehi")
+offset = Vector2(4, 0)
+
+[node name="Muzzel" type="Marker2D" parent="Gun"]
+position = Vector2(10, -1)
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+position = Vector2(1, -3)
+collision_layer = 4
+collision_mask = 4
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_isxod")
+
+[node name="collision_damage" type="Area2D" parent="."]
+position = Vector2(1, -4)
+monitoring = false
+monitorable = false
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_damage"]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_isxod")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(50, 0)
+collision_mask = 2
+
+[node name="Hit" type="PointLight2D" parent="."]
+light_mask = 512
+position = Vector2(1.66893e-06, -3)
+scale = Vector2(0.5, 0.5)
+color = Color(3, 0, 0, 1)
+range_item_cull_mask = 512
+texture = ExtResource("16_mu4a8")
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="timeout" from="Nav_timer" to="." method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="Attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Idle_timer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Shot_delay" to="." method="_on_shot_delay_timeout"]
+[connection signal="area_entered" from="collision_damage" to="." method="_on_collision_damage_area_entered"]

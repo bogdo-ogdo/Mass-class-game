@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cf27t3i6210u7"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_abfts"]
+[ext_resource type="Texture2D" uid="uid://cobxokmbpg446" path="res://Assets/Abilities/box_mag.png" id="2_8ht5f"]
+
+[resource]
+script = ExtResource("1_abfts")
+ability_name = "Box mag"
+description = "All weapons become full auto, fire rate is doubled and damage is halved"
+texture = ExtResource("2_8ht5f")
+unique = true
+rarity = 1
+cost = 60

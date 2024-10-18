@@ -1,0 +1,726 @@
+[gd_scene load_steps=37 format=3 uid="uid://cu5irw5yngrsi"]
+
+[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_fqlgg"]
+[ext_resource type="Resource" uid="uid://bq4oofxg3pous" path="res://Scenes/Abilities/Ability_inventory.tres" id="2_o8fdp"]
+[ext_resource type="Texture2D" uid="uid://bpyd55lt7yjte" path="res://Assets/Player/Gob_run.png" id="3_8bgvj"]
+[ext_resource type="PackedScene" uid="uid://c6rheyijs8n4l" path="res://Scenes/weapon/weapon.tscn" id="4_q6ram"]
+[ext_resource type="Texture2D" uid="uid://d1t8jh7ag0x6q" path="res://Assets/Gold/Coin.png" id="5_cx2o8"]
+[ext_resource type="AudioStream" uid="uid://bf22dfpfp0ds7" path="res://audio/player/footstep.wav" id="5_wglch"]
+[ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="6_jyu7f"]
+[ext_resource type="Texture2D" uid="uid://c34gyedxdx682" path="res://Assets/Player/Gob_idle.png" id="6_sit5e"]
+[ext_resource type="Texture2D" uid="uid://cowsbnx5ja6jf" path="res://Assets/UI/Damaged/player_hit_feedback.png" id="7_em7js"]
+[ext_resource type="Texture2D" uid="uid://bjq8hinio3an7" path="res://Assets/UI/Damaged/blurry Blood Overlay.png" id="8_a5rkc"]
+[ext_resource type="Texture2D" uid="uid://c3qegx508us5s" path="res://Assets/UI/barwrap.png" id="8_nqdjf"]
+[ext_resource type="Texture2D" uid="uid://vf5lk5uc6imm" path="res://Assets/UI/barfiller.png" id="9_5lgrf"]
+[ext_resource type="Texture2D" uid="uid://068l4w1maiff" path="res://Assets/UI/heart.png" id="10_ucnwq"]
+[ext_resource type="Texture2D" uid="uid://df7f5mhtiaj6b" path="res://Assets/UI/mana.png" id="11_6lfvd"]
+[ext_resource type="Texture2D" uid="uid://dekv4rrpxepfg" path="res://Assets/UI/sprint_bar_wrap.png" id="12_l8jfh"]
+[ext_resource type="Texture2D" uid="uid://oohfcgut53a" path="res://Assets/UI/sprint_bar_filler.png" id="13_dtjdo"]
+[ext_resource type="PackedScene" uid="uid://dxyosoat6icc4" path="res://Scenes/Player/dash.tscn" id="14_gqmwi"]
+[ext_resource type="Texture2D" uid="uid://dh3qy7jaxjh5e" path="res://Assets/UI/dash_icon.png" id="14_yvwd1"]
+[ext_resource type="AudioStream" uid="uid://dvyxkuimg0wsy" path="res://audio/player/sad trombone.mp3" id="19_i0iom"]
+
+[sub_resource type="Animation" id="Animation_626wt"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_qhspd"]
+resource_name = "gob_idle"
+length = 1.00002
+loop_mode = 1
+step = 0.0714286
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_sit5e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_pf5mt"]
+resource_name = "gob_run"
+length = 0.571436
+loop_mode = 1
+step = 0.0714286
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_8bgvj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0714286, 0.142857, 0.214286, 0.285714, 0.357143, 0.428572, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/footsteps")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_wglch")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_wglch")
+}],
+"times": PackedFloat32Array(0.214286, 0.5)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:change_pitch")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.142857, 0.428571),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5jns"]
+_data = {
+"RESET": SubResource("Animation_626wt"),
+"gob_idle": SubResource("Animation_qhspd"),
+"gob_run": SubResource("Animation_pf5mt")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v65hl"]
+radius = 10.6383
+height = 43.4783
+
+[sub_resource type="Animation" id="Animation_dv1j7"]
+resource_name = "Player_hit"
+length = 0.333336
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI_Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_em7js")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI_Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI_Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Hitbox:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_l1s83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI_Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8br1x"]
+_data = {
+"Player_hit": SubResource("Animation_dv1j7"),
+"RESET": SubResource("Animation_l1s83")
+}
+
+[sub_resource type="Gradient" id="Gradient_hdlee"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_071r5"]
+gradient = SubResource("Gradient_hdlee")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3oqcv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7owo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc34d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebal1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t7im"]
+size = Vector2(11, 14.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epq4t"]
+radius = 52.0096
+
+[sub_resource type="Gradient" id="Gradient_6ufnj"]
+colors = PackedColorArray(0.484398, 0.484398, 0.484398, 1, 1, 1, 1, 1)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "sprite", "weapon", "health_bar", "damaged_bar", "mana_bar", "mana_usage_bar", "damaged_timer", "mana_usage_timer", "mana_regen_timer", "camera", "ui_sprite", "ui_anim_player", "low_health_indicator", "gold_lable", "dash") groups=["Player"]]
+collision_layer = 65
+collision_mask = 65
+script = ExtResource("1_fqlgg")
+anim_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+weapon = NodePath("Weapon")
+health_bar = NodePath("ui/Health_bar")
+damaged_bar = NodePath("ui/Health_bar/Damaged_bar")
+mana_bar = NodePath("ui/Mana_bar")
+mana_usage_bar = NodePath("ui/Mana_bar/Mana_usage_bar")
+damaged_timer = NodePath("Damaged")
+mana_usage_timer = NodePath("Mana_usage")
+mana_regen_timer = NodePath("Mana_regen")
+camera = NodePath("Camera2D")
+ui_sprite = NodePath("ui/UI_Sprite2D")
+ui_anim_player = NodePath("ui/UI_AnimationPlayer")
+low_health_indicator = NodePath("ui/Low_health")
+gold_lable = NodePath("ui/gold/Gold")
+ability_inventory = ExtResource("2_o8fdp")
+dash = NodePath("Dash")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_8bgvj")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t5jns")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(0.469999, 0.23)
+shape = SubResource("CapsuleShape2D_v65hl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Weapon" parent="." instance=ExtResource("4_q6ram")]
+
+[node name="ui" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="gold" type="Sprite2D" parent="ui"]
+position = Vector2(17, 71)
+texture = ExtResource("5_cx2o8")
+
+[node name="Gold" type="Label" parent="ui/gold"]
+offset_left = 12.0
+offset_top = -15.0
+offset_right = 48.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "100"
+
+[node name="Health_bar" type="TextureProgressBar" parent="ui"]
+layout_direction = 1
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 60.0
+offset_bottom = 18.0
+scale = Vector2(2, 2)
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_top = 3
+stretch_margin_right = 6
+stretch_margin_bottom = 3
+texture_over = ExtResource("8_nqdjf")
+texture_progress = ExtResource("9_5lgrf")
+tint_over = Color(0.247059, 0.247059, 0.247059, 1)
+tint_progress = Color(0.87451, 0.0941176, 0.0784314, 1)
+
+[node name="Damaged_bar" type="TextureProgressBar" parent="ui/Health_bar"]
+z_index = -1
+clip_contents = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+value = 5.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_top = 3
+stretch_margin_right = 6
+stretch_margin_bottom = 3
+texture_under = ExtResource("9_5lgrf")
+texture_progress = ExtResource("9_5lgrf")
+tint_under = Color(0.101961, 0.117647, 0.164706, 1)
+tint_progress = Color(0.952941, 0.533333, 0.513726, 1)
+
+[node name="heart" type="Sprite2D" parent="ui/Health_bar"]
+position = Vector2(3.5, 3)
+texture = ExtResource("10_ucnwq")
+
+[node name="HLabel" type="Label" parent="ui"]
+offset_left = 27.0
+offset_top = 11.0
+offset_right = 67.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("6_jyu7f")
+text = "1/2"
+
+[node name="Mana_bar" type="TextureProgressBar" parent="ui"]
+layout_direction = 1
+offset_left = 10.0
+offset_top = 30.0
+offset_right = 60.0
+offset_bottom = 36.0
+scale = Vector2(2, 2)
+max_value = 150.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_top = 3
+stretch_margin_right = 6
+stretch_margin_bottom = 3
+texture_over = ExtResource("8_nqdjf")
+texture_progress = ExtResource("9_5lgrf")
+tint_over = Color(0.247059, 0.247059, 0.247059, 1)
+tint_progress = Color(0.133333, 0.282353, 0.729412, 1)
+
+[node name="Mana_usage_bar" type="TextureProgressBar" parent="ui/Mana_bar"]
+z_index = -1
+clip_contents = true
+layout_direction = 1
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 6.0
+max_value = 150.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_top = 3
+stretch_margin_right = 6
+stretch_margin_bottom = 3
+texture_under = ExtResource("9_5lgrf")
+texture_progress = ExtResource("9_5lgrf")
+tint_under = Color(0.101961, 0.117647, 0.164706, 1)
+tint_progress = Color(0.643137, 0.737255, 0.87451, 1)
+
+[node name="mana" type="Sprite2D" parent="ui/Mana_bar"]
+position = Vector2(3, 3)
+texture = ExtResource("11_6lfvd")
+
+[node name="MLabel" type="Label" parent="ui"]
+offset_left = 27.0
+offset_top = 29.0
+offset_right = 67.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("6_jyu7f")
+text = "1/2"
+
+[node name="Dash_bar" type="TextureProgressBar" parent="ui"]
+layout_direction = 1
+offset_left = 17.0
+offset_top = 48.0
+offset_right = 39.0
+offset_bottom = 54.0
+scale = Vector2(2, 2)
+size_flags_vertical = 3
+max_value = 3.0
+step = 0.01
+value = 1.0
+nine_patch_stretch = true
+stretch_margin_left = 8
+stretch_margin_top = 3
+stretch_margin_right = 8
+stretch_margin_bottom = 3
+texture_over = ExtResource("12_l8jfh")
+texture_progress = ExtResource("13_dtjdo")
+tint_over = Color(0.247059, 0.247059, 0.247059, 1)
+tint_progress = Color(0.223529, 0.643137, 0.262745, 1)
+
+[node name="Dash_usage_bar" type="TextureProgressBar" parent="ui/Dash_bar"]
+z_index = -1
+clip_contents = true
+layout_direction = 1
+layout_mode = 0
+offset_right = 22.0
+offset_bottom = 6.0
+max_value = 3.0
+step = 0.01
+nine_patch_stretch = true
+stretch_margin_left = 8
+stretch_margin_top = 3
+stretch_margin_right = 8
+stretch_margin_bottom = 3
+texture_under = ExtResource("13_dtjdo")
+texture_progress = ExtResource("13_dtjdo")
+tint_under = Color(0.101961, 0.117647, 0.164706, 1)
+tint_progress = Color(0.580392, 1, 0.588235, 1)
+
+[node name="Dash_icon" type="Sprite2D" parent="ui/Dash_bar"]
+position = Vector2(1, 2)
+texture = ExtResource("14_yvwd1")
+
+[node name="UI_AnimationPlayer" type="AnimationPlayer" parent="ui"]
+libraries = {
+"": SubResource("AnimationLibrary_8br1x")
+}
+
+[node name="UI_Sprite2D" type="Sprite2D" parent="ui"]
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("7_em7js")
+offset = Vector2(960, 540)
+hframes = 5
+
+[node name="Low_health" type="Sprite2D" parent="ui"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 180)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("8_a5rkc")
+
+[node name="You_died" type="TextureRect" parent="ui"]
+self_modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.705882)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_071r5")
+
+[node name="You_died" type="TextureRect" parent="ui/You_died"]
+self_modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.705882)
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -140.0
+offset_right = 155.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_071r5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/You_died/You_died"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -20.0
+offset_right = 39.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="You_x" type="Label" parent="ui/You_died/You_died/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "You died"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/You_died/You_died/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MU" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Mana used
+"
+
+[node name="BS" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Bullets shot"
+
+[node name="DU" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Dashes used"
+
+[node name="DD" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Damage done"
+
+[node name="DT" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Damage taken"
+
+[node name="GC" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Gold collected
+"
+
+[node name="EK" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Enemies killed
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MU" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Mana used
+"
+
+[node name="BS" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Bullets shot"
+
+[node name="DU" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Dashes used"
+
+[node name="DD" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Damage done"
+
+[node name="DT" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Damage taken"
+
+[node name="GC" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Gold collected
+"
+
+[node name="EK" type="Label" parent="ui/You_died/You_died/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+text = "Enemies killed
+"
+
+[node name="restart" type="Button" parent="ui/You_died/You_died/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_jyu7f")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3oqcv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h7owo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cc34d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ebal1")
+text = "Restart"
+
+[node name="Damaged" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Mana_usage" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Dash_usage" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Mana_regen" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Dash_regen" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Player_hitbox"]]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, 3.25)
+shape = SubResource("RectangleShape2D_2t7im")
+
+[node name="attraction_radius" type="Area2D" parent="." groups=["player_attract_radius"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attraction_radius"]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_epq4t")
+
+[node name="Dash" parent="." instance=ExtResource("14_gqmwi")]
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="footsteps" type="AudioStreamPlayer" parent="Sounds"]
+volume_db = -80.0
+
+[node name="Death" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("19_i0iom")
+volume_db = 10.0
+
+[node name="Dust" type="CPUParticles2D" parent="."]
+z_index = 10
+position = Vector2(0, -260)
+amount = 30
+lifetime = 8.0
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 5)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+orbit_velocity_min = -0.03
+orbit_velocity_max = 0.03
+scale_amount_max = 3.0
+color = Color(0.52549, 0.886275, 0.447059, 1)
+color_ramp = SubResource("Gradient_6ufnj")
+
+[connection signal="shoot" from="." to="Weapon" method="_on_player_shoot"]
+[connection signal="shoot_stop" from="." to="Weapon" method="_on_player_shoot_stop"]
+[connection signal="mana_used" from="Weapon" to="." method="_on_weapon_mana_used"]
+[connection signal="pressed" from="ui/You_died/You_died/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="timeout" from="Damaged" to="." method="_on_damaged_timeout"]
+[connection signal="timeout" from="Mana_usage" to="." method="_on_mana_usage_timeout"]
+[connection signal="timeout" from="Dash_usage" to="." method="_on_dash_usage_timeout"]
+[connection signal="timeout" from="Mana_regen" to="." method="_on_mana_regen_timeout"]
+[connection signal="timeout" from="Dash_regen" to="." method="_on_dash_regen_timeout"]
+[connection signal="finished" from="Sounds/footsteps" to="." method="_on_footsteps_finished"]

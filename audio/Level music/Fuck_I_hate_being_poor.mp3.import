@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://daq5ii2ebacm2"
+path="res://.godot/imported/Fuck_I_hate_being_poor.mp3-3730f88d6e15c16c4c30d549aa7a8c52.mp3str"
+
+[deps]
+
+source_file="res://audio/Level music/Fuck_I_hate_being_poor.mp3"
+dest_files=["res://.godot/imported/Fuck_I_hate_being_poor.mp3-3730f88d6e15c16c4c30d549aa7a8c52.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

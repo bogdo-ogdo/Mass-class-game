@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://5158p4jqpnkb"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_dd0lc"]
+[ext_resource type="Texture2D" uid="uid://d1t8jh7ag0x6q" path="res://Assets/Gold/Coin.png" id="2_xcgcf"]
+
+[resource]
+script = ExtResource("1_dd0lc")
+ability_name = "Money shot"
+description = "You shoot money now 2x damage"
+texture = ExtResource("2_xcgcf")
+unique = true
+rarity = 2
+cost = 100

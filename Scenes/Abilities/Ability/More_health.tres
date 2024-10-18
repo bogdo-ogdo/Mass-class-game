@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cesj4wh6a8g6f"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_dqyyf"]
+[ext_resource type="Texture2D" uid="uid://b8qb5qqf8s14" path="res://Assets/Abilities/More Health.png" id="2_vvdyf"]
+
+[resource]
+script = ExtResource("1_dqyyf")
+ability_name = "More health"
+description = "+ 1 max health"
+texture = ExtResource("2_vvdyf")
+unnique = false
+rarity = 0
+cost = 30

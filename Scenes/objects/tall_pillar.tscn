@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctukb8f6wxrx0"]
+
+[ext_resource type="Texture2D" uid="uid://bs67qpd7a2td7" path="res://Assets/objects/Tall_pillar.png" id="1_k2o5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bapjx"]
+size = Vector2(12, 8)
+
+[node name="tall_pillar" type="StaticBody2D"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["clear"]]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_bapjx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_k2o5f")

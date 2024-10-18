@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ch6l1heww5dda"
+path="res://.godot/imported/Green Gobby Stobby.mp3-02fb1810fcf341553c2f08c47d426cc0.mp3str"
+
+[deps]
+
+source_file="res://audio/Level music/Green Gobby Stobby.mp3"
+dest_files=["res://.godot/imported/Green Gobby Stobby.mp3-02fb1810fcf341553c2f08c47d426cc0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

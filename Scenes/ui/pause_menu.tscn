@@ -1,0 +1,376 @@
+[gd_scene load_steps=24 format=3 uid="uid://cr3e354qlfmrd"]
+
+[ext_resource type="Script" path="res://Scenes/ui/pause_menu.gd" id="1_mvial"]
+[ext_resource type="Script" path="res://Scenes/ui/Ability_display.gd" id="3_ikvsu"]
+[ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="4_7itmm"]
+[ext_resource type="PackedScene" uid="uid://bt1o23tv8qytk" path="res://Scenes/ui/ability.tscn" id="4_xh56o"]
+[ext_resource type="Texture2D" uid="uid://dxnphdcbhhrvi" path="res://Assets/UI/Unchecked.png" id="5_3gj05"]
+[ext_resource type="Texture2D" uid="uid://cnxnhu8vj0ipa" path="res://Assets/UI/Checked.png" id="6_xa4xc"]
+
+[sub_resource type="Gradient" id="Gradient_g2wis"]
+colors = PackedColorArray(0, 0, 0, 0.65098, 0, 0, 0, 0.65098)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8l25n"]
+gradient = SubResource("Gradient_g2wis")
+width = 640
+height = 360
+fill_from = Vector2(0.25641, 0.387464)
+
+[sub_resource type="Gradient" id="Gradient_6gnmn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2k0n6"]
+gradient = SubResource("Gradient_6gnmn")
+width = 12
+height = 12
+fill_from = Vector2(1, 0)
+
+[sub_resource type="Gradient" id="Gradient_6xp20"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sqn1b"]
+gradient = SubResource("Gradient_6xp20")
+width = 12
+height = 12
+
+[sub_resource type="Gradient" id="Gradient_uy2r3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y7sai"]
+gradient = SubResource("Gradient_uy2r3")
+width = 12
+height = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol4si"]
+border_width_top = 8
+border_color = Color(0.352941, 0.352941, 0.352941, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34snh"]
+bg_color = Color(0.780392, 0.780392, 0.780392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v156d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wet0"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdqq7"]
+bg_color = Color(0.192157, 0.192157, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw380"]
+bg_color = Color(0.270588, 0.270588, 0.270588, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvg26"]
+
+[sub_resource type="Gradient" id="Gradient_xwdg1"]
+offsets = PackedFloat32Array(0, 0.1152)
+colors = PackedColorArray(0.0784314, 0.0784314, 0.0784314, 1, 0.0784314, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5ywrr"]
+gradient = SubResource("Gradient_xwdg1")
+width = 200
+
+[node name="Pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+size_flags_horizontal = 4
+script = ExtResource("1_mvial")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = SubResource("GradientTexture2D_8l25n")
+
+[node name="Ability_display" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_ikvsu")
+ability_slot = ExtResource("4_xh56o")
+
+[node name="GridContainer" type="GridContainer" parent="Ability_display"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 4
+columns = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -161.0
+offset_right = 85.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Shadows" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = ExtResource("5_3gj05")
+theme_override_icons/unchecked = ExtResource("6_xa4xc")
+text = " Shadows"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/Shadows"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = -16.0
+offset_right = 93.0
+offset_bottom = 13.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_7itmm")
+text = "Significantly increases preformance
+\\/"
+horizontal_alignment = 1
+
+[node name="Particles" type="CheckBox" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = ExtResource("5_3gj05")
+theme_override_icons/unchecked = ExtResource("6_xa4xc")
+text = " Particles"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+
+[node name="Gama_Slider" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("GradientTexture2D_2k0n6")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_sqn1b")
+theme_override_icons/grabber_disabled = SubResource("GradientTexture2D_y7sai")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ol4si")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_34snh")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_v156d")
+min_value = 50.0
+max_value = 200.0
+value = 100.0
+
+[node name="g_slide" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Gama_Slider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = -18.0
+offset_right = 60.0
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 32
+text = "Brightness
+"
+horizontal_alignment = 1
+
+[node name="g_slide2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Gama_Slider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = -41.0
+offset_right = 102.0
+offset_bottom = -12.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 16
+text = " Doesn't work on browser version
+\\/
+"
+horizontal_alignment = 1
+
+[node name="Minimap_slider" type="HSlider" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("GradientTexture2D_2k0n6")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_sqn1b")
+theme_override_icons/grabber_disabled = SubResource("GradientTexture2D_y7sai")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ol4si")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_34snh")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_v156d")
+value = 50.0
+
+[node name="m_slide" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Minimap_slider"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -34.0
+offset_right = 82.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 32
+text = "Minimap Opacity
+"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fdqq7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uw380")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
+text = "Resume"
+
+[node name="Return" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fdqq7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uw380")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
+text = "Exit to menu"
+
+[node name="u_sure" type="TextureRect" parent="VBoxContainer/ButtonContainer/Return"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -56.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_5ywrr")
+
+[node name="Label" type="Label" parent="VBoxContainer/ButtonContainer/Return/u_sure"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_7itmm")
+text = "Your progress will be reset
+Are you sure?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ButtonContainer/Return/u_sure"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -23.0
+offset_right = 62.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Resume2" type="Button" parent="VBoxContainer/ButtonContainer/Return/u_sure/HBoxContainer"]
+custom_minimum_size = Vector2(60, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fdqq7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uw380")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
+text = "Yes"
+
+[node name="Resume3" type="Button" parent="VBoxContainer/ButtonContainer/Return/u_sure/HBoxContainer"]
+custom_minimum_size = Vector2(60, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fdqq7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uw380")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
+text = "No"
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.141176, 0.65098, 1, 1)
+theme_override_fonts/font = ExtResource("4_7itmm")
+theme_override_font_sizes/font_size = 16
+text = "give us feedback"
+uri = "https://docs.google.com/forms/d/e/1FAIpQLSe-YpJKodUQyHjHOEqzBeCoi0ulcXgPvGiWaCC160M7ZaYSEw/viewform?usp=sf_link"
+
+[node name="Level_indicator" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 49.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("4_7itmm")
+text = "Level 3 Floor 2"
+autowrap_mode = 2
+
+[connection signal="closed" from="." to="Ability_display" method="_on_pause_menu_closed"]
+[connection signal="opened" from="." to="Ability_display" method="_on_pause_menu_opened"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/Shadows" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/VBoxContainer/Particles" to="." method="_on_particles_toggled"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/Gama_Slider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/Minimap_slider" to="." method="_on_minimap_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Return/u_sure/HBoxContainer/Resume2" to="." method="_on_resume_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Return/u_sure/HBoxContainer/Resume3" to="." method="_on_resume_3_pressed"]

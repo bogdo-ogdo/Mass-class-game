@@ -1,0 +1,631 @@
+[gd_scene load_steps=23 format=3 uid="uid://dr5x17poy4eyt"]
+
+[ext_resource type="Texture2D" uid="uid://x5tha10n7wx4" path="res://Assets/UI/progress_bar_wrap.png.png" id="1_2wrjp"]
+[ext_resource type="Script" path="res://Scenes/Enemy/Boss/boss.gd" id="1_420et"]
+[ext_resource type="Texture2D" uid="uid://e84j0pm5mn06" path="res://Assets/Enemy/Boss/Cyclops Sprite Sheet.png" id="1_ugbyo"]
+[ext_resource type="Texture2D" uid="uid://cppkmlmqtaikc" path="res://Assets/Enemy/Boss/Beam.png" id="2_4fu8u"]
+[ext_resource type="Shader" path="res://Shaders/spawn.gdshader" id="2_p4s5a"]
+[ext_resource type="Texture2D" uid="uid://dy1f3lvtumltt" path="res://Assets/UI/progress_bar_filler.png" id="2_yrrd4"]
+[ext_resource type="Texture2D" uid="uid://dtirwq5q5w7g1" path="res://Assets/Weapons/MiniGun.png" id="4_tloj4"]
+[ext_resource type="Texture2D" uid="uid://2pappgmugtue" path="res://Assets/Effects/square.png" id="8_l8mwi"]
+[ext_resource type="AudioStream" uid="uid://d4c7wbcdnpbmi" path="res://audio/Weapon/gunshot.wav" id="9_22r0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxqab"]
+size = Vector2(16, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jc0xf"]
+radius = 12.0
+height = 38.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ey4a"]
+shader = ExtResource("2_p4s5a")
+shader_parameter/progress = null
+shader_parameter/noise_desnity = 60.0
+shader_parameter/beam_size = null
+shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5e6lp"]
+size = Vector2(1, 5)
+
+[sub_resource type="Animation" id="Animation_5trhf"]
+resource_name = "Beam_hold"
+length = 1.7143
+loop_mode = 1
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ugbyo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36]
+}
+
+[sub_resource type="Animation" id="Animation_81m8e"]
+resource_name = "Beam_start"
+length = 3.00001
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ugbyo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.6, 2.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Laser_beam/StartBeam:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [null, ExtResource("1_ugbyo")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Laser_beam/StartBeam:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Laser_beam/StartBeam:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Laser_beam/StartBeam:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.133333, 0.266667, 0.4, 0.533333, 0.6, 2.66667, 2.73333, 2.8, 2.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [135, 136, 137, 138, 139, 140, 141, 142, 143]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Laser_beam/StartBeam:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.533333, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(-1.26953e-08, 7.15256e-07)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Laser_beam:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.2, 1.06667, 2.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-6.28319, -6.28319, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Laser_beam/StartBeam:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -6)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Laser_beam/StartBeam/Beam/BBox:monitoring")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.533333, 2.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Laser_beam/StartBeam/Beam:texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.533333, 2.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("2_4fu8u"), null]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Laser_beam/StartBeam/Beam:hframes")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Laser_beam/StartBeam/Beam:vframes")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Laser_beam/StartBeam/Beam:frame")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.533333, 0.6, 2.66667, 2.73333, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_ktfto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Laser_beam/StartBeam:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [135]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Laser_beam/StartBeam/Beam:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k3w4a"]
+resource_name = "idle"
+length = 2.14287
+loop_mode = 1
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ugbyo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1, 1.14286, 1.28571, 1.42857, 1.57143, 1.71429, 1.85714, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_dx6vq"]
+resource_name = "run"
+length = 1.7143
+loop_mode = 1
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ugbyo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1, 1.14286, 1.28571, 1.42857, 1.57143),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qj0v7"]
+_data = {
+"Beam_hold": SubResource("Animation_5trhf"),
+"Beam_start": SubResource("Animation_81m8e"),
+"RESET": SubResource("Animation_ktfto"),
+"idle": SubResource("Animation_k3w4a"),
+"run": SubResource("Animation_dx6vq")
+}
+
+[sub_resource type="Animation" id="Animation_lnel6"]
+resource_name = "hit"
+length = 0.100005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gx1s8"]
+_data = {
+"hit": SubResource("Animation_lnel6")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_riv2v"]
+shader = ExtResource("2_p4s5a")
+shader_parameter/progress = null
+shader_parameter/noise_desnity = 60.0
+shader_parameter/beam_size = null
+shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
+
+[node name="Boss" type="CharacterBody2D"]
+position = Vector2(1, -7)
+collision_layer = 0
+collision_mask = 69
+script = ExtResource("1_420et")
+approach_dist = 300.0
+run_dist = 50.0
+gold_drop = Vector2(100, 100)
+move_speed = 50.0
+health = 2000.0
+damage = 1.0
+reload = Vector2(3, 4)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_hxqab")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, -5)
+shape = SubResource("CapsuleShape2D_jc0xf")
+
+[node name="Collision_damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_damage"]
+position = Vector2(-2, -5)
+shape = SubResource("CapsuleShape2D_jc0xf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 513
+material = SubResource("ShaderMaterial_4ey4a")
+position = Vector2(0, -19)
+texture = ExtResource("1_ugbyo")
+hframes = 15
+vframes = 20
+
+[node name="Laser_beam" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+target_position = Vector2(500, 0)
+
+[node name="StartBeam" type="Sprite2D" parent="Laser_beam"]
+position = Vector2(-1.26953e-08, 7.15256e-07)
+texture = ExtResource("1_ugbyo")
+offset = Vector2(0, -6)
+hframes = 15
+vframes = 20
+frame = 135
+
+[node name="Beam" type="Sprite2D" parent="Laser_beam/StartBeam"]
+z_index = 3
+position = Vector2(50, -1.00022)
+scale = Vector2(100, 1)
+hframes = 5
+
+[node name="BBox" type="Area2D" parent="Laser_beam/StartBeam/Beam"]
+position = Vector2(8.28108e-08, 1)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser_beam/StartBeam/Beam/BBox"]
+shape = SubResource("RectangleShape2D_5e6lp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qj0v7")
+}
+
+[node name="hit_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gx1s8")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Boss_bar" type="TextureProgressBar" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -19.0
+offset_right = 150.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 2000.0
+value = 80.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_over = ExtResource("1_2wrjp")
+texture_progress = ExtResource("2_yrrd4")
+tint_over = Color(0.737255, 0.345098, 0.00392157, 1)
+tint_progress = Color(0.87451, 0.0941176, 0.0784314, 1)
+
+[node name="damage_bar" type="TextureProgressBar" parent="CanvasLayer/Boss_bar"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 2000.0
+value = 90.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("2_yrrd4")
+texture_progress = ExtResource("2_yrrd4")
+tint_under = Color(0.101961, 0.117647, 0.164706, 1)
+tint_progress = Color(1, 0.74902, 0.717647, 1)
+
+[node name="MiniGun" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_riv2v")
+position = Vector2(-8.5, -4)
+texture = ExtResource("4_tloj4")
+offset = Vector2(12, 0)
+
+[node name="Muzzle" type="Marker2D" parent="MiniGun"]
+position = Vector2(27, 0)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="idleTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="attackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="delayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="navTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="damageTimer" type="Timer" parent="."]
+
+[node name="Hit" type="PointLight2D" parent="."]
+light_mask = 512
+position = Vector2(-1.5, -6)
+scale = Vector2(0.78125, 1.25)
+color = Color(3, 0, 0, 1)
+energy = 0.0
+range_item_cull_mask = 512
+texture = ExtResource("8_l8mwi")
+
+[node name="Gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_22r0a")
+
+[connection signal="timeout" from="idleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="delayTimer" to="." method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="navTimer" to="." method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="damageTimer" to="." method="_on_damage_timer_timeout"]

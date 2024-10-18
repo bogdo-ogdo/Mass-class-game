@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bklqlntaocynl"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_pca53"]
+[ext_resource type="Texture2D" uid="uid://prr4r0pjq1ye" path="res://Assets/Abilities/Mana_regen.png" id="2_io0yi"]
+
+[resource]
+script = ExtResource("1_pca53")
+ability_name = "Mana regen"
+description = "Faster Mana regeneration and less mana regeneration delay"
+texture = ExtResource("2_io0yi")
+unique = false
+rarity = 0
+cost = 30

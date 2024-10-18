@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1ptp3jujfcee"]
+
+[ext_resource type="Script" path="res://Scenes/ui/credits.gd" id="1_wsj11"]
+[ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="2_gk5bf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hpwt8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k1rhj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6yjyo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67iwc"]
+
+[sub_resource type="Gradient" id="Gradient_615g7"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oegy6"]
+gradient = SubResource("Gradient_615g7")
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 642.0
+offset_bottom = 361.0
+script = ExtResource("1_wsj11")
+
+[node name="Return" type="Button" parent="."]
+top_level = true
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
+theme_override_colors/font_hover_color = Color(0.63648, 0.63648, 0.63648, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hpwt8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k1rhj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6yjyo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_67iwc")
+text = "Return
+"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = SubResource("GradientTexture1D_oegy6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 100.0
+grow_horizontal = 2
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Game Director"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "William Cochrane"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Programming"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "William Cochrane"
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Sound"
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "William Cochrane"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Art"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Robbie de Groot-Tsuji
+William Cochrane"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Game Design"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Robbie de Groot-Tsuji
+William Cochrane"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Music"
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Jayden Lim
+Ethan Zhao"
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Play Testing"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Robbie de Groot-Tsuji
+William Cochrane
+Conor Gracey
+Jayden Lim
+"
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Aaron Zheng
+Angel Zheng
+Nicky Parker
+Benson Lee"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

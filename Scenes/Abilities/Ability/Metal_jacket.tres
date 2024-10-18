@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cwxsnmqpqfgjy"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_tgelg"]
+[ext_resource type="Texture2D" uid="uid://cxd018rrehhas" path="res://Assets/Abilities/Full metal jacket.png" id="2_k5i0n"]
+
+[resource]
+script = ExtResource("1_tgelg")
+ability_name = "Metal jacket"
+description = "+1 bullet pierce"
+texture = ExtResource("2_k5i0n")
+unique = false
+rarity = 0
+cost = 30

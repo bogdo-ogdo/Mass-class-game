@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnrmiqvhay643"]
+
+[ext_resource type="Script" path="res://Scenes/gate/gates_up.gd" id="1_8ghds"]
+[ext_resource type="Texture2D" uid="uid://dlvkeh3lel4p3" path="res://Assets/Effects/spot.png" id="2_w8qus"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qfw1"]
+size = Vector2(16, 16)
+
+[node name="gates_up" type="Area2D" groups=["clear"]]
+script = ExtResource("1_8ghds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 10
+shape = SubResource("RectangleShape2D_4qfw1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+visibility_layer = 3
+z_index = 1
+scale = Vector2(0.1, 0.1)
+energy = 0.3
+texture = ExtResource("2_w8qus")
+texture_scale = 2.5
+
+[node name="reset_timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="reset_timer" to="." method="_on_reset_timer_timeout"]

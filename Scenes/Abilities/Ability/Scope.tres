@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cvexgwyw7hwud"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_a8qig"]
+[ext_resource type="Texture2D" uid="uid://b5jsjsb5dl7qh" path="res://Assets/Abilities/Scope.png" id="2_nwi43"]
+
+[resource]
+script = ExtResource("1_a8qig")
+ability_name = "Scope"
+description = "+30% accuracy"
+texture = ExtResource("2_nwi43")
+unique = false
+rarity = 0
+cost = 30

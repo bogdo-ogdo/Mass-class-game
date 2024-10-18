@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dwsd1dke2r6vi"
+path="res://.godot/imported/ZHAO_Ethan_Ambience_and_Dance_-_First_Draft.mp3-ee503d2a7e26f4f364376824c566b456.mp3str"
+
+[deps]
+
+source_file="res://audio/Level music/ZHAO_Ethan_Ambience_and_Dance_-_First_Draft.mp3"
+dest_files=["res://.godot/imported/ZHAO_Ethan_Ambience_and_Dance_-_First_Draft.mp3-ee503d2a7e26f4f364376824c566b456.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://btb6irmyuhh81"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_2ufh2"]
+[ext_resource type="Texture2D" uid="uid://bpdls82kfg6qv" path="res://Assets/Abilities/Fire rate.png" id="2_ejht6"]
+
+[resource]
+script = ExtResource("1_2ufh2")
+ability_name = "Faster receiver"
+description = "+1 round per second fire rate"
+texture = ExtResource("2_ejht6")
+unique = false
+rarity = 1
+cost = 60

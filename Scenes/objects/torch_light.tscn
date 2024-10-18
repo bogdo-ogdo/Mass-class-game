@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx3muipehkgd6"]
+
+[ext_resource type="Texture2D" uid="uid://dlvkeh3lel4p3" path="res://Assets/Effects/spot.png" id="1_stipw"]
+[ext_resource type="Script" path="res://Scenes/objects/torch_light.gd" id="2_xyvr1"]
+
+[sub_resource type="Curve" id="Curve_hd3hj"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_bfyus"]
+offsets = PackedFloat32Array(0, 0.76779, 0.94702)
+colors = PackedColorArray(10.001, 0.046, 0.026, 1, 1, 0.822072, 0.734947, 1, 0.984314, 0.705882, 0, 0.0627451)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d43ho"]
+blend_mode = 1
+
+[node name="torch_light" type="PointLight2D" groups=["Shadow", "clear", "light"]]
+z_index = 10
+color = Color(1, 0.733333, 0.533333, 1)
+energy = 0.3
+shadow_enabled = true
+shadow_filter_smooth = 6.0
+texture = ExtResource("1_stipw")
+texture_scale = 3.0
+script = ExtResource("2_xyvr1")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+process_mode = 1
+z_index = 10
+position = Vector2(0, -4)
+amount = 2
+randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+tangential_accel_min = -5.0
+tangential_accel_max = 5.0
+damping_min = 1.5
+damping_max = 7.5
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_max = 1.3
+scale_amount_curve = SubResource("Curve_hd3hj")
+color_ramp = SubResource("Gradient_bfyus")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.87451, 0.784314, 0.196078)
+material = SubResource("CanvasItemMaterial_d43ho")
+position = Vector2(0, -4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_stipw")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-130, -130, 260, 260)
+enable_mode = 1

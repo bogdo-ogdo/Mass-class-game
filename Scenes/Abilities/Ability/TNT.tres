@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cmio2n7epsmfk"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_trdiy"]
+[ext_resource type="Texture2D" uid="uid://dt4c372dkmbb0" path="res://Assets/Abilities/tnt.png" id="2_xmgs1"]
+
+[resource]
+script = ExtResource("1_trdiy")
+ability_name = "TNT"
+description = "Makes your bullets explode and increases explotion radius"
+texture = ExtResource("2_xmgs1")
+unique = false
+rarity = 2
+cost = 100

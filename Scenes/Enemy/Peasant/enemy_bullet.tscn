@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://8ybf44baaiqv"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy/Peasant/Enemy_bullet.gd" id="1_7ow7i"]
+[ext_resource type="Texture2D" uid="uid://dr1uwrvpfyi4m" path="res://Assets/Bullet/Boolet.png" id="2_h1m1x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n4yi"]
+size = Vector2(8, 6)
+
+[node name="Enemy_bullet" type="CharacterBody2D" groups=["clear"]]
+visible = false
+script = ExtResource("1_7ow7i")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7n4yi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(10, 2, 2, 1)
+texture = ExtResource("2_h1m1x")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

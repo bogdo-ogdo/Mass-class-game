@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dupqotbcfhlbo"
+path="res://.godot/imported/Green Gobby Stobby.mp3-f169aa0c4e0aae621eb2393f2d0dc4fd.mp3str"
+
+[deps]
+
+source_file="res://Assets/Abilities/Green Gobby Stobby.mp3"
+dest_files=["res://.godot/imported/Green Gobby Stobby.mp3-f169aa0c4e0aae621eb2393f2d0dc4fd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

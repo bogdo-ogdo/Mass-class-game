@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc6254s7jvde"]
+
+[ext_resource type="Script" path="res://Scenes/Effects/Blood_splat.gd" id="1_tv3vq"]
+
+[sub_resource type="Curve" id="Curve_tk7w0"]
+min_value = 150.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, 150), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_r0bya"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_jwgmx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89547, 0.791733), -0.590831, -0.590831, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_o37gg"]
+offsets = PackedFloat32Array(0, 0.666667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.976471, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_pe57x"]
+offsets = PackedFloat32Array(0, 0.818352, 0.913858)
+colors = PackedColorArray(0.858824, 0, 0, 1, 0.858824, 0, 0, 1, 1, 0.980814, 0.909456, 1)
+
+[node name="Blood_splat" type="CPUParticles2D"]
+top_level = true
+position = Vector2(23, 0)
+emitting = false
+amount = 30
+lifetime = 2.0
+preprocess = 100.0
+explosiveness = 0.9
+randomness = 0.03
+local_coords = true
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 250.0
+angular_velocity_min = 1.0
+angular_velocity_max = 1.0
+angular_velocity_curve = SubResource("Curve_tk7w0")
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("Curve_r0bya")
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_min = 4.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_jwgmx")
+color_ramp = SubResource("Gradient_o37gg")
+color_initial_ramp = SubResource("Gradient_pe57x")
+script = ExtResource("1_tv3vq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

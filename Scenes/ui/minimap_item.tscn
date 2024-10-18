@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://0l6gj1c2uyq8"]
+
+[node name="Minimap_item" type="Sprite2D"]

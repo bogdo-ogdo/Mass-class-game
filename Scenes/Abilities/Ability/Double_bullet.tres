@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bhjbgtt3ew3vw"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_3yffb"]
+[ext_resource type="Texture2D" uid="uid://bhbo0l78el6i4" path="res://Assets/Abilities/multi boolet.png" id="2_1ixo4"]
+
+[resource]
+script = ExtResource("1_3yffb")
+ability_name = "Double bullets"
+description = "+ 1 bullet per shot"
+texture = ExtResource("2_1ixo4")
+unnique = false
+rarity = 2
+cost = 90

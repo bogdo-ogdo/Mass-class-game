@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://11jo6unxbwbd"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_mrnl5"]
+[ext_resource type="Texture2D" uid="uid://x5kh7gelgt2m" path="res://Assets/Abilities/Clover.png" id="2_ti52e"]
+
+[resource]
+script = ExtResource("1_mrnl5")
+ability_name = "Lucky"
+description = "+ 10% chance to do a critical hit"
+texture = ExtResource("2_ti52e")
+unnique = false
+rarity = 0
+cost = 30

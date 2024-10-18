@@ -1,0 +1,199 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6rheyijs8n4l"]
+
+[ext_resource type="Script" path="res://Entities/weapon/weapon.gd" id="1_6mjeb"]
+[ext_resource type="PackedScene" uid="uid://bjwsafueqhnss" path="res://Entities/Bullet/bullet.tscn" id="2_nq1jh"]
+[ext_resource type="Texture2D" uid="uid://csqoybd2sfcid" path="res://Assets/Weapons/pistol.png" id="2_o5o1n"]
+[ext_resource type="Texture2D" uid="uid://dstwhafg7puo4" path="res://Assets/Weapons/FlameThrower.png" id="3_op8js"]
+[ext_resource type="Script" path="res://Entities/weapon/WeaponMachine.gd" id="4_w1n20"]
+[ext_resource type="Script" path="res://Entities/weapon/weapons/pistol.gd" id="5_7xyep"]
+[ext_resource type="Script" path="res://Entities/weapon/weapons/FlameThrower.gd" id="7_c6f0t"]
+
+[sub_resource type="Animation" id="Animation_rvcax"]
+resource_name = "pistol"
+length = 0.150005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_o5o1n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2x1wi"]
+resource_name = "pistol_shoot"
+length = 0.200005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_o5o1n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qoxwj"]
+resource_name = "FlameThrower"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_op8js")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23.083, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Muzzle:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_uo3w6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0lp1"]
+_data = {
+"FlameThrower": SubResource("Animation_qoxwj"),
+"RESET": SubResource("Animation_uo3w6"),
+"pistol": SubResource("Animation_rvcax"),
+"pistol_shoot": SubResource("Animation_2x1wi")
+}
+
+[node name="Weapon" type="CharacterBody2D" node_paths=PackedStringArray("cooldown_timer", "weapon_machine", "first_bullet") groups=["Weapon"]]
+scale = Vector2(12, 12)
+script = ExtResource("1_6mjeb")
+bullet = ExtResource("2_nq1jh")
+cooldown_timer = NodePath("Cooldown")
+weapon_machine = NodePath("WeaponMachine")
+first_bullet = NodePath("Bullet")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_op8js")
+offset = Vector2(23.083, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t0lp1")
+}
+autoplay = "pistol"
+
+[node name="Bullet" parent="." instance=ExtResource("2_nq1jh")]
+z_index = -2
+z_as_relative = false
+position = Vector2(2, -2)
+scale = Vector2(0.2, 0.2)
+
+[node name="WeaponMachine" type="Node" parent="." node_paths=PackedStringArray("initial_weapon")]
+script = ExtResource("4_w1n20")
+initial_weapon = NodePath("FlameThrower")
+
+[node name="pistol" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("5_7xyep")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="FlameThrower" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("7_c6f0t")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(50, -2)
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

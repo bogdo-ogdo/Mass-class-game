@@ -1,0 +1,241 @@
+[gd_scene load_steps=12 format=3 uid="uid://c21u3b11dd227"]
+
+[ext_resource type="Script" path="res://Scenes/ui/start_menu.gd" id="1_hq4rm"]
+[ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="2_3ryvb"]
+[ext_resource type="Texture2D" uid="uid://chkj1dv5ybbs5" path="res://Assets/UI/Game Logo.png" id="2_8l2ck"]
+[ext_resource type="Gradient" uid="uid://b8n6tjn4cqyto" path="res://Assets/UI/background gradient.tres" id="2_lddre"]
+[ext_resource type="Texture2D" uid="uid://t6wd82y1obf0" path="res://Assets/UI/Pause_menu_wrap.png" id="5_51jo0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hbtyn"]
+gradient = ExtResource("2_lddre")
+width = 128
+height = 128
+fill_from = Vector2(0.4, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqvku"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxvol"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ox4qv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycybs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jr4g3"]
+bg_color = Color(0.0823529, 0.0823529, 0.0823529, 0.913725)
+
+[node name="Start_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("1_hq4rm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_hbtyn")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 100.0
+grow_horizontal = 2
+texture = ExtResource("2_8l2ck")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
+theme_override_colors/font_hover_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_fonts/font = ExtResource("2_3ryvb")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wqvku")
+text = "Start"
+
+[node name="Boss_fight" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
+theme_override_colors/font_hover_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_fonts/font = ExtResource("2_3ryvb")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wqvku")
+text = "Boss battle"
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
+theme_override_colors/font_hover_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_fonts/font = ExtResource("2_3ryvb")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wqvku")
+text = "Credits"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.643137, 0.203922, 0.203922, 1)
+theme_override_colors/font_hover_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_fonts/font = ExtResource("2_3ryvb")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lxvol")
+text = "Quit"
+
+[node name="u_sure?" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -77.0
+offset_right = 65.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_51jo0")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Label" type="Label" parent="u_sure?"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_3ryvb")
+theme_override_font_sizes/font_size = 16
+text = "Are you sure you want to quit?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="u_sure?"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -43.0
+offset_right = 25.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Yes" type="Button" parent="u_sure?/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.47451, 0.47451, 0.47451, 1)
+theme_override_colors/font_hover_color = Color(0.65098, 0.65098, 0.65098, 1)
+theme_override_fonts/font = ExtResource("2_3ryvb")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ox4qv")
+text = "Yes"
+
+[node name="No" type="Button" parent="u_sure?/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.47451, 0.47451, 0.47451, 1)
+theme_override_colors/font_hover_color = Color(0.65098, 0.65098, 0.65098, 1)
+theme_override_fonts/font = ExtResource("2_3ryvb")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ycybs")
+text = "No"
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -175.0
+offset_right = 175.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jr4g3")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_3ryvb")
+text = "Controls:
+wasd : move
+Space : dash (can dash though enemy projectiles)
+F : interact (with chest or ladder)
+Rmb : shoot (hold if weapon if full auto)
+Esc : escape menu
+
+The objective of the game is to make it down nine floors (three levels of three floors) and kill the boss on floor ten without dying. In the top left of your screen you will have your health, mana, gold and dashes. Dashes and mana regenerate over time and health is fully restored at the end of each floor. At the end of each  floor you can spend the gold you collect in a shop on items that boost your stats. If you are bad and want to skip to the boss you can select Boss Battle. 
+
+IMPORTANT:
+If it runs slow on you pc go to the escape menu in game and disable shadows (they take a lot to render)"
+autowrap_mode = 3
+
+[node name="Okay" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -34.0
+offset_right = 27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_3ryvb")
+theme_override_font_sizes/font_size = 32
+text = "Okay"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Boss_fight" to="." method="_on_boss_fight_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="u_sure?/VBoxContainer/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="u_sure?/VBoxContainer/No" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="Panel/Okay" to="." method="_on_okay_pressed"]
