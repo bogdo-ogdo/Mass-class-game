@@ -241,13 +241,13 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_071r5"]
 gradient = SubResource("Gradient_hdlee")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3oqcv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebal1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7owo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc34d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebal1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3oqcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t7im"]
 size = Vector2(11, 14.5)
@@ -644,10 +644,10 @@ text = "Enemies killed
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_jyu7f")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_3oqcv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ebal1")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_h7owo")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_cc34d")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ebal1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3oqcv")
 text = "Restart"
 
 [node name="Damaged" type="Timer" parent="."]
