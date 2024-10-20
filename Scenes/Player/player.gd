@@ -78,6 +78,7 @@ var bullets_shot : int = 0
 
 var win : bool = false
 
+var speed = 0
 
 func _ready():
 	ui_sprite.hide()
@@ -104,8 +105,14 @@ func _ready():
 
 
 func _physics_process(delta):
-	var speed = dash_speed if dash.is_dashing() else move_speed
 	move_direction = Input.get_vector("ui_left", "ui_right","ui_up","ui_down")
+	if dash.is_dashing() and move_direction != Vector2.ZERO:
+		speed = dash_speed
+	elif dash.is_dashing():
+		speed = dash_speed
+		move_direction = Vector2($Sprite2D.scale.x,0)
+	else:
+		speed = move_speed
 	velocity = move_direction * speed  * delta
 	position += velocity
 	if move_direction != Vector2.ZERO:
@@ -167,10 +174,10 @@ func weapon_rotate_to_mouse(target, delta):
 	weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
 	weapon.b_rotation = weapon.rotation
 	if direction.x > 0:
-		sprite.flip_h = false
+		sprite.scale.x = 1
 		weapon.get_child(0).scale.y = 1
 	elif direction.x < 0:
-		sprite.flip_h = true
+		sprite.scale.x = -1
 		weapon.get_child(0).scale.y = -1
 	weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
 

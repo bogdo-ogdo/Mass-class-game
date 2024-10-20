@@ -69,8 +69,8 @@ theme_override_constants/separation = 5
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
 theme_override_colors/font_hover_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
 theme_override_fonts/font = ExtResource("2_3ryvb")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wqvku")
@@ -78,8 +78,8 @@ text = "Start"
 
 [node name="Boss_fight" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
 theme_override_colors/font_hover_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
 theme_override_fonts/font = ExtResource("2_3ryvb")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wqvku")
@@ -87,8 +87,8 @@ text = "Boss battle"
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
 theme_override_colors/font_hover_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
 theme_override_fonts/font = ExtResource("2_3ryvb")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wqvku")
@@ -96,8 +96,8 @@ text = "Credits"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_pressed_color = Color(0.643137, 0.203922, 0.203922, 1)
 theme_override_colors/font_hover_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/font_pressed_color = Color(0.643137, 0.203922, 0.203922, 1)
 theme_override_fonts/font = ExtResource("2_3ryvb")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lxvol")
@@ -157,9 +157,9 @@ theme_override_constants/separation = 10
 [node name="Yes" type="Button" parent="u_sure?/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.47451, 0.47451, 0.47451, 1)
 theme_override_colors/font_hover_color = Color(0.65098, 0.65098, 0.65098, 1)
+theme_override_colors/font_pressed_color = Color(0.47451, 0.47451, 0.47451, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_3ryvb")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ox4qv")
@@ -168,9 +168,9 @@ text = "Yes"
 [node name="No" type="Button" parent="u_sure?/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.47451, 0.47451, 0.47451, 1)
 theme_override_colors/font_hover_color = Color(0.65098, 0.65098, 0.65098, 1)
+theme_override_colors/font_pressed_color = Color(0.47451, 0.47451, 0.47451, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_3ryvb")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ycybs")

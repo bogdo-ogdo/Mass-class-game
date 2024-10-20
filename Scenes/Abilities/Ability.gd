@@ -16,5 +16,3 @@ var quantity : int = 0
 #func _ready():
 	#player = get_tree().get_first_node_in_group("Player")
 	#weapon = player.get_child(4)
-
-
