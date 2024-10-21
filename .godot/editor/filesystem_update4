@@ -1,0 +1,5 @@
+res://Scenes/Player/player.tscn
+res://node_2d.tscn
+res://Scenes/Abilities/Ability.gd
+res://Scenes/Abilities/Ability/Dash_Distance.tres
+res://Scenes/Player/player.gd

@@ -397,6 +397,9 @@ func update_abilities():
 		elif ability.ability_name == "Burger":
 			max_health += 3
 			move_speed *= .6
+		elif ability.ability_name == "Dash Distance":
+			dash_speed += 125
+			
 	
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":

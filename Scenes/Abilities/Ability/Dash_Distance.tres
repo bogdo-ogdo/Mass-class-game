@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cu8s5mwi8j3w1"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_hdrgd"]
+[ext_resource type="Texture2D" uid="uid://jaqet0nvj3o3" path="res://Assets/Abilities/Faster or accurate boolets.png" id="2_5gmup"]
+
+[resource]
+script = ExtResource("1_hdrgd")
+ability_name = "Dash Distance"
+description = "Increases the distance of your dash"
+texture = ExtResource("2_5gmup")
+unique = true
+rarity = 1
+cost = 60
