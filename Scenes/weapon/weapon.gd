@@ -36,6 +36,7 @@ var charge : bool
 
 var fire_rate : float
 var mana_cost : float
+var knockback : float
 var flamethrow : bool
 var projectiles : int
 var full_auto : bool
@@ -75,12 +76,13 @@ func _physics_process(_delta):
 	
 	if shake_strength > 0:
 		shake.position = random_offset()
+	else:
+		shake.position = Vector2.ZERO
 
 
 func _on_player_shoot():
 	chargeState = 0
 	shake_strength = 0
-	shake.position = Vector2.ZERO
 	UpdateWeaponCharge()
 	
 	if money_shot:
@@ -187,6 +189,7 @@ func update_weapon_parameters():
 	flamethrow = weapon_machine.current_weapon.flamethrow
 	charge = weapon_machine.current_weapon.charge
 	chargeDamage = weapon_machine.current_weapon.chargeDamage
+	knockback = weapon_machine.current_weapon.knockback
 	
 	cooldown_timer.wait_time = 1/fire_rate
 

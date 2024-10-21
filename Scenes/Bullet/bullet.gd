@@ -16,7 +16,7 @@ var bounces : int
 var flamethrow : bool
 var rotated : bool = false
 var can_move : bool = true
-var fire : bool = false
+var knockback : float
 var explotion_size : float 
 var explotion_type : String
 var expd : bool = false
@@ -42,6 +42,8 @@ func _ready():
 	explotion_size = weapon.explotion_size
 	explotion_type = weapon.explotion_type
 	explotion_damage = damage
+	knockback = weapon.knockback
+	
 	if expd: 
 		damage = 0
 

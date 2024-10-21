@@ -19,6 +19,7 @@ var crit_chance : float
 var bullet_size : float
 var bullet_speed : float
 var bullet_spread : float
+var knockback : float
 var projectiles : int = 1
 var piercing : int = 0
 var bounces : int = 0

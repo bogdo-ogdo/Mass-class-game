@@ -49,10 +49,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0a54"]
 shader = ExtResource("3_vuk6g")
-shader_parameter/progress = 0.0
+shader_parameter/progress = 0.916
 shader_parameter/noise_desnity = 20.0
 shader_parameter/beam_size = 0.15
-shader_parameter/color = Vector4(0.7, 0.1, 0, 1)
+shader_parameter/color = Vector4(1, 0.1, 0, 1)
 
 [sub_resource type="Animation" id="Animation_q5s8p"]
 resource_name = "Auto_shotgun"
