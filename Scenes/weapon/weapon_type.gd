@@ -22,6 +22,8 @@ var bullet_spread : float
 var projectiles : int = 1
 var piercing : int = 0
 var bounces : int = 0
+var charge : bool = false
+var chargeDamage = 1
 var explotion_size : float = 0
 var explotion_type : String = "Explosion"
 var txture : String
@@ -31,10 +33,4 @@ func Enter():
 	pass
 
 func Exit():
-	pass
-
-func Update(_delta: float):
-	pass
-
-func Physics_Update(_delta: float):
 	pass

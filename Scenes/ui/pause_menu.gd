@@ -8,7 +8,7 @@ signal closed
 @export var minimap : TileMap
 
 var is_open : bool = false
-var shadows : bool = true
+var shadows : bool = false
 
 func _ready():
 	$VBoxContainer/HBoxContainer/VBoxContainer2/Gama_Slider.value = 100

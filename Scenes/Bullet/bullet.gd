@@ -27,13 +27,12 @@ var ff : bool = true
 var particles : bool = true
 
 var v : Vector2
-
 var crit : bool
 
 func _ready():
 	$Sprite2D.visible = false
 	weapon = get_tree().get_first_node_in_group("Player").get_child(4)
-	damage = weapon.damage
+	damage = weapon.current_damage
 	crit_chance = weapon.crit_chance
 	size = weapon.bullet_size
 	spread = weapon.bullet_spread
