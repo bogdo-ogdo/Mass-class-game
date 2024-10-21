@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://ysqcnvpqvlg5"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_dekxt"]
+[ext_resource type="Texture2D" uid="uid://x5kh7gelgt2m" path="res://Assets/Abilities/Clover.png" id="2_663s2"]
+
+[resource]
+script = ExtResource("1_dekxt")
+ability_name = "Dash Cooldown"
+description = "Halfs the wait untill regen begins"
+texture = ExtResource("2_663s2")
+unique = true
+rarity = 0
+cost = 1

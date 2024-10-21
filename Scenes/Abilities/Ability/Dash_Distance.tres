@@ -9,5 +9,5 @@ ability_name = "Dash Distance"
 description = "Increases the distance of your dash"
 texture = ExtResource("2_5gmup")
 unique = true
-rarity = 1
-cost = 60
+rarity = 0
+cost = 30

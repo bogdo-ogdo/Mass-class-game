@@ -398,7 +398,9 @@ func update_abilities():
 			max_health += 3
 			move_speed *= .6
 		elif ability.ability_name == "Dash Distance":
-			dash_speed += 125
+			dash_speed += 100
+		elif ability.ability_name == "Dash Cooldown":
+			dash_regen_timer.wait_time *= 0.5
 			
 	
 	for ability in abiliites:

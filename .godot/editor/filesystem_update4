@@ -1,5 +1,9 @@
 res://Scenes/Player/player.tscn
-res://node_2d.tscn
-res://Scenes/Abilities/Ability.gd
+res://Shaders/spawn.gdshader
 res://Scenes/Abilities/Ability/Dash_Distance.tres
+res://Shaders/Blood.gdshader
+res://Shaders/light.gdshader
+res://Shaders/glow.gdshader
+res://Scenes/Abilities/Ability/Dash_Cooldown.tres
 res://Scenes/Player/player.gd
+res://node_2d.tscn
