@@ -35,7 +35,7 @@
 [ext_resource type="Resource" uid="uid://ct76npqclpoim" path="res://Scenes/Abilities/Ability/bigger_bullet.tres" id="23_ys05c"]
 [ext_resource type="Resource" uid="uid://cesj4wh6a8g6f" path="res://Scenes/Abilities/Ability/More_health.tres" id="24_kk44p"]
 [ext_resource type="Resource" uid="uid://bhjbgtt3ew3vw" path="res://Scenes/Abilities/Ability/Double_bullet.tres" id="25_6q1yo"]
-[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="25_tfuwa"]
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="25_8w5kl"]
 [ext_resource type="Resource" uid="uid://dyoaun1qwjr7r" path="res://Scenes/Abilities/Ability/Faster_bullets.tres" id="26_cfqbi"]
 [ext_resource type="Resource" uid="uid://vwn55v5u5d3o" path="res://Scenes/Abilities/Ability/More_mana.tres" id="27_p1fn1"]
 [ext_resource type="Resource" uid="uid://cf27t3i6210u7" path="res://Scenes/Abilities/Ability/Full_Auto.tres" id="28_botcx"]
@@ -1860,7 +1860,7 @@ minimap = NodePath("../../Minimap/Container/MiniMap")
 
 [node name="Shop" parent="Menus" instance=ExtResource("12_sndxk")]
 process_mode = 3
-avalable_abilities = Array[ExtResource("25_tfuwa")]([ExtResource("22_p8f8k"), ExtResource("23_ys05c"), ExtResource("24_kk44p"), ExtResource("25_6q1yo"), ExtResource("26_cfqbi"), ExtResource("27_p1fn1"), ExtResource("28_botcx"), ExtResource("29_8kddw"), ExtResource("30_q2x11"), ExtResource("31_b802y"), ExtResource("32_e6oj0"), ExtResource("33_2qds4"), ExtResource("34_7y3hd"), ExtResource("35_50qas"), ExtResource("36_ogpu1"), ExtResource("39_bebpy"), ExtResource("40_2251x"), ExtResource("41_muf43")])
+avalable_abilities = Array[ExtResource("25_8w5kl")]([ExtResource("22_p8f8k"), ExtResource("23_ys05c"), ExtResource("24_kk44p"), ExtResource("25_6q1yo"), ExtResource("26_cfqbi"), ExtResource("27_p1fn1"), ExtResource("28_botcx"), ExtResource("29_8kddw"), ExtResource("30_q2x11"), ExtResource("31_b802y"), ExtResource("32_e6oj0"), ExtResource("33_2qds4"), ExtResource("34_7y3hd"), ExtResource("35_50qas"), ExtResource("36_ogpu1"), ExtResource("39_bebpy"), ExtResource("40_2251x"), ExtResource("41_muf43")])
 
 [node name="Start_menu" parent="Menus" instance=ExtResource("12_g12ls")]
 process_mode = 3
