@@ -8,9 +8,19 @@ signal mana_used
 @export var raycast : RayCast2D
 @export var shot_interval : Timer
 @export var sound : AudioStreamPlayer
+@export var sprite : Sprite2D
+@export var shake : Node2D
 
 var b_rotation : float
 var crit : bool
+
+var current_damage : float
+
+var chargeState : int = 0
+var lastChargeState : int
+var shake_strength : float
+var chargeDamageMultiplier : float
+var chargeDamage : float
 
 var bullet_spread : float 
 var bullet_type : String
@@ -22,9 +32,11 @@ var piercing : int
 var bounces : int 
 var explotion_size : float
 var explotion_type : String
+var charge : bool 
 
 var fire_rate : float
 var mana_cost : float
+var knockback : float
 var flamethrow : bool
 var projectiles : int
 var full_auto : bool
@@ -42,6 +54,7 @@ var particles : bool = true
 func _ready():
 	raycast.add_exception(get_parent())
 	update_weapon_parameters()
+	UpdateWeaponCharge()
 
 func _physics_process(_delta):
 	var collider = raycast.get_collider()
@@ -50,12 +63,9 @@ func _physics_process(_delta):
 			colliding = true
 		else:
 			colliding = false
-			if can_shoot == true:
-				_on_cooldown_timeout()
 	else:
 		colliding = false
-		if can_shoot == true:
-				_on_cooldown_timeout()
+		
 	if laser_pointer:
 		$Laser.visible = true
 		$Laser.rotation = b_rotation
@@ -63,9 +73,18 @@ func _physics_process(_delta):
 		$Laser.offset.x = 60 + $Muzzle.position.x
 	else:
 		$Laser.visible = false
+	
+	if shake_strength > 0:
+		shake.position = random_offset()
+	else:
+		shake.position = Vector2.ZERO
 
 
 func _on_player_shoot():
+	chargeState = 0
+	shake_strength = 0
+	UpdateWeaponCharge()
+	
 	if money_shot:
 		if get_parent().gold > 0 or get_parent().current_mana == get_parent().max_mana:
 			shooting = true
@@ -77,12 +96,13 @@ func _on_player_shoot():
 					crit = true
 				else: 
 					crit = false
-				if !flamethrow:
-					get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
-				if projectiles == 1:
-					spawn_bullet()
-				else:
-					shoot_projectiles()
+				if !charge:
+					if !flamethrow:
+						get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
+					if projectiles == 1:
+						spawn_bullet()
+					else:
+						shoot_projectiles()
 
 	elif get_parent().current_mana > 0:
 		shooting = true
@@ -94,16 +114,27 @@ func _on_player_shoot():
 				crit = true
 			else: 
 				crit = false
-			if !flamethrow:
-				get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
-			if projectiles == 1:
-				spawn_bullet()
-			else:
-				shoot_projectiles()
+			if !charge:
+				if !flamethrow:
+					get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
+				if projectiles == 1:
+					spawn_bullet()
+				else:
+					shoot_projectiles()
 
 
 func _on_player_shoot_stop():
 	shooting = false
+	if charge:
+		lastChargeState = chargeState
+		if !flamethrow:
+			get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
+		if projectiles == 1:
+			spawn_bullet()
+		else:
+			shoot_projectiles()
+		chargeState = 0
+		UpdateWeaponCharge()
 
 
 func shoot_projectiles():
@@ -114,13 +145,17 @@ func shoot_projectiles():
 
 
 func spawn_bullet():
+	if charge:
+		current_damage = damage * (lastChargeState + 1) * chargeDamage
+	else:
+		current_damage = damage
 	sound.stream = load(weapon_machine.current_weapon.sound)
 	sound.play()
 	var b = bullet.instantiate()
 	owner.owner.add_child(b)
 	b.anim_player.play(bullet_type)
 	b.position = $Muzzle.global_position
-	b.sprite.scale.y *= $Sprite2D.scale.y
+	b.sprite.scale.y *= sprite.scale.y
 	b.rotation = b_rotation
 	b.crit = crit
 	b.particles = particles
@@ -152,16 +187,53 @@ func update_weapon_parameters():
 	explotion_type = weapon_machine.current_weapon.explotion_type
 	money_shot = weapon_machine.current_weapon.money_shot
 	flamethrow = weapon_machine.current_weapon.flamethrow
+	charge = weapon_machine.current_weapon.charge
+	chargeDamage = weapon_machine.current_weapon.chargeDamage
+	knockback = weapon_machine.current_weapon.knockback
 	
 	cooldown_timer.wait_time = 1/fire_rate
 
 
+func UpdateWeaponCharge():
+	if chargeState == 0:
+		sprite.material.set_shader_parameter("progress", 1)
+		shake_strength = 0
+	elif chargeState == 1:
+		sprite.material.set_shader_parameter("progress", .6)
+		shake_strength = 1
+	elif chargeState == 2:
+		sprite.material.set_shader_parameter("progress", .3)
+		shake_strength = 2
+	elif chargeState == 3:
+		sprite.material.set_shader_parameter("progress", 0)
+		shake_strength = 3
+
+
+func random_offset():
+		return Vector2(randf_range(-shake_strength,shake_strength),randf_range(-shake_strength,shake_strength))
+
+
 func _on_cooldown_timeout():
 	can_shoot = true
-	if full_auto == true && shooting == true:
+	if charge:
+		if (shooting):
+			if chargeState < 3:
+				chargeState += 1
+			UpdateWeaponCharge()
+			if full_auto && chargeState == 3:
+				lastChargeState = chargeState
+				if !flamethrow:
+					get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
+				if projectiles == 1:
+					spawn_bullet()
+				else:
+					shoot_projectiles()
+				
+				_on_player_shoot()
+			else:
+				cooldown_timer.start(1/fire_rate)
+	elif full_auto == true && shooting == true:
 		_on_player_shoot()
-
-
 
 func _on_shot_interval_timeout():
 	if projectiles_left > 0:
