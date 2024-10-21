@@ -10,4 +10,4 @@ description = "Halfs the wait untill regen begins"
 texture = ExtResource("2_663s2")
 unique = true
 rarity = 0
-cost = 1
+cost = 30
