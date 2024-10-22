@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cu5irw5yngrsi"]
+[gd_scene load_steps=38 format=3 uid="uid://cu5irw5yngrsi"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_fqlgg"]
 [ext_resource type="Resource" uid="uid://bq4oofxg3pous" path="res://Scenes/Abilities/Ability_inventory.tres" id="2_o8fdp"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dxyosoat6icc4" path="res://Scenes/Player/dash.tscn" id="14_gqmwi"]
 [ext_resource type="Texture2D" uid="uid://dh3qy7jaxjh5e" path="res://Assets/UI/dash_icon.png" id="14_yvwd1"]
 [ext_resource type="AudioStream" uid="uid://dvyxkuimg0wsy" path="res://audio/player/sad trombone.mp3" id="19_i0iom"]
+[ext_resource type="PackedScene" uid="uid://de3txdqcd8yx4" path="res://Scenes/ui/thoughts.tscn" id="20_xy5ko"]
 
 [sub_resource type="Animation" id="Animation_626wt"]
 length = 0.001
@@ -713,6 +714,8 @@ orbit_velocity_max = 0.03
 scale_amount_max = 3.0
 color = Color(0.52549, 0.886275, 0.447059, 1)
 color_ramp = SubResource("Gradient_6ufnj")
+
+[node name="Thoughts" parent="." instance=ExtResource("20_xy5ko")]
 
 [connection signal="shoot" from="." to="Weapon" method="_on_player_shoot"]
 [connection signal="shoot_stop" from="." to="Weapon" method="_on_player_shoot_stop"]

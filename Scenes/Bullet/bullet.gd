@@ -16,7 +16,7 @@ var bounces : int
 var flamethrow : bool
 var rotated : bool = false
 var can_move : bool = true
-var fire : bool = false
+var knockback : float
 var explotion_size : float 
 var explotion_type : String
 var expd : bool = false
@@ -27,13 +27,12 @@ var ff : bool = true
 var particles : bool = true
 
 var v : Vector2
-
 var crit : bool
 
 func _ready():
 	$Sprite2D.visible = false
 	weapon = get_tree().get_first_node_in_group("Player").get_child(4)
-	damage = weapon.damage
+	damage = weapon.current_damage
 	crit_chance = weapon.crit_chance
 	size = weapon.bullet_size
 	spread = weapon.bullet_spread
@@ -43,6 +42,8 @@ func _ready():
 	explotion_size = weapon.explotion_size
 	explotion_type = weapon.explotion_type
 	explotion_damage = damage
+	knockback = weapon.knockback
+	
 	if expd: 
 		damage = 0
 
