@@ -180,6 +180,7 @@ light_mask = 17
 z_index = 100
 collision_layer = 4
 collision_mask = 4
+monitoring = false
 script = ExtResource("1_ngjja")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -188,6 +189,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 light_mask = 16
 z_index = 100
 texture = ExtResource("2_r7vj3")
