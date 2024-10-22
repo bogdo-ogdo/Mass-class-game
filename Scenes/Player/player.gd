@@ -397,6 +397,11 @@ func update_abilities():
 		elif ability.ability_name == "Burger":
 			max_health += 3
 			move_speed *= .6
+		elif ability.ability_name == "Dash Distance":
+			dash_duration += 0.05
+		elif ability.ability_name == "Dash Cooldown":
+			dash_regen_timer.wait_time *= 0.5
+			
 	
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":
