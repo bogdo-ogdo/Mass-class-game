@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjwsafueqhnss"]
+[gd_scene load_steps=34 format=3 uid="uid://bjwsafueqhnss"]
 
 [ext_resource type="Script" path="res://Scenes/Bullet/bullet.gd" id="1_r4se3"]
 [ext_resource type="Texture2D" uid="uid://hs8sm1r1snpn" path="res://Assets/Bullet/Plasma_ball.png" id="2_3cxrp"]
@@ -10,8 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://bero7owuppn5" path="res://Assets/Bullet/coin.png" id="2_djtqm"]
 [ext_resource type="Texture2D" uid="uid://dr1uwrvpfyi4m" path="res://Assets/Bullet/Boolet.png" id="2_g3bhf"]
 [ext_resource type="Texture2D" uid="uid://dch3fe0ug3qv2" path="res://Assets/Bullet/Laser.png" id="2_neq5t"]
+[ext_resource type="Shader" path="res://Shaders/Blood.gdshader" id="2_p1yaa"]
 [ext_resource type="Texture2D" uid="uid://ctw4ibpo4yr67" path="res://Assets/Bullet/bb.png" id="2_vaxdt"]
+[ext_resource type="Texture2D" uid="uid://cq1qos1st2i30" path="res://Assets/Weapons/Charged/syringethrow.png" id="3_elu7p"]
 [ext_resource type="Texture2D" uid="uid://c4dnd5828rcox" path="res://Assets/Bullet/Red_small.png" id="4_woddr"]
+[ext_resource type="Texture2D" uid="uid://n31opck5gme" path="res://Assets/Weapons/Charged/knifethrow.png" id="15_cmqn4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6xnq"]
+shader = ExtResource("2_p1yaa")
+shader_parameter/progress = 0.2
+shader_parameter/noise_desnity = 20.0
+shader_parameter/beam_size = null
+shader_parameter/color = Vector4(0.6, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_umth3"]
 resource_name = "BB"
@@ -458,6 +468,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
 
 [sub_resource type="Animation" id="Animation_0565d"]
 resource_name = "Slime"
@@ -603,11 +637,116 @@ tracks/2/keys = {
 "values": [Vector2(0.5, 0.5)]
 }
 
+[sub_resource type="Animation" id="Animation_g1auj"]
+resource_name = "Knife"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_cmqn4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_xemwi"]
+resource_name = "Syringe"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_elu7p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.75, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i28gg"]
 _data = {
 "BB": SubResource("Animation_umth3"),
 "Banana": SubResource("Animation_46ixs"),
 "Gradient": SubResource("Animation_r7vhi"),
+"Knife": SubResource("Animation_g1auj"),
 "Large": SubResource("Animation_y0udl"),
 "Laser": SubResource("Animation_m1x8k"),
 "Mouse": SubResource("Animation_v5riv"),
@@ -615,6 +754,7 @@ _data = {
 "Poo": SubResource("Animation_ymoc7"),
 "RESET": SubResource("Animation_spka2"),
 "Slime": SubResource("Animation_0565d"),
+"Syringe": SubResource("Animation_xemwi"),
 "coin": SubResource("Animation_6wjyo"),
 "small": SubResource("Animation_ay4f7")
 }
@@ -625,17 +765,17 @@ size = Vector2(24, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l57rt"]
 size = Vector2(18, 18)
 
-[node name="Bullet" type="CharacterBody2D" groups=["clear"]]
+[node name="Bullet" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["clear"]]
 z_index = 1
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("1_r4se3")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.5, 0.5, 0.5, 1)
-light_mask = 17
+material = SubResource("ShaderMaterial_p6xnq")
 scale = Vector2(3, 3)
-texture = ExtResource("2_dbcmn")
+texture = ExtResource("15_cmqn4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -643,7 +783,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(3, 0.5)
 collision_layer = 4
 collision_mask = 5
 monitoring = false

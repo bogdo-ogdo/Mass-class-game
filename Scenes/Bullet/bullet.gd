@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
+@export var sprite : Sprite2D
+
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
-@onready var sprite = $Sprite2D
 @onready var weapon : CharacterBody2D = get_tree().get_first_node_in_group("Player").get_child(4)
 @onready var blood_splat = preload("res://Scenes/Effects/Blood_splat.tscn")
 @onready var explosion = preload("res://Scenes/Bullet/explosion.tscn")
+
+var bloodAmmount : float
+var chargeState : int
 
 var damage : float 
 var speed : float = 0
@@ -30,7 +34,7 @@ var v : Vector2
 var crit : bool
 
 func _ready():
-	$Sprite2D.visible = false
+	sprite.visible = false
 	weapon = get_tree().get_first_node_in_group("Player").get_child(4)
 	damage = weapon.current_damage
 	crit_chance = weapon.crit_chance
@@ -43,9 +47,11 @@ func _ready():
 	explotion_type = weapon.explotion_type
 	explotion_damage = damage
 	knockback = weapon.knockback
+	chargeState = weapon.lastChargeState
 	
 	if expd: 
 		damage = 0
+	UpdateBloodShader()
 
 
 func _physics_process(_delta):
@@ -55,7 +61,7 @@ func _physics_process(_delta):
 		ff = false
 	else:
 		$Area2D.monitoring = true
-	$Sprite2D.visible = true
+	sprite.visible = true
 	if can_move:
 		if flamethrow == true && size < 5:
 			size += .03
@@ -88,6 +94,18 @@ func _physics_process(_delta):
 			bounces -= 1
 			if explotion_size > 0:
 				explode()
+
+
+func UpdateBloodShader():
+	if chargeState == 0:
+		sprite.material.set_shader_parameter("progress", 1)
+	if chargeState == 1:
+		sprite.material.set_shader_parameter("progress", .3)
+	elif chargeState == 2:
+		sprite.material.set_shader_parameter("progress", .2)
+	elif chargeState == 3:
+		sprite.material.set_shader_parameter("progress", 0)
+
 
 
 func explode():
@@ -132,7 +150,7 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
-	$Sprite2D.visible = true
+	sprite.visible = true
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	$Sprite2D.visible = true
+	sprite.visible = true
