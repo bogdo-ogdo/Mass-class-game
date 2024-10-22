@@ -51,8 +51,7 @@ bg_color = Color(0.780392, 0.780392, 0.780392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v156d"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wet0"]
-bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvg26"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdqq7"]
 bg_color = Color(0.192157, 0.192157, 0.192157, 1)
@@ -60,7 +59,8 @@ bg_color = Color(0.192157, 0.192157, 0.192157, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw380"]
 bg_color = Color(0.270588, 0.270588, 0.270588, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvg26"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wet0"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [sub_resource type="Gradient" id="Gradient_xwdg1"]
 offsets = PackedFloat32Array(0, 0.1152)
@@ -254,10 +254,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_7itmm")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fdqq7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_uw380")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
 text = "Resume"
 
 [node name="Return" type="Button" parent="VBoxContainer/ButtonContainer"]
@@ -267,10 +267,10 @@ size_flags_horizontal = 4
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("4_7itmm")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fdqq7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_uw380")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
 text = "Exit to menu"
 
 [node name="u_sure" type="TextureRect" parent="VBoxContainer/ButtonContainer/Return"]
@@ -325,10 +325,10 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_7itmm")
 theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fdqq7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_uw380")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
 text = "Yes"
 
 [node name="Resume3" type="Button" parent="VBoxContainer/ButtonContainer/Return/u_sure/HBoxContainer"]
@@ -339,10 +339,10 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_7itmm")
 theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fdqq7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_uw380")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bvg26")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wet0")
 text = "No"
 
 [node name="LinkButton" type="LinkButton" parent="VBoxContainer/ButtonContainer"]

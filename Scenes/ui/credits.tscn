@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scenes/ui/credits.gd" id="1_wsj11"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="2_gk5bf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hpwt8"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67iwc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k1rhj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6yjyo"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67iwc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hpwt8"]
 
 [sub_resource type="Gradient" id="Gradient_615g7"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -29,15 +29,15 @@ top_level = true
 layout_mode = 0
 offset_right = 74.0
 offset_bottom = 26.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
 theme_override_colors/font_hover_color = Color(0.63648, 0.63648, 0.63648, 1)
+theme_override_colors/font_pressed_color = Color(0.435294, 0.741176, 0.439216, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_hpwt8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_67iwc")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_k1rhj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_6yjyo")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_67iwc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hpwt8")
 text = "Return
 "
 

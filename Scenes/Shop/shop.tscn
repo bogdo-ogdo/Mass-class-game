@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://xybnlqsiurs"]
+[gd_scene load_steps=23 format=3 uid="uid://xybnlqsiurs"]
 
 [ext_resource type="Script" path="res://Scenes/Shop/shop.gd" id="1_g7f4h"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="1_tx80i"]
 [ext_resource type="PackedScene" uid="uid://b1dmldm7koy0f" path="res://Scenes/Shop/Shop_item.tscn" id="2_2jn5x"]
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="2_4m8xy"]
 [ext_resource type="Resource" uid="uid://bdyxg27srsgt4" path="res://Scenes/Abilities/Ability/Better_bullets.tres" id="2_cljn5"]
 [ext_resource type="Gradient" uid="uid://b8n6tjn4cqyto" path="res://Assets/UI/background gradient.tres" id="2_kdscm"]
 [ext_resource type="Resource" uid="uid://ct76npqclpoim" path="res://Scenes/Abilities/Ability/bigger_bullet.tres" id="3_0k2qg"]
@@ -39,7 +40,7 @@ shop_item1 = NodePath("Shop_item1")
 shop_item2 = NodePath("Shop_item2")
 shop_item3 = NodePath("Shop_item3")
 money = NodePath("Money")
-avalable_abilities = Array[Resource("res://Scenes/Abilities/Ability.gd")]([ExtResource("2_cljn5"), ExtResource("3_0k2qg"), ExtResource("4_sm6su"), ExtResource("5_mbgjc"), ExtResource("6_wmkof"), ExtResource("7_oe24p"), ExtResource("8_22f7l"), ExtResource("9_1whxv"), ExtResource("10_tddpc"), ExtResource("11_gsxgc"), ExtResource("12_2nfs0"), ExtResource("13_03bm0"), ExtResource("15_kwkym")])
+avalable_abilities = Array[ExtResource("2_4m8xy")]([ExtResource("2_cljn5"), ExtResource("3_0k2qg"), ExtResource("4_sm6su"), ExtResource("5_mbgjc"), ExtResource("6_wmkof"), ExtResource("7_oe24p"), ExtResource("8_22f7l"), ExtResource("9_1whxv"), ExtResource("10_tddpc"), ExtResource("11_gsxgc"), ExtResource("12_2nfs0"), ExtResource("13_03bm0"), ExtResource("15_kwkym")])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -88,9 +89,9 @@ offset_top = 3.0
 offset_right = -3.0
 offset_bottom = 37.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(0.764706, 0.764706, 0.764706, 1)
 theme_override_colors/font_disabled_color = Color(0.639216, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.764706, 0.764706, 0.764706, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_tx80i")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vvkn5")
