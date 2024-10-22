@@ -48,7 +48,7 @@ var current_health : float = 5
 var current_mana : float = 150
 var current_dashes : float
 var dash_duration : float = .15
-var move_speed : float = 100
+var move_speed : float = 5
 var dash_speed : float = 300
 var max_health : float = 5
 var max_dashes : float = 3
@@ -79,6 +79,7 @@ var bullets_shot : int = 0
 var win : bool = false
 
 var speed = 0
+var MAX_SPEED = 100
 
 func _ready():
 	ui_sprite.hide()
@@ -110,9 +111,13 @@ func _physics_process(delta):
 		speed = dash_speed
 	elif dash.is_dashing():
 		speed = dash_speed
-		move_direction = Vector2($Sprite2D.scale.x,0)
-	else:
-		speed = move_speed
+		move_direction = (get_global_mouse_position()-position).normalized()
+	elif move_direction == Vector2.ZERO:
+		speed = 0
+	elif speed != MAX_SPEED:
+		speed += move_speed
+	if speed >= MAX_SPEED and not dash.is_dashing():
+		speed = MAX_SPEED
 	velocity = move_direction * speed  * delta
 	position += velocity
 	if move_direction != Vector2.ZERO:
@@ -359,7 +364,7 @@ func update_abilities():
 	weapon.update_weapon_parameters()
 	
 	weapon.laser_pointer = false
-	move_speed = 100
+	move_speed = 5
 	max_dashes = 3
 	max_health = 5
 	max_mana = 150
@@ -397,6 +402,11 @@ func update_abilities():
 		elif ability.ability_name == "Burger":
 			max_health += 3
 			move_speed *= .6
+		elif ability.ability_name == "Dash Distance":
+			dash_duration += 0.05
+		elif ability.ability_name == "Dash Cooldown":
+			dash_regen_timer.wait_time *= 0.5
+			
 	
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":

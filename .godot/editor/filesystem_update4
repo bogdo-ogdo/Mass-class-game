@@ -1,9 +1,7 @@
-res://Scenes/Treasure/treasure.tscn
-res://Shaders/spawn.gdshader
-res://Shaders/Blood.gdshader
-res://Scenes/weapon/weapon.tscn
 res://node_2d.tscn
+res://Scenes/Player/player.gd
 res://Scenes/Player/player.tscn
+res://Scenes/weapon/weapon.tscn
 res://Scenes/Bullet/bullet.tscn
 res://Scenes/Shop/shop.tscn
 res://Scenes/gate/gates_up.tscn
@@ -16,10 +14,4 @@ res://Scenes/objects/torch_light.tscn
 res://Scenes/Boss_level/boss_level.tscn
 res://Scenes/ui/credits.tscn
 res://Scenes/ui/start_menu.tscn
-res://Scenes/weapon/weapon.gd
-res://Shaders/light.gdshader
-res://Shaders/glow.gdshader
-res://Scenes/weapon/weapon_type.gd
-res://Scenes/weapon/weapons/pistol.gd
-res://Scenes/Bullet/bullet.gd
-res://Shaders/RGBspawn.gdshader
+res://thoughts.gd
