@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cu5irw5yngrsi"]
+[gd_scene load_steps=40 format=3 uid="uid://cu5irw5yngrsi"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_fqlgg"]
 [ext_resource type="Resource" uid="uid://bq4oofxg3pous" path="res://Scenes/Abilities/Ability_inventory.tres" id="2_o8fdp"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bf22dfpfp0ds7" path="res://audio/player/footstep.wav" id="5_wglch"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="6_jyu7f"]
 [ext_resource type="Texture2D" uid="uid://c34gyedxdx682" path="res://Assets/Player/Gob_idle.png" id="6_sit5e"]
+[ext_resource type="Shader" path="res://Shaders/ChromaticAbberation.gdshader" id="6_v73i8"]
+[ext_resource type="Texture2D" uid="uid://b3fluvg2t1he7" path="res://Shaders/NoiseTexture.tres" id="7_bg475"]
 [ext_resource type="Texture2D" uid="uid://cowsbnx5ja6jf" path="res://Assets/UI/Damaged/player_hit_feedback.png" id="7_em7js"]
 [ext_resource type="Texture2D" uid="uid://bjq8hinio3an7" path="res://Assets/UI/Damaged/blurry Blood Overlay.png" id="8_a5rkc"]
 [ext_resource type="Texture2D" uid="uid://c3qegx508us5s" path="res://Assets/UI/barwrap.png" id="8_nqdjf"]
@@ -19,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://dxyosoat6icc4" path="res://Scenes/Player/dash.tscn" id="14_gqmwi"]
 [ext_resource type="Texture2D" uid="uid://dh3qy7jaxjh5e" path="res://Assets/UI/dash_icon.png" id="14_yvwd1"]
 [ext_resource type="AudioStream" uid="uid://dvyxkuimg0wsy" path="res://audio/player/sad trombone.mp3" id="19_i0iom"]
-[ext_resource type="PackedScene" uid="uid://de3txdqcd8yx4" path="res://Scenes/ui/thoughts.tscn" id="20_xy5ko"]
 
 [sub_resource type="Animation" id="Animation_626wt"]
 length = 0.001
@@ -149,6 +150,14 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v65hl"]
 radius = 10.6383
 height = 43.4783
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwu0i"]
+shader = ExtResource("6_v73i8")
+shader_parameter/offset = 1.0
+shader_parameter/scroll = Vector2(0.05, 0.05)
+shader_parameter/distortion_strength = 0.01
+shader_parameter/distortion_speed = 0.1
+shader_parameter/noise = ExtResource("7_bg475")
 
 [sub_resource type="Animation" id="Animation_dv1j7"]
 resource_name = "Player_hit"
@@ -296,11 +305,21 @@ scale = Vector2(0.469999, 0.23)
 shape = SubResource("CapsuleShape2D_v65hl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Distortion" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_kwu0i")
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="Weapon" parent="." instance=ExtResource("4_q6ram")]
 
 [node name="ui" type="CanvasLayer" parent="."]
 process_mode = 3
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [node name="gold" type="Sprite2D" parent="ui"]
 position = Vector2(17, 71)
@@ -483,6 +502,8 @@ self_modulate = Color(0.0901961, 0.0901961, 0.0901961, 0.705882)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_071r5")
@@ -714,8 +735,6 @@ orbit_velocity_max = 0.03
 scale_amount_max = 3.0
 color = Color(0.52549, 0.886275, 0.447059, 1)
 color_ramp = SubResource("Gradient_6ufnj")
-
-[node name="Thoughts" parent="." instance=ExtResource("20_xy5ko")]
 
 [connection signal="shoot" from="." to="Weapon" method="_on_player_shoot"]
 [connection signal="shoot_stop" from="." to="Weapon" method="_on_player_shoot_stop"]
