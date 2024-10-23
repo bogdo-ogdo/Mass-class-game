@@ -632,10 +632,10 @@ collision_mask = 32
 script = ExtResource("1_r4se3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1.6, 1.27059, 0.364706, 1)
+self_modulate = Color(0.5, 0.5, 0.5, 1)
 light_mask = 17
 scale = Vector2(3, 3)
-texture = ExtResource("2_g3bhf")
+texture = ExtResource("2_dbcmn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -643,6 +643,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 5
 monitoring = false
