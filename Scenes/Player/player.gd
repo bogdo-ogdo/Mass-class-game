@@ -80,7 +80,7 @@ var win : bool = false
 
 var speed = 0
 var MAX_SPEED = 100
-var car = true
+var car = false
 var wheel_base = 17
 var steering_angle = 100
 var engine_power = 25
@@ -123,10 +123,8 @@ func _physics_process(delta):
 	if not car:
 		move_direction = Input.get_vector("ui_left", "ui_right","ui_up","ui_down")
 		if dash.is_dashing() and move_direction != Vector2.ZERO:
-			self.rotation = 0
 			speed = dash_speed
 		elif dash.is_dashing():
-			self.rotation = 0
 			speed = dash_speed
 			move_direction = (get_global_mouse_position()-position).normalized()
 		elif move_direction == Vector2.ZERO:
