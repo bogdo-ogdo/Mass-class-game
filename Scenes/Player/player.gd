@@ -84,7 +84,7 @@ var win : bool = false
 
 var speed = 0
 var MAX_SPEED = 100
-var car = false
+var car = true
 var wheel_base = 17
 var steering_angle = 100
 var engine_power = 25

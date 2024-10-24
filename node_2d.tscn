@@ -52,7 +52,7 @@
 [ext_resource type="Resource" uid="uid://7yi8ygxusd2j" path="res://Scenes/Abilities/Ability/Burger.tres" id="41_muf43"]
 [ext_resource type="Resource" uid="uid://cu8s5mwi8j3w1" path="res://Scenes/Abilities/Ability/Dash_Distance.tres" id="44_l3fm6"]
 [ext_resource type="Resource" uid="uid://ysqcnvpqvlg5" path="res://Scenes/Abilities/Ability/Dash_Cooldown.tres" id="45_k2t2a"]
-[ext_resource type="Resource" uid="uid://n87qr2weklrf" path="res://Scenes/Abilities/Ability/Car.tres" id="46_cxxko"]
+[ext_resource type="Resource" path="res://Scenes/Abilities/Ability/Car.tres" id="46_cxxko"]
 [ext_resource type="AudioStream" uid="uid://ch6l1heww5dda" path="res://audio/Level music/Green Gobby Stobby.mp3" id="48_pxcl6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l0vuk"]
