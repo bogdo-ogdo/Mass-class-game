@@ -125,6 +125,7 @@ func _on_player_shoot():
 
 func _on_player_shoot_stop():
 	shooting = false
+	
 	if charge:
 		lastChargeState = chargeState
 		if !flamethrow:
@@ -190,6 +191,9 @@ func update_weapon_parameters():
 	charge = weapon_machine.current_weapon.charge
 	chargeDamage = weapon_machine.current_weapon.chargeDamage
 	knockback = weapon_machine.current_weapon.knockback
+	
+	chargeState = 0
+	lastChargeState = 0
 	
 	cooldown_timer.wait_time = 1/fire_rate
 

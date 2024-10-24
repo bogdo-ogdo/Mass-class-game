@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://c6rheyijs8n4l"]
+[gd_scene load_steps=76 format=3 uid="uid://c6rheyijs8n4l"]
 
 [ext_resource type="Script" path="res://Scenes/weapon/weapon.gd" id="1_6mjeb"]
 [ext_resource type="PackedScene" uid="uid://bjwsafueqhnss" path="res://Scenes/Bullet/bullet.tscn" id="2_nq1jh"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://dgqc54cap2rkh" path="res://Assets/Weapons/Derringer.png" id="3_vhk21"]
 [ext_resource type="Shader" path="res://Shaders/Blood.gdshader" id="3_vuk6g"]
 [ext_resource type="Texture2D" uid="uid://b4c2bn83wwen" path="res://Assets/Weapons/ThombsonSMG.png" id="3_y1gln"]
+[ext_resource type="Texture2D" uid="uid://n31opck5gme" path="res://Assets/Weapons/Charged/knifethrow.png" id="4_0tmsi"]
+[ext_resource type="Texture2D" uid="uid://cq1qos1st2i30" path="res://Assets/Weapons/Charged/syringethrow.png" id="4_gvpnk"]
 [ext_resource type="Script" path="res://Scenes/weapon/WeaponMachine.gd" id="4_w1n20"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/pistol.gd" id="5_7xyep"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/FlameThrower.gd" id="7_c6f0t"]
@@ -46,13 +48,15 @@
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Slimer.gd" id="41_kp4hx"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Toilet.gd" id="42_uipah"]
 [ext_resource type="AudioStream" uid="uid://d4c7wbcdnpbmi" path="res://audio/Weapon/gunshot.wav" id="45_sxgo1"]
+[ext_resource type="Script" path="res://Scenes/weapon/weapons/Charged/SyringeWeapon.gd" id="46_lvcfk"]
+[ext_resource type="Script" path="res://Scenes/weapon/weapons/Charged/KnifeWeapon.gd" id="47_gqkao"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m0a54"]
 shader = ExtResource("3_vuk6g")
-shader_parameter/progress = 0.916
+shader_parameter/progress = 1.0
 shader_parameter/noise_desnity = 20.0
 shader_parameter/beam_size = 0.15
-shader_parameter/color = Vector4(1, 0.1, 0, 1)
+shader_parameter/color = Vector4(0.6, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_q5s8p"]
 resource_name = "Auto_shotgun"
@@ -448,6 +452,70 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_g5aki"]
+resource_name = "Knife"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shake/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_0tmsi")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shake/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RayCast2D:target_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shake/Sprite2D:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_q8ctb"]
@@ -1205,6 +1273,70 @@ tracks/4/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_i6sx6"]
+resource_name = "Syringe"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shake/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_gvpnk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shake/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RayCast2D:target_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shake/Sprite2D:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -0.5)]
+}
+
 [sub_resource type="Animation" id="Animation_kgwtd"]
 resource_name = "Thompson"
 length = 0.10001
@@ -1405,6 +1537,7 @@ _data = {
 "FlameThrower": SubResource("Animation_qoxwj"),
 "Garand": SubResource("Animation_tsesf"),
 "Grenade_launcher": SubResource("Animation_jelbp"),
+"Knife": SubResource("Animation_g5aki"),
 "Laser_pistol": SubResource("Animation_q8ctb"),
 "M16": SubResource("Animation_sftwc"),
 "MiniGun": SubResource("Animation_lm6s8"),
@@ -1417,6 +1550,7 @@ _data = {
 "Shotgun": SubResource("Animation_4qjmp"),
 "Slimer": SubResource("Animation_xhicu"),
 "Sniper": SubResource("Animation_sei5l"),
+"Syringe": SubResource("Animation_i6sx6"),
 "Thompson": SubResource("Animation_kgwtd"),
 "Toilet": SubResource("Animation_2sek0"),
 "Trench_gun": SubResource("Animation_n4ojb")
@@ -1439,9 +1573,9 @@ shake = NodePath("Shake")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shake"]
 material = SubResource("ShaderMaterial_m0a54")
-position = Vector2(4, 0)
-texture = ExtResource("2_o5o1n")
-offset = Vector2(0, 1)
+position = Vector2(8, 0)
+texture = ExtResource("4_0tmsi")
+offset = Vector2(0, -0.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1450,7 +1584,7 @@ libraries = {
 
 [node name="WeaponMachine" type="Node" parent="." node_paths=PackedStringArray("initial_weapon")]
 script = ExtResource("4_w1n20")
-initial_weapon = NodePath("Pistol")
+initial_weapon = NodePath("Trench_gun")
 
 [node name="Pistol" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
 script = ExtResource("5_7xyep")
@@ -1532,12 +1666,20 @@ anim_player = NodePath("../../AnimationPlayer")
 script = ExtResource("42_uipah")
 anim_player = NodePath("../../AnimationPlayer")
 
+[node name="Syringe" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("46_lvcfk")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="Knife" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("47_gqkao")
+anim_player = NodePath("../../AnimationPlayer")
+
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(8, 0)
+position = Vector2(20, 0)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-3, 0)
-target_position = Vector2(12, 0)
+target_position = Vector2(30, 0)
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.1
