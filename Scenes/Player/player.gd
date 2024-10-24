@@ -80,7 +80,7 @@ var win : bool = false
 
 var speed = 0
 var MAX_SPEED = 100
-var car = false
+var car = true
 var wheel_base = 17
 var steering_angle = 100
 var engine_power = 25
@@ -138,20 +138,19 @@ func _physics_process(delta):
 		velocity = move_direction * speed  * delta
 		position += velocity
 	else:
-		if dash.is_dashing() and move_direction != Vector2.ZERO:
-			speed = dash_speed
-			velocity = move_direction * speed  * delta
-			position += velocity
-		elif dash.is_dashing():
-			speed = dash_speed
-			move_direction = (get_global_mouse_position()-position).normalized()
-			velocity = move_direction * speed  * delta
-			position += velocity
+		if dash.is_dashing():
+			acceleration = Vector2.ZERO
+			get_input()
+			apply_friction(delta)
+			calculate_steering(delta)
+			wheel_base = 9
+			velocity += 20 * acceleration * delta
 		else:
 			acceleration = Vector2.ZERO
 			get_input()
 			apply_friction(delta)
 			calculate_steering(delta)
+			wheel_base = 17
 			velocity += acceleration * delta
 			move_and_slide()
 	if move_direction != Vector2.ZERO:
@@ -245,10 +244,12 @@ func weapon_rotate_to_mouse(target, delta):
 	weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
 	weapon.b_rotation = weapon.rotation
 	if direction.x > 0:
-		sprite.scale.x = 1
+		if not car:
+			sprite.scale.x = 1
 		weapon.get_child(0).scale.y = 1
 	elif direction.x < 0:
-		sprite.scale.x = -1
+		if not car:
+			sprite.scale.x = -1
 		weapon.get_child(0).scale.y = -1
 	weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
 
@@ -472,6 +473,9 @@ func update_abilities():
 			dash_duration += 0.05
 		elif ability.ability_name == "Dash Cooldown":
 			dash_regen_timer.wait_time *= 0.5
+		elif ability.ability_name == "Car":
+			car = true
+			weapon.damage *= 2
 			
 	
 	for ability in abiliites:
