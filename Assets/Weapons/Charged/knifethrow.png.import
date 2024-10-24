@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1y3l7dtk24wc"
-path="res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"
+uid="uid://n31opck5gme"
+path="res://.godot/imported/knifethrow.png-ebdfd748f3b48bfc61a79e6123aeafd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/MainChar-Sheet.png"
-dest_files=["res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"]
+source_file="res://Assets/Weapons/Charged/knifethrow.png"
+dest_files=["res://.godot/imported/knifethrow.png-ebdfd748f3b48bfc61a79e6123aeafd1.ctex"]
 
 [params]
 

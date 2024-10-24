@@ -48,7 +48,7 @@ var current_health : float = 5
 var current_mana : float = 150
 var current_dashes : float
 var dash_duration : float = .15
-var move_speed : float = 100
+var move_speed : float = 5
 var dash_speed : float = 300
 var max_health : float = 5
 var max_dashes : float = 3
@@ -79,6 +79,21 @@ var bullets_shot : int = 0
 var win : bool = false
 
 var speed = 0
+var MAX_SPEED = 100
+var car = false
+var wheel_base = 17
+var steering_angle = 100
+var engine_power = 25
+var friction = -10
+var drag = -0.01
+var braking = -25
+var max_speed_reverse = 50
+var slip_speed = 100
+var traction_fast = 1
+var traction_slow = 10
+var acceleration = Vector2.ZERO
+var steer_direction
+
 
 func _ready():
 	ui_sprite.hide()
@@ -105,16 +120,40 @@ func _ready():
 
 
 func _physics_process(delta):
-	move_direction = Input.get_vector("ui_left", "ui_right","ui_up","ui_down")
-	if dash.is_dashing() and move_direction != Vector2.ZERO:
-		speed = dash_speed
-	elif dash.is_dashing():
-		speed = dash_speed
-		move_direction = Vector2($Sprite2D.scale.x,0)
+	if not car:
+		move_direction = Input.get_vector("ui_left", "ui_right","ui_up","ui_down")
+		if dash.is_dashing() and move_direction != Vector2.ZERO:
+			self.rotation = 0
+			speed = dash_speed
+		elif dash.is_dashing():
+			self.rotation = 0
+			speed = dash_speed
+			move_direction = (get_global_mouse_position()-position).normalized()
+		elif move_direction == Vector2.ZERO:
+			speed = 0
+		elif speed != MAX_SPEED:
+			speed += move_speed
+		if speed >= MAX_SPEED and not dash.is_dashing():
+			speed = MAX_SPEED
+		velocity = move_direction * speed  * delta
+		position += velocity
 	else:
-		speed = move_speed
-	velocity = move_direction * speed  * delta
-	position += velocity
+		if dash.is_dashing() and move_direction != Vector2.ZERO:
+			speed = dash_speed
+			velocity = move_direction * speed  * delta
+			position += velocity
+		elif dash.is_dashing():
+			speed = dash_speed
+			move_direction = (get_global_mouse_position()-position).normalized()
+			velocity = move_direction * speed  * delta
+			position += velocity
+		else:
+			acceleration = Vector2.ZERO
+			get_input()
+			apply_friction(delta)
+			calculate_steering(delta)
+			velocity += acceleration * delta
+			move_and_slide()
 	if move_direction != Vector2.ZERO:
 		anim_player.play("gob_run")
 	else:
@@ -163,6 +202,38 @@ func _physics_process(delta):
 	weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	move_and_slide()
 
+func apply_friction(delta):
+	if acceleration == Vector2.ZERO and velocity.length() < 50:
+		velocity = Vector2.ZERO
+	var friction_force = velocity * friction * delta
+	var drag_force = velocity * velocity.length() * drag * delta
+	acceleration += drag_force + friction_force
+
+func get_input():
+	var turn = Input.get_axis("ui_left", "ui_right")
+	steer_direction = turn * deg_to_rad(steering_angle-10)
+	if Input.is_action_pressed("ui_up"):
+		acceleration = transform.x * engine_power
+	if Input.is_action_pressed("ui_down"):
+		acceleration = transform.x * braking
+
+
+func calculate_steering(delta):
+	var rear_wheel = position - transform.x * wheel_base / 2.0
+	var front_wheel = position + transform.x * wheel_base / 2.0
+	rear_wheel += velocity * delta
+	front_wheel += velocity.rotated(steer_direction) * delta
+	var new_heading = rear_wheel.direction_to(front_wheel)
+	var traction = traction_slow
+	if velocity.length() > slip_speed:
+		traction = traction_fast
+	var d = new_heading.dot(velocity.normalized())
+	if d > 0:
+		velocity = lerp(velocity, new_heading * velocity.length(), traction * delta)
+	if d < 0:
+		velocity = -new_heading * velocity.length()
+# velocity = new_heading * velocity.length()
+	rotation = new_heading.angle()
 
 func random_offset():
 	return Vector2(randf_range(-shake_strength,shake_strength),randf_range(-shake_strength,shake_strength))
@@ -359,7 +430,7 @@ func update_abilities():
 	weapon.update_weapon_parameters()
 	
 	weapon.laser_pointer = false
-	move_speed = 100
+	move_speed = 5
 	max_dashes = 3
 	max_health = 5
 	max_mana = 150
@@ -398,7 +469,9 @@ func update_abilities():
 			max_health += 3
 			move_speed *= .6
 		elif ability.ability_name == "Dash Distance":
-			dash_speed += 125
+			dash_duration += 0.05
+		elif ability.ability_name == "Dash Cooldown":
+			dash_regen_timer.wait_time *= 0.5
 			
 	
 	for ability in abiliites:

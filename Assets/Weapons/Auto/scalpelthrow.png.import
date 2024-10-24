@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1y3l7dtk24wc"
-path="res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"
+uid="uid://cg5dpuv28auox"
+path="res://.godot/imported/scalpelthrow.png-5bb3306d54c508863fe01b1f7ed0d3c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/MainChar-Sheet.png"
-dest_files=["res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"]
+source_file="res://Assets/Weapons/Auto/scalpelthrow.png"
+dest_files=["res://.godot/imported/scalpelthrow.png-5bb3306d54c508863fe01b1f7ed0d3c7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1y3l7dtk24wc"
-path="res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"
+uid="uid://de7xlbm7hvo88"
+path="res://.godot/imported/MainChar-Sheet.png-46c0601d0900ab41dcbab3cfa16e9610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/MainChar-Sheet.png"
-dest_files=["res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"]
+source_file="res://Scenes/Abilities/Ability/MainChar-Sheet.png"
+dest_files=["res://.godot/imported/MainChar-Sheet.png-46c0601d0900ab41dcbab3cfa16e9610.ctex"]
 
 [params]
 

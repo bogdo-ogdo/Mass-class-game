@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1y3l7dtk24wc"
-path="res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"
+uid="uid://cbg6fk82ugsqe"
+path="res://.godot/imported/chair.png-1060270db55ab8603950cb34175e512a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/MainChar-Sheet.png"
-dest_files=["res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"]
+source_file="res://Assets/Weapons/Knockback/chair.png"
+dest_files=["res://.godot/imported/chair.png-1060270db55ab8603950cb34175e512a.ctex"]
 
 [params]
 

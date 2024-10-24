@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1y3l7dtk24wc"
-path="res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"
+uid="uid://cq1qos1st2i30"
+path="res://.godot/imported/syringethrow.png-a38d9ca5c2288e851ec3f79f0e30ec0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/MainChar-Sheet.png"
-dest_files=["res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"]
+source_file="res://Assets/Weapons/Charged/syringethrow.png"
+dest_files=["res://.godot/imported/syringethrow.png-a38d9ca5c2288e851ec3f79f0e30ec0e.ctex"]
 
 [params]
 

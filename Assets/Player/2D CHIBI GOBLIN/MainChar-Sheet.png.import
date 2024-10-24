@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1y3l7dtk24wc"
-path="res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"
+uid="uid://bi33sqyprq2qu"
+path="res://.godot/imported/MainChar-Sheet.png-4450fb16bb77831321d7cbaec48c0dfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/MainChar-Sheet.png"
-dest_files=["res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"]
+source_file="res://Assets/Player/2D CHIBI GOBLIN/MainChar-Sheet.png"
+dest_files=["res://.godot/imported/MainChar-Sheet.png-4450fb16bb77831321d7cbaec48c0dfc.ctex"]
 
 [params]
 

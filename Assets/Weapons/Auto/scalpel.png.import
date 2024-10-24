@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1y3l7dtk24wc"
-path="res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"
+uid="uid://cirq7438xrhnh"
+path="res://.godot/imported/scalpel.png-fe7d626dea86d196e54626769c4a845c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/MainChar-Sheet.png"
-dest_files=["res://.godot/imported/MainChar-Sheet.png-9fa01b60fc9868df88698f5889551b7d.ctex"]
+source_file="res://Assets/Weapons/Auto/scalpel.png"
+dest_files=["res://.godot/imported/scalpel.png-fe7d626dea86d196e54626769c4a845c.ctex"]
 
 [params]
 
