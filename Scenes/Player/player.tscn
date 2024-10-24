@@ -289,10 +289,11 @@ low_health_indicator = NodePath("ui/Low_health")
 gold_lable = NodePath("ui/gold/Gold")
 ability_inventory = ExtResource("2_o8fdp")
 dash = NodePath("Dash")
+change_pitch = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_8bgvj")
-hframes = 8
+texture = ExtResource("6_sit5e")
+hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

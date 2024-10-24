@@ -1,5 +1,8 @@
 res://node_2d.tscn
-res://Scenes/Player/player.gd
+res://Shaders/spawn.gdshader
+res://Shaders/Blood.gdshader
+res://Shaders/light.gdshader
+res://Shaders/glow.gdshader
 res://Scenes/Player/player.tscn
 res://Scenes/weapon/weapon.tscn
 res://Scenes/Bullet/bullet.tscn
@@ -14,4 +17,5 @@ res://Scenes/objects/torch_light.tscn
 res://Scenes/Boss_level/boss_level.tscn
 res://Scenes/ui/credits.tscn
 res://Scenes/ui/start_menu.tscn
-res://thoughts.gd
+res://Scenes/ui/thoughts.tscn
+res://Scenes/Player/player.gd
