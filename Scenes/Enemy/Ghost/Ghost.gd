@@ -14,7 +14,7 @@ signal player_damage
 @onready var raycast : RayCast2D = $RayCast2D
 @onready var nav_timer : Timer = $Nav_timer
 @onready var sprite : Sprite2D = $Sprite2D
-
+@onready var damage_collider : Area2D = $collision_damage/CollisionShape2D
 @export var approach_dist : float
 @export var run_dist : float 
 @export var gold_drop : Vector2
@@ -37,6 +37,7 @@ var hit : bool = false
 var wander : bool
 var spawn : bool
 var gold_spawned : bool = false
+var on_top : bool = false
 
 enum {
 	APROACH,
@@ -53,7 +54,10 @@ func _ready():
 	spawn = true
 	spawn_value = 1
 	sprite.material.set_shader_parameter("progress", spawn_value)
+	attack_timer.start(randf_range(5,20))
 	y_sort_enabled = true
+	damage_collider.disabled = true
+	visible = false
 	z_index = 1
 	$Hit.energy = 0
 	$sound.pitch_scale = randf_range(.75,1.4)
@@ -84,7 +88,12 @@ func _physics_process(delta: float) -> void:
 		can_attack = false
 	
 	if can_attack == true:
+			damage_collider.disabled = true
+			visible = false
 			state = APROACH
+			on_top = true
+	
+	
 	
 	if velocity.length() < 2:
 		if !animation.current_animation == "jump":
@@ -96,16 +105,19 @@ func _physics_process(delta: float) -> void:
 	if hit == true:
 		alt_animation.play("hit")
 		hit = false
-	
-	if can_move && !raycast.is_colliding():
-		var direction = (nav_agent.get_next_path_position() - global_position).normalized()
-		var steering = ((direction * move_speed) - velocity) * delta * 1.2
-		velocity += steering
-	elif raycast.is_colliding():
-		velocity = (nav_agent.get_next_path_position() - global_position).normalized() * move_speed/2
+
+	if on_top:
+		pass
 	else:
-		velocity = Vector2.ZERO
-	move_and_slide()
+		if can_move && !raycast.is_colliding():
+			var direction = (nav_agent.get_next_path_position() - global_position).normalized()
+			var steering = ((direction * move_speed) - velocity) * delta * 1.2
+			velocity += steering
+		elif raycast.is_colliding():
+			velocity = (nav_agent.get_next_path_position() - global_position).normalized() * move_speed/2
+		else:
+			velocity = Vector2.ZERO
+		move_and_slide()
 
 
 
