@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://cn7ioroahhggj"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy/Peasant/enemy.gd" id="1_gtkrc"]
+[ext_resource type="Script" path="res://Scenes/Enemy/Ghost/ghost.gd" id="1_cvhwk"]
 [ext_resource type="Shader" path="res://Shaders/spawn.gdshader" id="2_i85bb"]
 [ext_resource type="Texture2D" uid="uid://dhnf3t1h1hckd" path="res://Assets/Enemy/Ghost-Sheet.png" id="3_c1v73"]
 [ext_resource type="Texture2D" uid="uid://con7ukapqwiy6" path="res://Assets/Enemy/Peasant_idle.png" id="4_acxpo"]
@@ -263,26 +263,13 @@ size = Vector2(9, 6.0625)
 radius = 4.0
 height = 14.0
 
-[node name="Knight" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Ghost" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 collision_layer = 0
 collision_mask = 69
-script = ExtResource("1_gtkrc")
-approach_dist = 300.0
-run_dist = 60.0
-gold_drop = Vector2(4, 6)
-move_speed = 50.0
-health = 20.0
-damage = 1.0
-rarity = 1
-reload = Vector2(4, 6)
-attack_type = "Auto"
-shots = Vector2(10, 15)
-flip_h = true
-delay = 0.25
-spread = 8.0
+script = ExtResource("1_cvhwk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 513
