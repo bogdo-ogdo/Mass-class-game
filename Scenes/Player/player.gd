@@ -471,6 +471,9 @@ func update_abilities():
 			dash_duration += 0.05
 		elif ability.ability_name == "Dash Cooldown":
 			dash_regen_timer.wait_time *= 0.5
+		elif ability.ability_name == "Car":
+			car = true
+			weapon.damage *= 2
 			
 	
 	for ability in abiliites:

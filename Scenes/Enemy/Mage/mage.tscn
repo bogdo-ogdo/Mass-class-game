@@ -234,6 +234,7 @@ shots = Vector2(4, 4)
 flip_h = true
 delay = 0.02
 spread = 50.0
+spawn_value = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(64.2471, 128.498, 128.498, 1)
@@ -241,7 +242,7 @@ light_mask = 513
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_r8fwc")
 position = Vector2(0, 1)
-texture = ExtResource("3_ffwtd")
+texture = ExtResource("12_ddyr8")
 offset = Vector2(0, -5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
