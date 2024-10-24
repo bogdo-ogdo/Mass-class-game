@@ -8,6 +8,6 @@ script = ExtResource("1_hdrgd")
 ability_name = "Dash Distance"
 description = "Increases the distance of your dash"
 texture = ExtResource("2_5gmup")
-unique = true
+unique = false
 rarity = 0
 cost = 30
