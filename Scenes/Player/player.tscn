@@ -693,6 +693,9 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="Health_regen" type="Timer" parent="."]
+one_shot = true
+
 [node name="Hitbox" type="Area2D" parent="." groups=["Player_hitbox"]]
 monitoring = false
 
@@ -746,4 +749,5 @@ color_ramp = SubResource("Gradient_6ufnj")
 [connection signal="timeout" from="Dash_usage" to="." method="_on_dash_usage_timeout"]
 [connection signal="timeout" from="Mana_regen" to="." method="_on_mana_regen_timeout"]
 [connection signal="timeout" from="Dash_regen" to="." method="_on_dash_regen_timeout"]
+[connection signal="timeout" from="Health_regen" to="." method="_on_health_regen_timeout"]
 [connection signal="finished" from="Sounds/footsteps" to="." method="_on_footsteps_finished"]
