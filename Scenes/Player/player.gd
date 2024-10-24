@@ -22,6 +22,7 @@ signal restart_game
 @export var sprite : Sprite2D
 @export var tile_map : TileMap
 @export var weapon : CharacterBody2D
+@export var dungeon : Node2D
 @export var health_bar : TextureProgressBar
 @export var damaged_bar : TextureProgressBar
 @export var mana_bar : TextureProgressBar
@@ -55,6 +56,9 @@ var max_dashes : float = 3
 var max_mana : float = 150
 var gold : int = 0
 
+var health_regen_speed : float = 10
+var health_regenrating = false
+var gates_closed : bool = true
 var mana_usage_bar_catchup : bool = false
 var mana_regen_speed : float = .25
 var dashes_used_catchup : bool = false
@@ -80,7 +84,7 @@ var win : bool = false
 
 var speed = 0
 var MAX_SPEED = 100
-var car = true
+var car = false
 var wheel_base = 17
 var steering_angle = 100
 var engine_power = 25
@@ -123,10 +127,8 @@ func _physics_process(delta):
 	if not car:
 		move_direction = Input.get_vector("ui_left", "ui_right","ui_up","ui_down")
 		if dash.is_dashing() and move_direction != Vector2.ZERO:
-			self.rotation = 0
 			speed = dash_speed
 		elif dash.is_dashing():
-			self.rotation = 0
 			speed = dash_speed
 			move_direction = (get_global_mouse_position()-position).normalized()
 		elif move_direction == Vector2.ZERO:
@@ -195,6 +197,8 @@ func _physics_process(delta):
 	if shake_strength > 0:
 		shake_strength = lerpf(shake_strength,0,shake_fade*delta)
 		camera.offset = random_offset()
+	
+	
 	
 	
 	bar_management()
@@ -281,8 +285,15 @@ func bar_management():
 	damaged_bar.value = current_damage
 	dash_bar.value = current_dashes
 	dash_usage_bar.value = current_dash_usage
+	gates_closed = dungeon.gates_up
 	$ui/HLabel.text = str(health_bar.value)+"/"+str(max_health)
 	$ui/MLabel.text = str(int(mana_bar.value))+"/"+str(max_mana)
+	
+	# Health Regenration
+	if health_regenrating == false and gates_closed == true and current_health < max_health:
+		print("Timer started")
+		health_regenrating = true
+		$Health_regen.start(health_regen_speed)
 	
 	if current_mana_usage < current_mana:
 		current_mana_usage = current_mana
@@ -537,3 +548,12 @@ func _on_dungeon_clear_floor():
 
 func _on_audio_stream_player_finished():
 	$Sounds/Music.playing = true
+
+
+func _on_health_regen_timeout() -> void:
+	print("Regenerated")
+	if current_health < max_health:
+		current_health += 1
+	print(current_health, max_health)
+	health_regenrating = false
+	bar_management()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://uk6yrsv45ei4"]
+[gd_scene load_steps=113 format=3 uid="uid://uk6yrsv45ei4"]
 
 [ext_resource type="Script" path="res://Scrips/Map/Dungeon.gd" id="1_l1dci"]
 [ext_resource type="PackedScene" uid="uid://cu5irw5yngrsi" path="res://Scenes/Player/player.tscn" id="1_l5ov3"]
@@ -52,6 +52,7 @@
 [ext_resource type="Resource" uid="uid://7yi8ygxusd2j" path="res://Scenes/Abilities/Ability/Burger.tres" id="41_muf43"]
 [ext_resource type="Resource" uid="uid://cu8s5mwi8j3w1" path="res://Scenes/Abilities/Ability/Dash_Distance.tres" id="44_l3fm6"]
 [ext_resource type="Resource" uid="uid://ysqcnvpqvlg5" path="res://Scenes/Abilities/Ability/Dash_Cooldown.tres" id="45_k2t2a"]
+[ext_resource type="Resource" uid="uid://n87qr2weklrf" path="res://Scenes/Abilities/Ability/Car.tres" id="46_cxxko"]
 [ext_resource type="AudioStream" uid="uid://ch6l1heww5dda" path="res://audio/Level music/Green Gobby Stobby.mp3" id="48_pxcl6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l0vuk"]
@@ -1819,10 +1820,11 @@ z_index = 3
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_l0vuk")
 
-[node name="Player" parent="." node_paths=PackedStringArray("tile_map", "shop") instance=ExtResource("1_l5ov3")]
+[node name="Player" parent="." node_paths=PackedStringArray("tile_map", "dungeon", "shop") instance=ExtResource("1_l5ov3")]
 z_index = 1
 y_sort_enabled = true
 tile_map = NodePath("../Level")
+dungeon = NodePath("..")
 shop = NodePath("../Menus/Shop")
 
 [node name="Level" type="TileMap" parent="." groups=["dungeon", "navigation"]]
@@ -1866,7 +1868,7 @@ minimap = NodePath("../../Minimap/Container/MiniMap")
 
 [node name="Shop" parent="Menus" instance=ExtResource("12_sndxk")]
 process_mode = 3
-avalable_abilities = Array[ExtResource("25_8w5kl")]([ExtResource("22_p8f8k"), ExtResource("23_ys05c"), ExtResource("24_kk44p"), ExtResource("25_6q1yo"), ExtResource("26_cfqbi"), ExtResource("27_p1fn1"), ExtResource("28_botcx"), ExtResource("29_8kddw"), ExtResource("30_q2x11"), ExtResource("31_b802y"), ExtResource("32_e6oj0"), ExtResource("33_2qds4"), ExtResource("34_7y3hd"), ExtResource("35_50qas"), ExtResource("36_ogpu1"), ExtResource("39_bebpy"), ExtResource("40_2251x"), ExtResource("41_muf43"), ExtResource("44_l3fm6"), ExtResource("45_k2t2a")])
+avalable_abilities = Array[ExtResource("25_8w5kl")]([ExtResource("22_p8f8k"), ExtResource("23_ys05c"), ExtResource("24_kk44p"), ExtResource("25_6q1yo"), ExtResource("26_cfqbi"), ExtResource("27_p1fn1"), ExtResource("28_botcx"), ExtResource("29_8kddw"), ExtResource("30_q2x11"), ExtResource("31_b802y"), ExtResource("32_e6oj0"), ExtResource("33_2qds4"), ExtResource("34_7y3hd"), ExtResource("35_50qas"), ExtResource("36_ogpu1"), ExtResource("39_bebpy"), ExtResource("40_2251x"), ExtResource("41_muf43"), ExtResource("44_l3fm6"), ExtResource("45_k2t2a"), ExtResource("46_cxxko")])
 
 [node name="Start_menu" parent="Menus" instance=ExtResource("12_g12ls")]
 process_mode = 3
