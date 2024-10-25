@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://uk6yrsv45ei4"]
+[gd_scene load_steps=97 format=3 uid="uid://uk6yrsv45ei4"]
 
 [ext_resource type="Script" path="res://Scrips/Map/Dungeon.gd" id="1_l1dci"]
 [ext_resource type="PackedScene" uid="uid://cu5irw5yngrsi" path="res://Scenes/Player/player.tscn" id="1_l5ov3"]
@@ -31,27 +31,12 @@
 [ext_resource type="Texture2D" uid="uid://nl7j0wp0xv5e" path="res://Assets/TileSet/lvl2tiles.png" id="16_vs1oa"]
 [ext_resource type="Texture2D" uid="uid://chnf8p60tyg6g" path="res://Assets/TileSet/dungeon_sheetlvl3.png" id="17_7sdn1"]
 [ext_resource type="PackedScene" uid="uid://b1ptp3jujfcee" path="res://Scenes/ui/credits.tscn" id="22_2tg3p"]
-[ext_resource type="Resource" uid="uid://bdyxg27srsgt4" path="res://Scenes/Abilities/Ability/Better_bullets.tres" id="22_p8f8k"]
-[ext_resource type="Resource" uid="uid://ct76npqclpoim" path="res://Scenes/Abilities/Ability/bigger_bullet.tres" id="23_ys05c"]
-[ext_resource type="Resource" uid="uid://cesj4wh6a8g6f" path="res://Scenes/Abilities/Ability/More_health.tres" id="24_kk44p"]
-[ext_resource type="Resource" uid="uid://bhjbgtt3ew3vw" path="res://Scenes/Abilities/Ability/Double_bullet.tres" id="25_6q1yo"]
 [ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="25_8w5kl"]
-[ext_resource type="Resource" uid="uid://dyoaun1qwjr7r" path="res://Scenes/Abilities/Ability/Faster_bullets.tres" id="26_cfqbi"]
-[ext_resource type="Resource" uid="uid://vwn55v5u5d3o" path="res://Scenes/Abilities/Ability/More_mana.tres" id="27_p1fn1"]
-[ext_resource type="Resource" uid="uid://cf27t3i6210u7" path="res://Scenes/Abilities/Ability/Full_Auto.tres" id="28_botcx"]
-[ext_resource type="Resource" uid="uid://11jo6unxbwbd" path="res://Scenes/Abilities/Ability/Lucky.tres" id="29_8kddw"]
-[ext_resource type="Resource" uid="uid://b1lr4d4guac6g" path="res://Scenes/Abilities/Ability/Laser_pointer.tres" id="30_q2x11"]
-[ext_resource type="Resource" uid="uid://btb6irmyuhh81" path="res://Scenes/Abilities/Ability/Faster_receiver.tres" id="31_b802y"]
-[ext_resource type="Resource" uid="uid://duvhodpno2ef0" path="res://Scenes/Abilities/Ability/Belt_fed.tres" id="32_e6oj0"]
-[ext_resource type="Resource" uid="uid://cwxsnmqpqfgjy" path="res://Scenes/Abilities/Ability/Metal_jacket.tres" id="33_2qds4"]
-[ext_resource type="Resource" uid="uid://cvexgwyw7hwud" path="res://Scenes/Abilities/Ability/Scope.tres" id="34_7y3hd"]
-[ext_resource type="Resource" uid="uid://bklqlntaocynl" path="res://Scenes/Abilities/Ability/Mana_regen.tres" id="35_50qas"]
-[ext_resource type="Resource" uid="uid://cmio2n7epsmfk" path="res://Scenes/Abilities/Ability/TNT.tres" id="36_ogpu1"]
-[ext_resource type="Resource" uid="uid://5158p4jqpnkb" path="res://Scenes/Abilities/Ability/Gold_shot.tres" id="39_bebpy"]
-[ext_resource type="Resource" uid="uid://duawgvjttsfyc" path="res://Scenes/Abilities/Ability/Bouncy_bullets.tres" id="40_2251x"]
-[ext_resource type="Resource" uid="uid://7yi8ygxusd2j" path="res://Scenes/Abilities/Ability/Burger.tres" id="41_muf43"]
-[ext_resource type="Resource" uid="uid://cu8s5mwi8j3w1" path="res://Scenes/Abilities/Ability/Dash_Distance.tres" id="44_l3fm6"]
-[ext_resource type="Resource" uid="uid://ysqcnvpqvlg5" path="res://Scenes/Abilities/Ability/Dash_Cooldown.tres" id="45_k2t2a"]
+[ext_resource type="Resource" uid="uid://blsxcl2u7x1xm" path="res://Scenes/Abilities/Ability/1.tres" id="27_0148r"]
+[ext_resource type="Resource" uid="uid://bfcga85h6lcwv" path="res://Scenes/Abilities/Ability/Face_Mask.tres" id="28_1nw1y"]
+[ext_resource type="Resource" uid="uid://ds8hl48tcf40r" path="res://Scenes/Abilities/Ability/Weed.tres" id="29_hwomh"]
+[ext_resource type="Resource" uid="uid://wgikgd55divu" path="res://Scenes/Abilities/Ability/alices_wonderland.tres" id="30_rkh6h"]
+[ext_resource type="Resource" uid="uid://b7ab6ulxilrkr" path="res://Scenes/Abilities/Ability/The Juice.tres" id="46_ess5d"]
 [ext_resource type="AudioStream" uid="uid://ch6l1heww5dda" path="res://audio/Level music/Green Gobby Stobby.mp3" id="48_pxcl6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l0vuk"]
@@ -1866,7 +1851,7 @@ minimap = NodePath("../../Minimap/Container/MiniMap")
 
 [node name="Shop" parent="Menus" instance=ExtResource("12_sndxk")]
 process_mode = 3
-avalable_abilities = Array[ExtResource("25_8w5kl")]([ExtResource("22_p8f8k"), ExtResource("23_ys05c"), ExtResource("24_kk44p"), ExtResource("25_6q1yo"), ExtResource("26_cfqbi"), ExtResource("27_p1fn1"), ExtResource("28_botcx"), ExtResource("29_8kddw"), ExtResource("30_q2x11"), ExtResource("31_b802y"), ExtResource("32_e6oj0"), ExtResource("33_2qds4"), ExtResource("34_7y3hd"), ExtResource("35_50qas"), ExtResource("36_ogpu1"), ExtResource("39_bebpy"), ExtResource("40_2251x"), ExtResource("41_muf43"), ExtResource("44_l3fm6"), ExtResource("45_k2t2a")])
+avalable_abilities = Array[ExtResource("25_8w5kl")]([ExtResource("27_0148r"), ExtResource("28_1nw1y"), ExtResource("29_hwomh"), ExtResource("30_rkh6h"), ExtResource("46_ess5d")])
 
 [node name="Start_menu" parent="Menus" instance=ExtResource("12_g12ls")]
 process_mode = 3

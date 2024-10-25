@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Ability_Inventory" load_steps=2 format=3 uid="uid://bq4oofxg3pous"]
+[gd_resource type="Resource" script_class="Ability_Inventory" load_steps=3 format=3 uid="uid://bq4oofxg3pous"]
 
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_7lxmx"]
 [ext_resource type="Script" path="res://Scenes/Abilities/Ability_inventory.gd" id="1_nr3kk"]
 
 [resource]
 script = ExtResource("1_nr3kk")
-abilities = Array[Resource("res://Scenes/Abilities/Ability.gd")]([])
+abilities = Array[ExtResource("1_7lxmx")]([])

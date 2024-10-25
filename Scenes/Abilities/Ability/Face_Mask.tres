@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bfcga85h6lcwv"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_rhh3p"]
+[ext_resource type="Texture2D" uid="uid://c50yqsd24donm" path="res://Assets/Abilities/face mask (jesse).png" id="2_pa6h3"]
+
+[resource]
+script = ExtResource("1_rhh3p")
+ability_name = "Face Mask"
+description = "+ 1 sanity"
+texture = ExtResource("2_pa6h3")
+unique = false
+rarity = 0
+cost = 30

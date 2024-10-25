@@ -1,13 +1,12 @@
-[gd_scene load_steps=40 format=3 uid="uid://cu5irw5yngrsi"]
+[gd_scene load_steps=39 format=3 uid="uid://cu5irw5yngrsi"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_fqlgg"]
 [ext_resource type="Resource" uid="uid://bq4oofxg3pous" path="res://Scenes/Abilities/Ability_inventory.tres" id="2_o8fdp"]
-[ext_resource type="Texture2D" uid="uid://bpyd55lt7yjte" path="res://Assets/Player/Gob_run.png" id="3_8bgvj"]
+[ext_resource type="Texture2D" uid="uid://c1y3l7dtk24wc" path="res://Assets/Player/MainChar-Sheet.png" id="3_0f003"]
 [ext_resource type="PackedScene" uid="uid://c6rheyijs8n4l" path="res://Scenes/weapon/weapon.tscn" id="4_q6ram"]
 [ext_resource type="Texture2D" uid="uid://d1t8jh7ag0x6q" path="res://Assets/Gold/Coin.png" id="5_cx2o8"]
 [ext_resource type="AudioStream" uid="uid://bf22dfpfp0ds7" path="res://audio/player/footstep.wav" id="5_wglch"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="6_jyu7f"]
-[ext_resource type="Texture2D" uid="uid://c34gyedxdx682" path="res://Assets/Player/Gob_idle.png" id="6_sit5e"]
 [ext_resource type="Shader" path="res://Shaders/ChromaticAbberation.gdshader" id="6_v73i8"]
 [ext_resource type="Texture2D" uid="uid://b3fluvg2t1he7" path="res://Shaders/NoiseTexture.tres" id="7_bg475"]
 [ext_resource type="Texture2D" uid="uid://cowsbnx5ja6jf" path="res://Assets/UI/Damaged/player_hit_feedback.png" id="7_em7js"]
@@ -24,12 +23,36 @@
 
 [sub_resource type="Animation" id="Animation_626wt"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_qhspd"]
 resource_name = "gob_idle"
-length = 1.00002
+length = 2.00003
 loop_mode = 1
-step = 0.0714286
+step = 0.333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,7 +63,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_sit5e")]
+"values": [ExtResource("3_0f003")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -52,7 +75,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [7]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -61,17 +84,29 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_pf5mt"]
 resource_name = "gob_run"
-length = 0.571436
+length = 0.444456
 loop_mode = 1
-step = 0.0714286
+step = 0.111111
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,7 +117,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_8bgvj")]
+"values": [ExtResource("3_0f003")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -94,7 +129,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -103,10 +138,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0714286, 0.142857, 0.214286, 0.285714, 0.357143, 0.428572, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [3, 4, 5, 2]
 }
 tracks/3/type = "audio"
 tracks/3/imported = false
@@ -119,12 +154,8 @@ tracks/3/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("5_wglch")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_wglch")
 }],
-"times": PackedFloat32Array(0.214286, 0.5)
+"times": PackedFloat32Array(0)
 }
 tracks/3/use_blend = true
 tracks/4/type = "value"
@@ -134,10 +165,22 @@ tracks/4/path = NodePath(".:change_pitch")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.142857, 0.428571),
+"times": PackedFloat32Array(0, 0.214286),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:vframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t5jns"]
@@ -292,8 +335,13 @@ dash = NodePath("Dash")
 change_pitch = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+<<<<<<< Updated upstream
 texture = ExtResource("6_sit5e")
 hframes = 7
+=======
+texture = ExtResource("3_0f003")
+hframes = 3
+>>>>>>> Stashed changes
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -319,6 +367,7 @@ offset_bottom = 720.0
 
 [node name="ui" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 

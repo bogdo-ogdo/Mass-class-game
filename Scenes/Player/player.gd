@@ -438,44 +438,29 @@ func update_abilities():
 	mana_regen_speed = .25
 	
 	for ability in abiliites:
+		#elif ability.ability_name == "":
 		if ability.ability_name == "Better Bullets":
 			weapon.damage += ability.quantity
-		elif ability.ability_name == "Bigger bullets":
-			weapon.bullet_size *= 1 + .4*ability.quantity
-			weapon.bullet_speed /=  1 + .4*ability.quantity
-		elif ability.ability_name == "Double bullets":
-			weapon.projectiles += ability.quantity
-			weapon.bullet_spread += 5*ability.quantity
-		elif ability.ability_name == "Faster bullets":
-			weapon.bullet_speed *= 1 + .3*ability.quantity
-		elif ability.ability_name == "Lucky":
-			weapon.crit_chance += (10 * ability.quantity)
-		elif ability.ability_name == "More mana":
-			max_mana += 50 * ability.quantity
-		elif ability.ability_name == "More health":
+		elif ability.ability_name == "Face Mask":
 			max_health += ability.quantity
-		elif ability.ability_name == "Faster receiver":
-			weapon.fire_rate += ability.quantity
-		elif ability.ability_name == "Metal jacket":
+		elif ability.ability_name == "Weed":
 			weapon.piercing += ability.quantity
-		elif ability.ability_name == "Scope":
-			weapon.bullet_spread *= pow(.7,ability.quantity)
-		elif ability.ability_name == "Mana regen":
-			mana_regen_speed += ability.quantity*.25
-		elif ability.ability_name == "TNT":
-			weapon.explotion_size += .5 + (ability.quantity)*.5
-		elif ability.ability_name == "Bouncy bullets":
-			weapon.bounces += (ability.quantity)*2
-		elif ability.ability_name == "Burger":
-			max_health += 3
-			move_speed *= .6
+			weapon.crit_chance += ability.quantity * 10
 		elif ability.ability_name == "Dash Distance":
 			dash_duration += 0.05
 		elif ability.ability_name == "Dash Cooldown":
 			dash_regen_timer.wait_time *= 0.5
+<<<<<<< Updated upstream
 		elif ability.ability_name == "Car":
 			car = true
 			weapon.damage *= 2
+=======
+		elif ability.ability_name == "The Juice":
+			weapon.damage += 1 * ability.quantity
+		elif ability.ability_name == "alice’s wonderland":
+			max_health += ability.quantity * 2 
+			weapon.damage += ability.quantity * 1
+>>>>>>> Stashed changes
 			
 	
 	for ability in abiliites:

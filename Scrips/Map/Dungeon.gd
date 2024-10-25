@@ -321,7 +321,7 @@ func load_map():
 		elif level == 3:
 			tile_map.set_cells_terrain_connect(0,map_tile,2,1)
 			tile_map.set_cells_terrain_connect(0,map_void,2,0)
-		
+			
 		load_minimap()
 	$NavigationRegion2D.bake_navigation_polygon()
 

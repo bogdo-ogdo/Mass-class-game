@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://blsxcl2u7x1xm"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_brqu1"]
+[ext_resource type="Texture2D" uid="uid://c3orkx5lp0iuq" path="res://Assets/Abilities/juice.png" id="2_t1ce5"]
+
+[resource]
+script = ExtResource("1_brqu1")
+ability_name = "The Juice"
+description = "+ 1 damage"
+texture = ExtResource("2_t1ce5")
+unique = false
+rarity = 0
+cost = 30
