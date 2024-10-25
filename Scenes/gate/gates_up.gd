@@ -70,6 +70,7 @@ func summon_enemies():
 			var e = pick_enemy().instantiate()
 			e.scale.x *= 1/scale.x
 			e.scale.y *= 1/scale.y
+			print(e)
 			add_child(e)
 			e.health *= get_parent().level + (float(get_parent().dungeon_floor-1))/3
 			e.global_position.x = spawn_places[-1].x*16 + 8

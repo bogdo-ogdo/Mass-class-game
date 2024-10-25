@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://uk6yrsv45ei4"]
+[gd_scene load_steps=114 format=3 uid="uid://uk6yrsv45ei4"]
 
 [ext_resource type="Script" path="res://Scrips/Map/Dungeon.gd" id="1_l1dci"]
 [ext_resource type="PackedScene" uid="uid://cu5irw5yngrsi" path="res://Scenes/Player/player.tscn" id="1_l5ov3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b3p13rbn88ucs" path="res://Scenes/Enemy/Slime/slime.tscn" id="7_8hshe"]
 [ext_resource type="PackedScene" uid="uid://dwgxqjmpwy4xu" path="res://Scenes/gate/gate.tscn" id="7_to4u6"]
 [ext_resource type="PackedScene" uid="uid://e3xrgq75tksj" path="res://Scenes/objects/barrel.tscn" id="8_kkfb3"]
+[ext_resource type="PackedScene" uid="uid://cn7ioroahhggj" path="res://Scenes/Enemy/Ghost/ghost.tscn" id="8_npvms"]
 [ext_resource type="PackedScene" uid="uid://bnrmiqvhay643" path="res://Scenes/gate/gates_up.tscn" id="8_w042w"]
 [ext_resource type="PackedScene" uid="uid://dui2rws2phbx1" path="res://Scenes/objects/pot.tscn" id="9_6fyo5"]
 [ext_resource type="PackedScene" uid="uid://du2y0hi2j4c41" path="res://Scenes/Ladder/ladder.tscn" id="9_ve3sl"]
@@ -1804,7 +1805,7 @@ ladder = NodePath("Ladder")
 gate = ExtResource("7_to4u6")
 new_floor_timer = NodePath("Timer")
 gate_perimeter = ExtResource("8_w042w")
-enemies = Array[PackedScene]([ExtResource("4_ua2jd"), ExtResource("4_tckvb"), ExtResource("6_pvahn"), ExtResource("7_8hshe")])
+enemies = Array[PackedScene]([ExtResource("4_ua2jd"), ExtResource("4_tckvb"), ExtResource("6_pvahn"), ExtResource("7_8hshe"), ExtResource("8_npvms")])
 shop = NodePath("Menus/Shop")
 torch_light = ExtResource("13_tkhvk")
 room_light = ExtResource("6_yk4yx")

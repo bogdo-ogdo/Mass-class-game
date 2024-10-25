@@ -14,7 +14,7 @@ signal player_damage
 @onready var raycast : RayCast2D = $RayCast2D
 @onready var nav_timer : Timer = $Nav_timer
 @onready var sprite : Sprite2D = $Sprite2D
-@onready var damage_collider : Area2D = $collision_damage/CollisionShape2D
+@onready var damage_collider : CollisionShape2D = $collision_damage/CollisionShape2D
 @export var approach_dist : float
 @export var run_dist : float 
 @export var gold_drop : Vector2
@@ -54,7 +54,7 @@ func _ready():
 	spawn = true
 	spawn_value = 1
 	sprite.material.set_shader_parameter("progress", spawn_value)
-	attack_timer.start(randf_range(5,20))
+	attack_timer.start(randf_range(1,2))
 	y_sort_enabled = true
 	damage_collider.disabled = true
 	visible = false
@@ -88,10 +88,10 @@ func _physics_process(delta: float) -> void:
 		can_attack = false
 	
 	if can_attack == true:
-			damage_collider.disabled = true
-			visible = false
+			visible = true
 			state = APROACH
 			on_top = true
+
 	
 	
 	
@@ -107,16 +107,9 @@ func _physics_process(delta: float) -> void:
 		hit = false
 
 	if on_top:
-		pass
+		position = player.position
 	else:
-		if can_move && !raycast.is_colliding():
-			var direction = (nav_agent.get_next_path_position() - global_position).normalized()
-			var steering = ((direction * move_speed) - velocity) * delta * 1.2
-			velocity += steering
-		elif raycast.is_colliding():
-			velocity = (nav_agent.get_next_path_position() - global_position).normalized() * move_speed/2
-		else:
-			velocity = Vector2.ZERO
+		velocity = (player.position - position).normalized()*move_speed
 		move_and_slide()
 
 
@@ -137,43 +130,12 @@ func die():
 func _on_attack_timer_timeout():
 	can_attack = true
 	visible = true
-
-
-func _on_nav_timer_timeout():
-	var dir = player.global_position - global_position
-	raycast.target_position = player.global_position - raycast.global_position
-	if !raycast.is_colliding():
-		if dir.length() < run_dist:
-			state = RUN
-		elif dir.length() > approach_dist:
-			state = APROACH
-		else: 
-			state = IDLE
-	else:
-		state = APROACH
-	
-	match state:
-		APROACH:
-			target_position = Vector2(player.global_position.x + randf_range(-10,10),player.global_position.y + randf_range(-10,10))
-		IDLE:
-			if !wander:
-				target_position = global_position
-				velocity = Vector2.ZERO
-		RUN:
-			target_position = global_position * 2 - player.global_position
-	
-	nav_agent.target_position = target_position
-
+	idle_timer.start(3)
+	on_top = true
 
 func _on_idle_timer_timeout():
-	if !wander:
-		wander = true
-		if state == IDLE:
-			target_position = Vector2(global_position.x + randi_range(-100,100),global_position.y + randi_range(-100,100))
-		idle_timer.start(randf_range(2,3))
-	else:
-		wander = false
-		idle_timer.start(randf_range(1,3))
+	damage_collider.disabled = false
+	on_top=false
 
 
 func _on_collision_damage_area_entered(area):
