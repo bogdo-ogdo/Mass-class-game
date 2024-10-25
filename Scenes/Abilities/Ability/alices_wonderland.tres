@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_lrp0c")
-ability_name = "alice’s wonderland"
+ability_name = "Alice wonderland"
 description = "+ 2 max sanity  +  1 damage"
 texture = ExtResource("2_vegey")
 unique = false

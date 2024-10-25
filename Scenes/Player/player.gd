@@ -448,20 +448,17 @@ func update_abilities():
 			weapon.crit_chance += ability.quantity * 10
 		elif ability.ability_name == "Dash Distance":
 			dash_duration += 0.05
-		elif ability.ability_name == "Dash Cooldown":
-			dash_regen_timer.wait_time *= 0.5
-<<<<<<< Updated upstream
 		elif ability.ability_name == "Car":
 			car = true
 			weapon.damage *= 2
-=======
 		elif ability.ability_name == "The Juice":
 			weapon.damage += 1 * ability.quantity
-		elif ability.ability_name == "alice’s wonderland":
+		elif ability.ability_name == "alice wonderland":
 			max_health += ability.quantity * 2 
 			weapon.damage += ability.quantity * 1
->>>>>>> Stashed changes
-			
+		elif ability.ability_name == "Roid Rage":
+			weapon.damage += ability.quantity
+			weapon.bullet_speed *= 1 + .3 * ability.quantity
 	
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":
@@ -471,6 +468,8 @@ func update_abilities():
 		elif ability.ability_name == "Belt fed":
 			weapon.damage *= .75
 			weapon.fire_rate *= 2
+		elif ability.ability_name == "Dash Cooldown":
+			dash_regen_timer.wait_time *= 0.5
 		elif ability.ability_name == "Laser pointer":
 			weapon.laser_pointer = true
 			weapon.bullet_spread *= .5

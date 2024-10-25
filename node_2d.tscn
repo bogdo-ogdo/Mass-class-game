@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://uk6yrsv45ei4"]
+[gd_scene load_steps=99 format=3 uid="uid://uk6yrsv45ei4"]
 
 [ext_resource type="Script" path="res://Scrips/Map/Dungeon.gd" id="1_l1dci"]
 [ext_resource type="PackedScene" uid="uid://cu5irw5yngrsi" path="res://Scenes/Player/player.tscn" id="1_l5ov3"]
@@ -32,10 +32,12 @@
 [ext_resource type="Texture2D" uid="uid://chnf8p60tyg6g" path="res://Assets/TileSet/dungeon_sheetlvl3.png" id="17_7sdn1"]
 [ext_resource type="PackedScene" uid="uid://b1ptp3jujfcee" path="res://Scenes/ui/credits.tscn" id="22_2tg3p"]
 [ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="25_8w5kl"]
-[ext_resource type="Resource" uid="uid://blsxcl2u7x1xm" path="res://Scenes/Abilities/Ability/1.tres" id="27_0148r"]
+[ext_resource type="Resource" uid="uid://blsxcl2u7x1xm" path="res://Scenes/Abilities/Ability/Roid_rage.tres" id="27_0148r"]
 [ext_resource type="Resource" uid="uid://bfcga85h6lcwv" path="res://Scenes/Abilities/Ability/Face_Mask.tres" id="28_1nw1y"]
 [ext_resource type="Resource" uid="uid://ds8hl48tcf40r" path="res://Scenes/Abilities/Ability/Weed.tres" id="29_hwomh"]
 [ext_resource type="Resource" uid="uid://wgikgd55divu" path="res://Scenes/Abilities/Ability/alices_wonderland.tres" id="30_rkh6h"]
+[ext_resource type="Resource" uid="uid://c423s0gblg4s1" path="res://Scenes/Abilities/Ability/Dash_Cooldown.tres" id="31_sdbm5"]
+[ext_resource type="Resource" uid="uid://dsh7b4g38wqug" path="res://Scenes/Abilities/Ability/Dash_Distance.tres" id="32_g3wgj"]
 [ext_resource type="Resource" uid="uid://b7ab6ulxilrkr" path="res://Scenes/Abilities/Ability/The Juice.tres" id="46_ess5d"]
 [ext_resource type="AudioStream" uid="uid://ch6l1heww5dda" path="res://audio/Level music/Green Gobby Stobby.mp3" id="48_pxcl6"]
 
@@ -1851,7 +1853,7 @@ minimap = NodePath("../../Minimap/Container/MiniMap")
 
 [node name="Shop" parent="Menus" instance=ExtResource("12_sndxk")]
 process_mode = 3
-avalable_abilities = Array[ExtResource("25_8w5kl")]([ExtResource("27_0148r"), ExtResource("28_1nw1y"), ExtResource("29_hwomh"), ExtResource("30_rkh6h"), ExtResource("46_ess5d")])
+avalable_abilities = Array[ExtResource("25_8w5kl")]([ExtResource("27_0148r"), ExtResource("28_1nw1y"), ExtResource("29_hwomh"), ExtResource("30_rkh6h"), ExtResource("46_ess5d"), ExtResource("31_sdbm5"), ExtResource("32_g3wgj")])
 
 [node name="Start_menu" parent="Menus" instance=ExtResource("12_g12ls")]
 process_mode = 3

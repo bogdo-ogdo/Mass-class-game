@@ -335,13 +335,8 @@ dash = NodePath("Dash")
 change_pitch = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-<<<<<<< Updated upstream
-texture = ExtResource("6_sit5e")
-hframes = 7
-=======
 texture = ExtResource("3_0f003")
 hframes = 3
->>>>>>> Stashed changes
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
