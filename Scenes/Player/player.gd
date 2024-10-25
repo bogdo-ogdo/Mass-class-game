@@ -84,7 +84,7 @@ var win : bool = false
 
 var speed = 0
 var MAX_SPEED = 100
-var car = true
+var car = false
 var wheel_base = 17
 var steering_angle = 100
 var engine_power = 25
@@ -97,7 +97,8 @@ var traction_fast = 1
 var traction_slow = 10
 var acceleration = Vector2.ZERO
 var steer_direction
-
+var auto_aim = false
+var enemy_target = null
 
 func _ready():
 	ui_sprite.hide()
@@ -197,12 +198,11 @@ func _physics_process(delta):
 	if shake_strength > 0:
 		shake_strength = lerpf(shake_strength,0,shake_fade*delta)
 		camera.offset = random_offset()
-	
-	
-	
-	
+	if auto_aim and enemy_target != null:
+		weapon_rotate_to_mouse(enemy_target,delta)
+	else:
+		weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	bar_management()
-	weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	move_and_slide()
 
 func apply_friction(delta):
@@ -243,19 +243,34 @@ func random_offset():
 
 
 func weapon_rotate_to_mouse(target, delta):
-	var direction = (target - weapon.global_position) #target global position if is an entity
-	var angleTo = weapon.transform.x.angle_to(direction)
-	weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
-	weapon.b_rotation = weapon.rotation
-	if direction.x > 0:
-		if not car:
-			sprite.scale.x = 1
-		weapon.get_child(0).scale.y = 1
-	elif direction.x < 0:
-		if not car:
-			sprite.scale.x = -1
-		weapon.get_child(0).scale.y = -1
-	weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
+	if not auto_aim or target == null:
+		var direction = (target - weapon.global_position) #target global position if is an entity
+		var angleTo = weapon.transform.x.angle_to(direction)
+		weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
+		weapon.b_rotation = weapon.rotation
+		if direction.x > 0:
+			if not car:
+				sprite.scale.x = 1
+			weapon.get_child(0).scale.y = 1
+		elif direction.x < 0:
+			if not car:
+				sprite.scale.x = -1
+			weapon.get_child(0).scale.y = -1
+		weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
+	else:
+		var direction = (target - weapon.global_position) #target global position if is an entity
+		var angleTo = weapon.transform.x.angle_to(direction)
+		weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
+		weapon.b_rotation = weapon.rotation
+		if direction.x > 0:
+			if not car:
+				sprite.scale.x = 1
+			weapon.get_child(0).scale.y = 1
+		elif direction.x < 0:
+			if not car:
+				sprite.scale.x = -1
+			weapon.get_child(0).scale.y = -1
+		weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
 
 
 func _input(event):
@@ -481,11 +496,7 @@ func update_abilities():
 			move_speed *= .6
 		elif ability.ability_name == "Dash Distance":
 			dash_duration += 0.05
-		elif ability.ability_name == "Dash Cooldown":
-			dash_regen_timer.wait_time *= 0.5
-		elif ability.ability_name == "Car":
-			car = true
-			weapon.damage *= 2
+		
 			
 	
 	for ability in abiliites:
@@ -502,6 +513,15 @@ func update_abilities():
 		elif ability.ability_name == "Money shot":
 			weapon.damage *= 2
 			weapon.money_shot = true
+		elif ability.ability_name == "Dash Cooldown":
+			dash_regen_timer.wait_time *= 0.5
+		elif ability.ability_name == "Car":
+			car = true
+			weapon.damage *= 2
+		elif ability.ability_name == "Third eye":
+			auto_aim = true
+			weapon.bullet_spread *= 0.9
+			
 	
 	update_bar_values()
 
@@ -552,3 +572,12 @@ func _on_audio_stream_player_finished():
 func _on_health_regen_timeout() -> void:
 	current_health += 1
 	bar_management()
+
+func _on_auto_aim_area_entered(area: Node2D) -> void:
+	if area.is_in_group("Enemy"):
+		enemy_target = area.global_position
+
+
+func _on_auto_aim_area_exited(area: Node2D) -> void:
+	if area.is_in_group("Enemy"):
+		enemy_target = null

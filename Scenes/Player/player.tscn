@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cu5irw5yngrsi"]
+[gd_scene load_steps=42 format=3 uid="uid://cu5irw5yngrsi"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_fqlgg"]
 [ext_resource type="Resource" uid="uid://bq4oofxg3pous" path="res://Scenes/Abilities/Ability_inventory.tres" id="2_o8fdp"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dxyosoat6icc4" path="res://Scenes/Player/dash.tscn" id="14_gqmwi"]
 [ext_resource type="Texture2D" uid="uid://dh3qy7jaxjh5e" path="res://Assets/UI/dash_icon.png" id="14_yvwd1"]
 [ext_resource type="AudioStream" uid="uid://dvyxkuimg0wsy" path="res://audio/player/sad trombone.mp3" id="19_i0iom"]
+[ext_resource type="Script" path="res://Scenes/Player/auto_aim.gd" id="22_b4h6m"]
 
 [sub_resource type="Animation" id="Animation_626wt"]
 length = 0.001
@@ -267,6 +268,9 @@ radius = 52.0096
 
 [sub_resource type="Gradient" id="Gradient_6ufnj"]
 colors = PackedColorArray(0.484398, 0.484398, 0.484398, 1, 1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w5t1"]
+radius = 102.591
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "sprite", "weapon", "health_bar", "damaged_bar", "mana_bar", "mana_usage_bar", "damaged_timer", "mana_usage_timer", "mana_regen_timer", "camera", "ui_sprite", "ui_anim_player", "low_health_indicator", "gold_lable", "dash") groups=["Player"]]
 collision_layer = 65
@@ -740,6 +744,14 @@ scale_amount_max = 3.0
 color = Color(0.52549, 0.886275, 0.447059, 1)
 color_ramp = SubResource("Gradient_6ufnj")
 
+[node name="auto_aim" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("22_b4h6m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="auto_aim"]
+shape = SubResource("CircleShape2D_8w5t1")
+
 [connection signal="shoot" from="." to="Weapon" method="_on_player_shoot"]
 [connection signal="shoot_stop" from="." to="Weapon" method="_on_player_shoot_stop"]
 [connection signal="mana_used" from="Weapon" to="." method="_on_weapon_mana_used"]
@@ -751,3 +763,5 @@ color_ramp = SubResource("Gradient_6ufnj")
 [connection signal="timeout" from="Dash_regen" to="." method="_on_dash_regen_timeout"]
 [connection signal="timeout" from="Health_regen" to="." method="_on_health_regen_timeout"]
 [connection signal="finished" from="Sounds/footsteps" to="." method="_on_footsteps_finished"]
+[connection signal="area_entered" from="auto_aim" to="." method="_on_auto_aim_area_entered"]
+[connection signal="area_exited" from="auto_aim" to="." method="_on_auto_aim_area_exited"]
