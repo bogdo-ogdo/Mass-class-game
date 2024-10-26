@@ -81,6 +81,7 @@ func _physics_process(_delta):
 		expd = false
 	if stop:
 		queue_free()
+
 	
 	var collision_info = move_and_collide(velocity)
 	if collision_info:

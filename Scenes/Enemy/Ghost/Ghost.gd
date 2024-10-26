@@ -14,8 +14,7 @@ signal player_damage
 @onready var raycast : RayCast2D = $RayCast2D
 @onready var nav_timer : Timer = $Nav_timer
 @onready var sprite : Sprite2D = $Sprite2D
-@onready var gun : Sprite2D = $Gun
-
+@onready var damage_collider : Area2D = $collision_damage/CollisionShape2D
 @export var approach_dist : float
 @export var run_dist : float 
 @export var gold_drop : Vector2
@@ -24,12 +23,7 @@ signal player_damage
 @export var damage : float
 @export var rarity : int
 @export var reload : Vector2
-@export var attack_type : String
-@export var shots : Vector2
 @export var flip_h : bool
-@export var delay : float
-@export var spread : float
-@export var shooot : bool = false
 @export var spawn_value : float
 
 var can_move : bool
@@ -43,6 +37,7 @@ var hit : bool = false
 var wander : bool
 var spawn : bool
 var gold_spawned : bool = false
+var on_top : bool = false
 
 enum {
 	APROACH,
@@ -59,12 +54,10 @@ func _ready():
 	spawn = true
 	spawn_value = 1
 	sprite.material.set_shader_parameter("progress", spawn_value)
-	gun.material.set_shader_parameter("progress", spawn_value)
-	if randi_range(0,1) == 1:
-		wander = true
-	else:
-		wander = false
+	attack_timer.start(randf_range(5,20))
 	y_sort_enabled = true
+	damage_collider.disabled = true
+	visible = false
 	z_index = 1
 	$Hit.energy = 0
 	$sound.pitch_scale = randf_range(.75,1.4)
@@ -74,7 +67,6 @@ func _physics_process(delta: float) -> void:
 	if spawn == true:
 		spawn_value -= .015
 		sprite.material.set_shader_parameter("progress", spawn_value)
-		gun.material.set_shader_parameter("progress", spawn_value)
 		can_move = false
 		velocity = Vector2.ZERO
 		if spawn_value <= 0:
@@ -91,11 +83,17 @@ func _physics_process(delta: float) -> void:
 		spawn_value += .02
 		velocity = Vector2.ZERO
 		sprite.material.set_shader_parameter("progress", spawn_value)
-		gun.material.set_shader_parameter("progress", spawn_value)
 		$collision_damage.monitoring = false
 		$Area2D.monitorable = false
 		can_attack = false
-
+	
+	if can_attack == true:
+			damage_collider.disabled = true
+			visible = false
+			state = APROACH
+			on_top = true
+	
+	
 	
 	if velocity.length() < 2:
 		if !animation.current_animation == "jump":
@@ -107,38 +105,20 @@ func _physics_process(delta: float) -> void:
 	if hit == true:
 		alt_animation.play("hit")
 		hit = false
-	
-	if can_move && !raycast.is_colliding():
-		var direction = (nav_agent.get_next_path_position() - global_position).normalized()
-		var steering = ((direction * move_speed) - velocity) * delta * 1.2
-		velocity += steering
-	elif raycast.is_colliding():
-		velocity = (nav_agent.get_next_path_position() - global_position).normalized() * move_speed/2
+
+	if on_top:
+		pass
 	else:
-		velocity = Vector2.ZERO
-	
-	rotate_to_player(delta)
-	move_and_slide()
-
-
-func rotate_to_player(delta):
-	var direction = (player.position - gun.global_position) #target global position if is an entity
-	var gunAngleTo = gun.transform.x.angle_to(direction)
-	gun.rotation += (sign(gunAngleTo) * min(delta * rotation_speed, abs(gunAngleTo)))
-	gun.rotation_degrees = round_to_dec(gun.rotation_degrees, -1)
-	
-	if direction.x > 0:
-		if flip_h:
-			sprite.flip_h = false
+		if can_move && !raycast.is_colliding():
+			var direction = (nav_agent.get_next_path_position() - global_position).normalized()
+			var steering = ((direction * move_speed) - velocity) * delta * 1.2
+			velocity += steering
+		elif raycast.is_colliding():
+			velocity = (nav_agent.get_next_path_position() - global_position).normalized() * move_speed/2
 		else:
-			sprite.flip_h = true
-		gun.scale.y = 1
-	elif direction.x < 0:
-		if flip_h:
-			sprite.flip_h = true
-		else:
-			sprite.flip_h = false
-		gun.scale.y = -1
+			velocity = Vector2.ZERO
+		move_and_slide()
+
 
 
 func round_to_dec(num, digit):
@@ -155,6 +135,7 @@ func die():
 
 func _on_attack_timer_timeout():
 	can_attack = true
+	visible = true
 
 
 func _on_nav_timer_timeout():

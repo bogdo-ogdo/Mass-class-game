@@ -2,7 +2,7 @@ extends Panel
 
 @onready var ability_inventory : Ability_Inventory = preload("res://Scenes/Abilities/Ability_inventory.tres")
 @onready var description : RichTextLabel = $Description
-@onready var ability_icon : Sprite2D = $ability_icon
+@onready var ability_icon : TextureRect = $Icon
 @onready var price_label : Label = $Buy_button/Price
 @onready var ability_name : Label = $Name
 

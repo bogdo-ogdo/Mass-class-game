@@ -19,6 +19,7 @@ func _ready():
 	scale.y *= 1/get_parent().scale.y
 	scale *= scale_factor
 	attract.monitoring = false
+	rotation = randf_range(0, 360)
 	
 
 

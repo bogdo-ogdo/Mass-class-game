@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://ds8hl48tcf40r"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_iao05"]
+[ext_resource type="Texture2D" uid="uid://d2hlk6yyxlavh" path="res://Assets/Abilities/joint.png" id="2_6gme4"]
+
+[resource]
+script = ExtResource("1_iao05")
+ability_name = "Weed"
+description = "+ 1 pierce + 10% crit chance"
+texture = ExtResource("2_6gme4")
+unique = false
+rarity = 1
+cost = 60
