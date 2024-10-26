@@ -1,12 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://wl8fixk3i852"]
+[gd_scene load_steps=3 format=3 uid="uid://wl8fixk3i852"]
 
-[ext_resource type="Texture2D" uid="uid://dlvkeh3lel4p3" path="res://Assets/Effects/spot.png" id="1_dyxi6"]
+[sub_resource type="Gradient" id="Gradient_gtq64"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7qt3t"]
+gradient = SubResource("Gradient_gtq64")
+width = 640
+height = 640
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Room_light" type="PointLight2D" groups=["clear"]]
 position = Vector2(0.500002, -9.53674e-07)
-scale = Vector2(0.5, 0.5)
 energy = 0.3
 shadow_filter = 1
 shadow_filter_smooth = 40.0
-texture = ExtResource("1_dyxi6")
-texture_scale = 0.6
+texture = SubResource("GradientTexture2D_7qt3t")
+texture_scale = 0.1
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-35, -35, 70, 70)

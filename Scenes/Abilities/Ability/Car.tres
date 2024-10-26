@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://n87qr2weklrf"]
 
 [ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_f2dc6"]
-[ext_resource type="Texture2D" uid="uid://cpyjxvnu82wet" path="res://Assets/Abilities/explode.png" id="2_0wkel"]
+[ext_resource type="Texture2D" uid="uid://cbu7tg05fuy5t" path="res://Assets/Abilities/ability_background.png" id="2_y18n3"]
 
 [resource]
 script = ExtResource("1_f2dc6")
 ability_name = "Car"
 description = "The player moves like a car but ALL damage is doubled."
-texture = ExtResource("2_0wkel")
+texture = ExtResource("2_y18n3")
 unique = true
 rarity = 2
 cost = 90

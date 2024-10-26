@@ -39,6 +39,7 @@ signal restart_game
 @export var dash : Node2D
 @export var change_pitch : bool
 @export var shop : Control
+@export var distortionShader : ColorRect
 
 var abiliites : Array[Ability]
 
@@ -55,6 +56,9 @@ var max_health : float = 5
 var max_dashes : float = 3
 var max_mana : float = 150
 var gold : int = 0
+
+var drunkness : float = 0
+var highvalue : float = 0
 
 var health_regen_speed : float = 10
 var health_regenrating = false
@@ -97,7 +101,8 @@ var traction_fast = 1
 var traction_slow = 10
 var acceleration = Vector2.ZERO
 var steer_direction
-
+var auto_aim = false
+var enemy_target = null
 
 func _ready():
 	ui_sprite.hide()
@@ -197,12 +202,11 @@ func _physics_process(delta):
 	if shake_strength > 0:
 		shake_strength = lerpf(shake_strength,0,shake_fade*delta)
 		camera.offset = random_offset()
-	
-	
-	
-	
+	if auto_aim and enemy_target != null:
+		weapon_rotate_to_mouse(enemy_target,delta)
+	else:
+		weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	bar_management()
-	weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	move_and_slide()
 
 func apply_friction(delta):
@@ -243,19 +247,34 @@ func random_offset():
 
 
 func weapon_rotate_to_mouse(target, delta):
-	var direction = (target - weapon.global_position) #target global position if is an entity
-	var angleTo = weapon.transform.x.angle_to(direction)
-	weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
-	weapon.b_rotation = weapon.rotation
-	if direction.x > 0:
-		if not car:
-			sprite.scale.x = 1
-		weapon.get_child(0).scale.y = 1
-	elif direction.x < 0:
-		if not car:
-			sprite.scale.x = -1
-		weapon.get_child(0).scale.y = -1
-	weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
+	if not auto_aim or target == null:
+		var direction = (target - weapon.global_position) #target global position if is an entity
+		var angleTo = weapon.transform.x.angle_to(direction)
+		weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
+		weapon.b_rotation = weapon.rotation
+		if direction.x > 0:
+			if not car:
+				sprite.scale.x = 1
+			weapon.get_child(0).scale.y = 1
+		elif direction.x < 0:
+			if not car:
+				sprite.scale.x = -1
+			weapon.get_child(0).scale.y = -1
+		weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
+	else:
+		var direction = (target - weapon.global_position) #target global position if is an entity
+		var angleTo = weapon.transform.x.angle_to(direction)
+		weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
+		weapon.b_rotation = weapon.rotation
+		if direction.x > 0:
+			if not car:
+				sprite.scale.x = 1
+			weapon.get_child(0).scale.y = 1
+		elif direction.x < 0:
+			if not car:
+				sprite.scale.x = -1
+			weapon.get_child(0).scale.y = -1
+		weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
 
 
 func _input(event):
@@ -363,13 +382,16 @@ func reset():
 	Engine.time_scale = 1
 	get_tree().paused = true
 	gold = 0
-	ability_inventory.abilities = []
 	weapon.reset()
 	current_health = max_health
 	current_mana = max_mana
 	for i in ability_inventory.abilities:
 			i.quantity = 0
 			ability_inventory.abilities.erase(i)
+	for i in abiliites:
+			i.quantity = 0
+			abiliites.erase(i)
+	ability_inventory.abilities = []
 	abiliites = []
 	update_abilities()
 	shop.reset()
@@ -447,47 +469,32 @@ func update_abilities():
 	max_health = 5
 	max_mana = 150
 	mana_regen_speed = .25
+	highvalue = 0
+	drunkness = 0
 	
 	for ability in abiliites:
+		#elif ability.ability_name == "":
 		if ability.ability_name == "Better Bullets":
 			weapon.damage += ability.quantity
-		elif ability.ability_name == "Bigger bullets":
-			weapon.bullet_size *= 1 + .4*ability.quantity
-			weapon.bullet_speed /=  1 + .4*ability.quantity
-		elif ability.ability_name == "Double bullets":
-			weapon.projectiles += ability.quantity
-			weapon.bullet_spread += 5*ability.quantity
-		elif ability.ability_name == "Faster bullets":
-			weapon.bullet_speed *= 1 + .3*ability.quantity
-		elif ability.ability_name == "Lucky":
-			weapon.crit_chance += (10 * ability.quantity)
-		elif ability.ability_name == "More mana":
-			max_mana += 50 * ability.quantity
-		elif ability.ability_name == "More health":
+		elif ability.ability_name == "Face Mask":
 			max_health += ability.quantity
-		elif ability.ability_name == "Faster receiver":
-			weapon.fire_rate += ability.quantity
-		elif ability.ability_name == "Metal jacket":
+		elif ability.ability_name == "Weed":
 			weapon.piercing += ability.quantity
-		elif ability.ability_name == "Scope":
-			weapon.bullet_spread *= pow(.7,ability.quantity)
-		elif ability.ability_name == "Mana regen":
-			mana_regen_speed += ability.quantity*.25
-		elif ability.ability_name == "TNT":
-			weapon.explotion_size += .5 + (ability.quantity)*.5
-		elif ability.ability_name == "Bouncy bullets":
-			weapon.bounces += (ability.quantity)*2
-		elif ability.ability_name == "Burger":
-			max_health += 3
-			move_speed *= .6
+			weapon.crit_chance += ability.quantity * 10
+			highvalue += ability.quantity
+			drunkness += ability.quantity * .5
 		elif ability.ability_name == "Dash Distance":
 			dash_duration += 0.05
-		elif ability.ability_name == "Dash Cooldown":
-			dash_regen_timer.wait_time *= 0.5
 		elif ability.ability_name == "Car":
 			car = true
 			weapon.damage *= 2
-			
+		elif ability.ability_name == "The Juice":
+			weapon.damage += 1 * ability.quantity
+		elif ability.ability_name == "Alice wonderland":
+			max_health += ability.quantity * 2 
+			weapon.damage += ability.quantity * 1
+		elif ability.ability_name == "Roid Rage":
+			weapon.damage += ability.quantity
 	
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":
@@ -497,23 +504,37 @@ func update_abilities():
 		elif ability.ability_name == "Belt fed":
 			weapon.damage *= .75
 			weapon.fire_rate *= 2
+		elif ability.ability_name == "Dash Cooldown":
+			dash_regen_timer.wait_time *= 0.5
 		elif ability.ability_name == "Laser pointer":
 			weapon.laser_pointer = true
 			weapon.bullet_spread *= .5
 		elif ability.ability_name == "Money shot":
 			weapon.damage *= 2
 			weapon.money_shot = true
+		elif ability.ability_name == "Roid Rage":
+			weapon.bullet_speed *= 1 + .3 * ability.quantity
+		elif ability.ability_name == "Dash Cooldown":
+			dash_regen_timer.wait_time *= 0.5
+		elif ability.ability_name == "Car":
+			car = true
+			weapon.damage *= 2
+		elif ability.ability_name == "Third eye":
+			auto_aim = true
+			weapon.bullet_spread *= 0.9
+			
 	
 	update_bar_values()
+	update_effects()
 
 
 func update_bar_values():
 	mana_bar.value = max_mana
 	mana_bar.max_value = max_mana
-	mana_bar.size.x = max_mana/3
+	mana_bar.size.x = max_mana/1.5
 	mana_usage_bar.value = max_mana
 	mana_usage_bar.max_value = max_mana
-	mana_usage_bar.size.x = max_mana/3
+	mana_usage_bar.size.x = max_mana/1.5
 	current_mana = max_mana
 	
 	#health_bar.value = max_health
@@ -529,7 +550,12 @@ func update_bar_values():
 	dash_usage_bar.value = max_dashes
 	dash_usage_bar.max_value = max_dashes
 	current_dashes = max_dashes
-	
+
+
+func update_effects():
+	distortionShader.material.set_shader_parameter("distortion_strength", drunkness * .005)
+	distortionShader.material.set_shader_parameter("offset", highvalue)
+
 
 func _on_footsteps_finished():
 	$Sounds/footsteps.pitch_scale = 1 + randf_range(-.5,.5)
@@ -557,3 +583,12 @@ func _on_health_regen_timeout() -> void:
 	print(current_health, max_health)
 	health_regenrating = false
 	bar_management()
+
+func _on_auto_aim_area_entered(area: Node2D) -> void:
+	if area.is_in_group("Enemy"):
+		enemy_target = area.global_position
+
+
+func _on_auto_aim_area_exited(area: Node2D) -> void:
+	if area.is_in_group("Enemy"):
+		enemy_target = null

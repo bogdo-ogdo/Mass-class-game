@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/ui/ability_ui.gd" id="1_2kin2"]
 [ext_resource type="Texture2D" uid="uid://cbu7tg05fuy5t" path="res://Assets/Abilities/ability_background.png" id="2_5fj6r"]
-[ext_resource type="Texture2D" uid="uid://mwry88p0874m" path="res://Assets/Abilities/Better_bullet.png" id="3_82bo3"]
+[ext_resource type="Texture2D" uid="uid://b2732iwg6kyi4" path="res://Assets/Abilities/Alice_s Cake (1).png" id="3_7myqg"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="4_83owu"]
 
 [node name="Ability_ui" type="Panel"]
@@ -13,12 +13,21 @@ offset_bottom = 22.0
 script = ExtResource("1_2kin2")
 
 [node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("2_5fj6r")
 centered = false
 
+[node name="Icon" type="TextureRect" parent="."]
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 38.0
+offset_bottom = 37.0
+texture = ExtResource("3_7myqg")
+
 [node name="Ability" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(3, 3)
-texture = ExtResource("3_82bo3")
+texture = ExtResource("3_7myqg")
 centered = false
 
 [node name="Quantity" type="Label" parent="."]
