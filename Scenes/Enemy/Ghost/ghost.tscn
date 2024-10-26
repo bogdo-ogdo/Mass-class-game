@@ -306,7 +306,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="Attack_timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
 
 [node name="Idle_timer" type="Timer" parent="."]

@@ -14,8 +14,7 @@ signal player_damage
 @onready var raycast : RayCast2D = $RayCast2D
 @onready var nav_timer : Timer = $Nav_timer
 @onready var sprite : Sprite2D = $Sprite2D
-@onready var gun : Sprite2D = $Gun
-
+@onready var damage_collider : Area2D = $collision_damage/CollisionShape2D
 @export var approach_dist : float
 @export var run_dist : float 
 @export var gold_drop : Vector2
@@ -24,12 +23,7 @@ signal player_damage
 @export var damage : float
 @export var rarity : int
 @export var reload : Vector2
-@export var attack_type : String
-@export var shots : Vector2
 @export var flip_h : bool
-@export var delay : float
-@export var spread : float
-@export var shooot : bool = false
 @export var spawn_value : float
 
 var can_move : bool
@@ -43,6 +37,7 @@ var hit : bool = false
 var wander : bool
 var spawn : bool
 var gold_spawned : bool = false
+var on_top : bool = false
 
 enum {
 	APROACH,
@@ -59,12 +54,10 @@ func _ready():
 	spawn = true
 	spawn_value = 1
 	sprite.material.set_shader_parameter("progress", spawn_value)
-	gun.material.set_shader_parameter("progress", spawn_value)
-	if randi_range(0,1) == 1:
-		wander = true
-	else:
-		wander = false
+	attack_timer.start(randf_range(5,20))
 	y_sort_enabled = true
+	damage_collider.disabled = true
+	visible = false
 	z_index = 1
 	$Hit.energy = 0
 	$sound.pitch_scale = randf_range(.75,1.4)
@@ -74,22 +67,12 @@ func _physics_process(delta: float) -> void:
 	if spawn == true:
 		spawn_value -= .015
 		sprite.material.set_shader_parameter("progress", spawn_value)
-		gun.material.set_shader_parameter("progress", spawn_value)
 		can_move = false
 		velocity = Vector2.ZERO
 		if spawn_value <= 0:
 			spawn = false
 			can_move = true
 			attack_timer.start(randf_range(1,reload.y))
-	
-	if shooot:
-		var angle : float = 0
-		var shot = randi_range(shots.x, shots.y)
-		for i in range(shot):
-			spawn_bullet(angle)
-			angle += spread/shot
-		attack_timer.start(randf_range(reload.x,reload.y))
-		shooot = false
 	
 	if health <= 0:
 		if !gold_spawned:
@@ -100,16 +83,17 @@ func _physics_process(delta: float) -> void:
 		spawn_value += .02
 		velocity = Vector2.ZERO
 		sprite.material.set_shader_parameter("progress", spawn_value)
-		gun.material.set_shader_parameter("progress", spawn_value)
 		$collision_damage.monitoring = false
 		$Area2D.monitorable = false
 		can_attack = false
 	
 	if can_attack == true:
-		if !raycast.is_colliding():
-			shoot()
-		else:
+			damage_collider.disabled = true
+			visible = false
 			state = APROACH
+			on_top = true
+	
+	
 	
 	if velocity.length() < 2:
 		if !animation.current_animation == "jump":
@@ -121,78 +105,24 @@ func _physics_process(delta: float) -> void:
 	if hit == true:
 		alt_animation.play("hit")
 		hit = false
-	
-	if can_move && !raycast.is_colliding():
-		var direction = (nav_agent.get_next_path_position() - global_position).normalized()
-		var steering = ((direction * move_speed) - velocity) * delta * 1.2
-		velocity += steering
-	elif raycast.is_colliding():
-		velocity = (nav_agent.get_next_path_position() - global_position).normalized() * move_speed/2
+
+	if on_top:
+		pass
 	else:
-		velocity = Vector2.ZERO
-	
-	rotate_to_player(delta)
-	move_and_slide()
-
-
-func rotate_to_player(delta):
-	var direction = (player.position - gun.global_position) #target global position if is an entity
-	var gunAngleTo = gun.transform.x.angle_to(direction)
-	gun.rotation += (sign(gunAngleTo) * min(delta * rotation_speed, abs(gunAngleTo)))
-	gun.rotation_degrees = round_to_dec(gun.rotation_degrees, -1)
-	
-	if direction.x > 0:
-		if flip_h:
-			sprite.flip_h = false
+		if can_move && !raycast.is_colliding():
+			var direction = (nav_agent.get_next_path_position() - global_position).normalized()
+			var steering = ((direction * move_speed) - velocity) * delta * 1.2
+			velocity += steering
+		elif raycast.is_colliding():
+			velocity = (nav_agent.get_next_path_position() - global_position).normalized() * move_speed/2
 		else:
-			sprite.flip_h = true
-		gun.scale.y = 1
-	elif direction.x < 0:
-		if flip_h:
-			sprite.flip_h = true
-		else:
-			sprite.flip_h = false
-		gun.scale.y = -1
+			velocity = Vector2.ZERO
+		move_and_slide()
+
 
 
 func round_to_dec(num, digit):
 	return round(num * pow(15.0, digit)) / pow(15.0, digit)
-
-
-func spawn_bullet(angle):
-	$sound.stream = gunshot
-	$sound.play()
-	var eb = enemy_bullet.instantiate()
-	get_parent().get_parent().add_child(eb)
-	var direction = global_position - player.global_position
-	if attack_type == "Slime":
-		eb.rotation_degrees = angle
-	elif attack_type == "Even":
-		eb.rotation_degrees = angle + gun.rotation_degrees
-	else:
-		eb.rotation_degrees = rad_to_deg(atan2(direction.x,direction.y))*-1 - 90 + randf_range(-spread,spread)
-		eb.can_split = false
-	eb.global_position = $Gun/Muzzel.global_position
-
-
-func shoot():
-	can_attack = false
-	if attack_type == "Single":
-		spawn_bullet(0)
-		attack_timer.start(randf_range(reload.x,reload.y))
-	elif attack_type == "Auto":
-		shots_left = randi_range(shots.x,shots.y)
-		$Shot_delay.start(delay)
-	elif attack_type == "Slime":
-		animation.play("jump")
-	elif attack_type == "Even":
-		var shot = randi_range(shots.x, shots.y)
-		var angle : float = -.5 * spread + (spread*.5/shot)
-		for i in range(shot):
-			spawn_bullet(angle)
-			angle += spread/shot
-		attack_timer.start(randf_range(reload.x,reload.y))
-		shooot = false
 
 
 func die():
@@ -206,6 +136,7 @@ func die():
 
 func _on_attack_timer_timeout():
 	can_attack = true
+	visible = true
 
 
 func _on_nav_timer_timeout():
@@ -250,15 +181,6 @@ func _on_collision_damage_area_entered(area):
 		if player.dash.is_dashing() == false:
 			player.current_health -= damage
 			player.hit = true
-
-
-func _on_shot_delay_timeout():
-	if shots_left > 0 && !gold_spawned:
-		spawn_bullet(0)
-		shots_left -= 1
-		$Shot_delay.start(delay)
-	else:
-		attack_timer.start(randf_range(reload.x,reload.y))
 
 
 func _on_sound_finished():

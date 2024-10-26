@@ -2189,10 +2189,11 @@ z_index = 3
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_l0vuk")
 
-[node name="Player" parent="." node_paths=PackedStringArray("tile_map", "shop") instance=ExtResource("1_l5ov3")]
+[node name="Player" parent="." node_paths=PackedStringArray("tile_map", "dungeon", "shop") instance=ExtResource("1_l5ov3")]
 z_index = 1
 y_sort_enabled = true
 tile_map = NodePath("../Level")
+dungeon = NodePath("..")
 shop = NodePath("../Menus/Shop")
 
 [node name="Level" type="TileMap" parent="." groups=["dungeon", "navigation"]]
