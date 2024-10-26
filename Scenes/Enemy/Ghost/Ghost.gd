@@ -82,15 +82,6 @@ func _physics_process(delta: float) -> void:
 			can_move = true
 			attack_timer.start(randf_range(1,reload.y))
 	
-	if shooot:
-		var angle : float = 0
-		var shot = randi_range(shots.x, shots.y)
-		for i in range(shot):
-			spawn_bullet(angle)
-			angle += spread/shot
-		attack_timer.start(randf_range(reload.x,reload.y))
-		shooot = false
-	
 	if health <= 0:
 		if !gold_spawned:
 			die()
@@ -104,12 +95,7 @@ func _physics_process(delta: float) -> void:
 		$collision_damage.monitoring = false
 		$Area2D.monitorable = false
 		can_attack = false
-	
-	if can_attack == true:
-		if !raycast.is_colliding():
-			shoot()
-		else:
-			state = APROACH
+
 	
 	if velocity.length() < 2:
 		if !animation.current_animation == "jump":
@@ -157,43 +143,6 @@ func rotate_to_player(delta):
 
 func round_to_dec(num, digit):
 	return round(num * pow(15.0, digit)) / pow(15.0, digit)
-
-
-func spawn_bullet(angle):
-	$sound.stream = gunshot
-	$sound.play()
-	var eb = enemy_bullet.instantiate()
-	get_parent().get_parent().add_child(eb)
-	var direction = global_position - player.global_position
-	if attack_type == "Slime":
-		eb.rotation_degrees = angle
-	elif attack_type == "Even":
-		eb.rotation_degrees = angle + gun.rotation_degrees
-	else:
-		eb.rotation_degrees = rad_to_deg(atan2(direction.x,direction.y))*-1 - 90 + randf_range(-spread,spread)
-		eb.can_split = false
-	eb.global_position = $Gun/Muzzel.global_position
-
-
-func shoot():
-	can_attack = false
-	if attack_type == "Single":
-		spawn_bullet(0)
-		attack_timer.start(randf_range(reload.x,reload.y))
-	elif attack_type == "Auto":
-		shots_left = randi_range(shots.x,shots.y)
-		$Shot_delay.start(delay)
-	elif attack_type == "Slime":
-		animation.play("jump")
-	elif attack_type == "Even":
-		var shot = randi_range(shots.x, shots.y)
-		var angle : float = -.5 * spread + (spread*.5/shot)
-		for i in range(shot):
-			spawn_bullet(angle)
-			angle += spread/shot
-		attack_timer.start(randf_range(reload.x,reload.y))
-		shooot = false
-
 
 func die():
 	get_parent().alive_enemies -= 1
@@ -250,15 +199,6 @@ func _on_collision_damage_area_entered(area):
 		if player.dash.is_dashing() == false:
 			player.current_health -= damage
 			player.hit = true
-
-
-func _on_shot_delay_timeout():
-	if shots_left > 0 && !gold_spawned:
-		spawn_bullet(0)
-		shots_left -= 1
-		$Shot_delay.start(delay)
-	else:
-		attack_timer.start(randf_range(reload.x,reload.y))
 
 
 func _on_sound_finished():
