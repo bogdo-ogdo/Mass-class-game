@@ -38,6 +38,7 @@ signal restart_game
 @export var dash : Node2D
 @export var change_pitch : bool
 @export var shop : Control
+@export var distortionShader : ColorRect
 
 var abiliites : Array[Ability]
 
@@ -54,6 +55,9 @@ var max_health : float = 5
 var max_dashes : float = 3
 var max_mana : float = 150
 var gold : int = 0
+
+var drunkness : float = 0
+var highvalue : float = 0
 
 var mana_usage_bar_catchup : bool = false
 var mana_regen_speed : float = .25
@@ -80,7 +84,7 @@ var win : bool = false
 
 var speed = 0
 var MAX_SPEED = 100
-var car = true
+var car = false
 var wheel_base = 17
 var steering_angle = 100
 var engine_power = 25
@@ -352,13 +356,16 @@ func reset():
 	Engine.time_scale = 1
 	get_tree().paused = true
 	gold = 0
-	ability_inventory.abilities = []
 	weapon.reset()
 	current_health = max_health
 	current_mana = max_mana
 	for i in ability_inventory.abilities:
 			i.quantity = 0
 			ability_inventory.abilities.erase(i)
+	for i in abiliites:
+			i.quantity = 0
+			abiliites.erase(i)
+	ability_inventory.abilities = []
 	abiliites = []
 	update_abilities()
 	shop.reset()
@@ -436,6 +443,8 @@ func update_abilities():
 	max_health = 5
 	max_mana = 150
 	mana_regen_speed = .25
+	highvalue = 0
+	drunkness = 0
 	
 	for ability in abiliites:
 		#elif ability.ability_name == "":
@@ -446,6 +455,8 @@ func update_abilities():
 		elif ability.ability_name == "Weed":
 			weapon.piercing += ability.quantity
 			weapon.crit_chance += ability.quantity * 10
+			highvalue += ability.quantity
+			drunkness += ability.quantity * .5
 		elif ability.ability_name == "Dash Distance":
 			dash_duration += 0.05
 		elif ability.ability_name == "Car":
@@ -453,12 +464,11 @@ func update_abilities():
 			weapon.damage *= 2
 		elif ability.ability_name == "The Juice":
 			weapon.damage += 1 * ability.quantity
-		elif ability.ability_name == "alice wonderland":
+		elif ability.ability_name == "Alice wonderland":
 			max_health += ability.quantity * 2 
 			weapon.damage += ability.quantity * 1
 		elif ability.ability_name == "Roid Rage":
 			weapon.damage += ability.quantity
-			weapon.bullet_speed *= 1 + .3 * ability.quantity
 	
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":
@@ -476,17 +486,20 @@ func update_abilities():
 		elif ability.ability_name == "Money shot":
 			weapon.damage *= 2
 			weapon.money_shot = true
+		elif ability.ability_name == "Roid Rage":
+			weapon.bullet_speed *= 1 + .3 * ability.quantity
 	
 	update_bar_values()
+	update_effects()
 
 
 func update_bar_values():
 	mana_bar.value = max_mana
 	mana_bar.max_value = max_mana
-	mana_bar.size.x = max_mana/3
+	mana_bar.size.x = max_mana/1.5
 	mana_usage_bar.value = max_mana
 	mana_usage_bar.max_value = max_mana
-	mana_usage_bar.size.x = max_mana/3
+	mana_usage_bar.size.x = max_mana/1.5
 	current_mana = max_mana
 	
 	#health_bar.value = max_health
@@ -502,7 +515,12 @@ func update_bar_values():
 	dash_usage_bar.value = max_dashes
 	dash_usage_bar.max_value = max_dashes
 	current_dashes = max_dashes
-	
+
+
+func update_effects():
+	distortionShader.material.set_shader_parameter("distortion_strength", drunkness * .005)
+	distortionShader.material.set_shader_parameter("offset", highvalue)
+
 
 func _on_footsteps_finished():
 	$Sounds/footsteps.pitch_scale = 1 + randf_range(-.5,.5)

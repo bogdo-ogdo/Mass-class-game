@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de7xlbm7hvo88"
-path="res://.godot/imported/MainChar-Sheet.png-46c0601d0900ab41dcbab3cfa16e9610.ctex"
+uid="uid://dmi134b7tqgfj"
+path="res://.godot/imported/dolarbill4.png-54a48cc611ba25d7adb240d24bf8cb46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Abilities/Ability/MainChar-Sheet.png"
-dest_files=["res://.godot/imported/MainChar-Sheet.png-46c0601d0900ab41dcbab3cfa16e9610.ctex"]
+source_file="res://Assets/Gold/dolarbill4.png"
+dest_files=["res://.godot/imported/dolarbill4.png-54a48cc611ba25d7adb240d24bf8cb46.ctex"]
 
 [params]
 

@@ -406,6 +406,7 @@ _data = {
 }
 
 [node name="Gate" type="StaticBody2D" node_paths=PackedStringArray("anim_player", "collision_shape") groups=["Gate", "clear", "navigation"]]
+scale = Vector2(2, 2)
 collision_layer = 33
 collision_mask = 33
 script = ExtResource("1_1d0d3")
@@ -418,6 +419,7 @@ shape = SubResource("RectangleShape2D_e7n7e")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(8, -16)
 texture = ExtResource("2_0tbxj")
 hframes = 5
