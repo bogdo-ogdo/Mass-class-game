@@ -5,7 +5,7 @@ uniform float noise_desnity = 60;
 uniform float beam_size : hint_range(0.01, 0.5);
 uniform vec4 color = vec4(0.0, 1.02, 1.2, 1.0);
 
-// We are generating our own noise here. You could experiment with the 
+// We are generating our own noise here. You could experiment with the
 // built in SimplexNoise or your own noise texture for other effects.
 vec2 random(vec2 uv){
     uv = vec2( dot(uv, vec2(127.1,311.7) ),
@@ -28,15 +28,15 @@ float noise(vec2 uv) {
 void fragment()
 {
 	vec4 tex = texture(TEXTURE, UV);
-	
+
 	float noise = noise(UV * noise_desnity) * UV.x;
-	
+
 	float d1 = step(progress, noise);
 	float d2 = step(progress - beam_size, noise);
-	
+
 	vec3 beam = vec3(d2) * color.rgb;
-	
+
 	tex.rgb += beam;
-	
+
 	COLOR = tex;
 }
