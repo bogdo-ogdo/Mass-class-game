@@ -49,99 +49,107 @@ texture = SubResource("GradientTexture1D_oegy6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -50.0
-offset_right = 50.0
-offset_bottom = 100.0
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -164.0
+offset_right = 94.0
+offset_bottom = 164.0
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label5" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.8, 0, 1)
 theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Game Director"
+text = "Project Manager"
 horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
-text = "William Cochrane"
-horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.8, 0, 1)
-theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Programming"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_gk5bf")
-theme_override_font_sizes/font_size = 16
-text = "William Cochrane"
+text = "Zac Sterling"
 horizontal_alignment = 1
 
 [node name="Label13" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.8, 0, 1)
 theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Sound"
-horizontal_alignment = 1
-
-[node name="Label14" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_gk5bf")
-theme_override_font_sizes/font_size = 16
-text = "William Cochrane"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.8, 0, 1)
-theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Art"
+text = "Programmers"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
-text = "Robbie de Groot-Tsuji
-William Cochrane"
+text = "William Cochrane (manager)"
 horizontal_alignment = 1
 
-[node name="Label7" type="Label" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.8, 0, 1)
-theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Game Design"
-horizontal_alignment = 1
+theme_override_constants/separation = 10
 
-[node name="Label8" type="Label" parent="VBoxContainer"]
+[node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
-text = "Robbie de Groot-Tsuji
-William Cochrane"
+text = "Will Dale
+Cameron Collings"
 horizontal_alignment = 1
 
-[node name="Label9" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.8, 0, 1)
-theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Music"
-horizontal_alignment = 1
-
-[node name="Label10" type="Label" parent="VBoxContainer"]
+[node name="Label13" type="Label" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
-text = "Jayden Lim
-Ethan Zhao"
+text = "Aditya Bansal
+David Wu
+"
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Artists"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Robbie de Groot-Tsuji (manager)"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Brad Young
+Luke Zheng
+Khang Nguyen
+Takuto Takahashi
+Conor Gracey
+"
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Shayn Leung
+Ed Mathers
+Oscar Chaplin
+Jesse Given
+Benson Lee
+"
 horizontal_alignment = 1
 
 [node name="Label11" type="Label" parent="VBoxContainer"]
@@ -174,6 +182,20 @@ text = "Aaron Zheng
 Angel Zheng
 Nicky Parker
 Benson Lee"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Trello Manager"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Ainesh Jannoo"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

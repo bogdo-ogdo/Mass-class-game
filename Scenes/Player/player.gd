@@ -314,7 +314,6 @@ func bar_management():
 	
 	# Health Regenration
 	if health_regenrating == false and gates_closed == true and current_health < max_health:
-		print("Timer started")
 		health_regenrating = true
 		$Health_regen.start(health_regen_speed)
 	
@@ -600,10 +599,8 @@ func _on_audio_stream_player_finished():
 
 
 func _on_health_regen_timeout() -> void:
-	print("Regenerated")
 	if current_health < max_health:
 		current_health += 1
-	print(current_health, max_health)
 	health_regenrating = false
 	bar_management()
 
