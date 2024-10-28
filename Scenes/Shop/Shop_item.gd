@@ -25,6 +25,7 @@ func _ready():
 func load_item(ability : Ability):
 	sparkle.visible = false
 	shine.visible = false
+	$Fire.visible = false
 	price_label.self_modulate = Color(1,1,1)
 	current_ability = ability
 	visible = true
@@ -47,6 +48,7 @@ func load_item(ability : Ability):
 		set_color(legendaryColor)
 		sparkle.visible = true
 		shine.visible = true
+		$Fire.visible = true
 		
 
 
@@ -65,4 +67,4 @@ func _on_buy_button_pressed():
 		if current_ability.unique:
 			get_parent().unavalable_abilities.push_back(current_ability)
 			
-		get_parent().get_parent().update_money()
+		get_parent().update_money()

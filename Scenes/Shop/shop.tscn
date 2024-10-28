@@ -1,17 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://xybnlqsiurs"]
+[gd_scene load_steps=11 format=3 uid="uid://xybnlqsiurs"]
 
 [ext_resource type="Script" path="res://Scenes/Shop/shop.gd" id="1_g7f4h"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="1_tx80i"]
 [ext_resource type="PackedScene" uid="uid://b1dmldm7koy0f" path="res://Scenes/Shop/Shop_item.tscn" id="2_2jn5x"]
-[ext_resource type="Gradient" uid="uid://b8n6tjn4cqyto" path="res://Assets/UI/background gradient.tres" id="2_kdscm"]
+[ext_resource type="Shader" path="res://Shaders/background.gdshader" id="2_t70qy"]
+[ext_resource type="Texture2D" uid="uid://dhcy3cs6eeelw" path="res://Shaders/bubbles.png" id="3_7iecn"]
 [ext_resource type="Texture2D" uid="uid://b0bhvub6ejsd0" path="res://Assets/Gold/dolarbill3.png" id="5_ktpwa"]
 [ext_resource type="Texture2D" uid="uid://dtvg84l62m84u" path="res://Assets/Gold/dolarbilljfif.png" id="6_7ckd5"]
 [ext_resource type="Theme" uid="uid://bvblhux8phwpi" path="res://resources/ui/button.tres" id="19_tgkry"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yp7al"]
-gradient = ExtResource("2_kdscm")
-fill_from = Vector2(0.589744, 0.994302)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihpn2"]
+shader = ExtResource("2_t70qy")
+shader_parameter/bottom_color = Color(0, 0, 0, 1)
+shader_parameter/top_color = Color(0.130772, 0.130772, 0.130772, 1)
+shader_parameter/layer_count = 10
+shader_parameter/time_scale = 0.2
+shader_parameter/base_intensity = 0.5
+shader_parameter/size = 0.93001
+shader_parameter/tex = ExtResource("3_7iecn")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvkn5"]
 
@@ -23,17 +29,20 @@ offset_right = 640.0
 offset_bottom = 360.0
 script = ExtResource("1_g7f4h")
 reroll_button = NodePath("Reroll_button")
-shop_item1 = NodePath("HBoxContainer/Shop_item1")
-shop_item2 = NodePath("HBoxContainer/Shop_item2")
-shop_item3 = NodePath("HBoxContainer/Shop_item3")
-shop_item4 = NodePath("HBoxContainer/Shop_item4")
+shop_item1 = NodePath("Shop_item1")
+shop_item2 = NodePath("Shop_item2")
+shop_item3 = NodePath("Shop_item3")
+shop_item4 = NodePath("Shop_item4")
 money = NodePath("Money")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 360.0
-texture = SubResource("GradientTexture2D_yp7al")
+[node name="TextureRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ihpn2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Shop" type="Label" parent="."]
 layout_mode = 1
@@ -110,24 +119,33 @@ theme_override_fonts/font = ExtResource("1_tx80i")
 theme_override_font_sizes/font_size = 32
 text = "Next Floor"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="Shop_item1" parent="." instance=ExtResource("2_2jn5x")]
+layout_mode = 2
+offset_left = 11.0
 offset_top = 52.0
-offset_right = 640.0
+offset_right = 161.0
 offset_bottom = 307.0
-alignment = 1
 
-[node name="Shop_item1" parent="HBoxContainer" instance=ExtResource("2_2jn5x")]
+[node name="Shop_item2" parent="." instance=ExtResource("2_2jn5x")]
 layout_mode = 2
+offset_left = 167.0
+offset_top = 52.0
+offset_right = 317.0
+offset_bottom = 307.0
 
-[node name="Shop_item2" parent="HBoxContainer" instance=ExtResource("2_2jn5x")]
+[node name="Shop_item3" parent="." instance=ExtResource("2_2jn5x")]
 layout_mode = 2
+offset_left = 323.0
+offset_top = 52.0
+offset_right = 473.0
+offset_bottom = 307.0
 
-[node name="Shop_item3" parent="HBoxContainer" instance=ExtResource("2_2jn5x")]
+[node name="Shop_item4" parent="." instance=ExtResource("2_2jn5x")]
 layout_mode = 2
-
-[node name="Shop_item4" parent="HBoxContainer" instance=ExtResource("2_2jn5x")]
-layout_mode = 2
+offset_left = 479.0
+offset_top = 52.0
+offset_right = 629.0
+offset_bottom = 307.0
 
 [connection signal="pressed" from="Reroll_button" to="." method="_on_reroll_button_pressed"]
 [connection signal="pressed" from="Next_floor" to="." method="_on_next_floor_pressed"]

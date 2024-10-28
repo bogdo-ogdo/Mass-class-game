@@ -1,12 +1,29 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1dmldm7koy0f"]
+[gd_scene load_steps=21 format=3 uid="uid://b1dmldm7koy0f"]
 
 [ext_resource type="StyleBox" uid="uid://ck57dh8aif7jf" path="res://Scenes/Shop/Shop_item.tres" id="1_dyq6t"]
+[ext_resource type="Shader" path="res://Shaders/background.gdshader" id="1_ef060"]
 [ext_resource type="Script" path="res://Scenes/Shop/Shop_item.gd" id="1_xr1hj"]
 [ext_resource type="Texture2D" uid="uid://dbrmqxj07jvdr" path="res://Assets/Abilities/background.png" id="2_oxrp2"]
 [ext_resource type="Texture2D" uid="uid://bma7s2sot24qr" path="res://Assets/Abilities/Roided man with steroids.png" id="3_2qo8v"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="3_dnvut"]
 [ext_resource type="Shader" path="res://Shaders/Item.gdshader" id="3_odd6k"]
 [ext_resource type="Texture2D" uid="uid://b0bhvub6ejsd0" path="res://Assets/Gold/dolarbill3.png" id="5_hhwpk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nkkq1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4ai8"]
+seamless = true
+noise = SubResource("FastNoiseLite_nkkq1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldr3q"]
+shader = ExtResource("1_ef060")
+shader_parameter/bottom_color = Color(0.701961, 0.4, 0.101961, 1)
+shader_parameter/top_color = Color(0.890257, 0.531047, 0.199909, 1)
+shader_parameter/layer_count = 16
+shader_parameter/time_scale = 0.1
+shader_parameter/base_intensity = 0.195
+shader_parameter/size = 1.0
+shader_parameter/tex = SubResource("NoiseTexture2D_g4ai8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lndak"]
 shader = ExtResource("3_odd6k")
@@ -65,7 +82,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.11413)
 colors = PackedColorArray(0.980935, 0.738221, 0, 1, 1, 1, 1, 1)
 
 [node name="Shop_item" type="Panel" node_paths=PackedStringArray("sparkle")]
-self_modulate = Color(0.293305, 0.338087, 0.513125, 1)
+self_modulate = Color(0.701961, 0.4, 0.101961, 1)
 custom_minimum_size = Vector2(150, 250)
 offset_right = 120.0
 offset_bottom = 190.0
@@ -76,15 +93,22 @@ rareColor = Color(0.294118, 0.337255, 0.513726, 1)
 legendaryColor = Color(0.701961, 0.4, 0.101961, 1)
 sparkle = NodePath("Sparkle")
 
+[node name="Fire" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ldr3q")
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 148.0
+offset_bottom = 248.0
+
 [node name="shine" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_lndak")
 offset_right = 150.0
-offset_bottom = 250.0
+offset_bottom = 255.0
 texture = SubResource("GradientTexture2D_yan4b")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="."]
-use_parent_material = true
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 73.0

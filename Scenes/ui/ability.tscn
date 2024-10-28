@@ -18,10 +18,12 @@ texture = ExtResource("2_5fj6r")
 centered = false
 
 [node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 5.0
-offset_right = 38.0
-offset_bottom = 37.0
+offset_right = 70.0
+offset_bottom = 69.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_7myqg")
 
 [node name="Ability" type="Sprite2D" parent="."]

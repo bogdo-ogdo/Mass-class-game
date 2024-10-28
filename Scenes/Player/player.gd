@@ -50,6 +50,7 @@ var current_health : float = 5
 var current_mana : float = 150
 var current_dashes : float
 var dash_duration : float = .15
+var dash_regen_speed : float = 0.02
 var move_speed : float = 5
 var dash_speed : float = 300
 var max_health : float = 5
@@ -202,12 +203,10 @@ func _physics_process(delta):
 		shake_strength = lerpf(shake_strength,0,shake_fade*delta)
 		camera.offset = random_offset()
 	
-	
-	
-	
 	bar_management()
 	weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	move_and_slide()
+
 
 func apply_friction(delta):
 	if acceleration == Vector2.ZERO and velocity.length() < 50:
@@ -360,7 +359,7 @@ func bar_management():
 		dash_regen = false
 		current_dashes = max_dashes
 	if dash_regen:
-		current_dashes += .02
+		current_dashes += dash_regen_speed
 
 
 func reset():
@@ -456,6 +455,8 @@ func update_abilities():
 	mana_regen_speed = .25
 	highvalue = 0
 	drunkness = 0
+	dash_regen_timer.wait_time = 2
+	car = false
 	
 	for ability in abiliites:
 		#elif ability.ability_name == "":
@@ -469,10 +470,7 @@ func update_abilities():
 			highvalue += ability.quantity
 			drunkness += ability.quantity * .1
 		elif ability.ability_name == "Dash Distance":
-			dash_duration += 0.05
-		elif ability.ability_name == "Car":
-			car = true
-			weapon.damage *= 2
+			dash_duration += 0.05 * ability.quantity
 		elif ability.ability_name == "The Juice":
 			weapon.damage += 1 * ability.quantity
 		elif ability.ability_name == "Alice wonderland":
@@ -495,7 +493,8 @@ func update_abilities():
 			weapon.damage *= .75
 			weapon.fire_rate *= 2
 		elif ability.ability_name == "Dash Cooldown":
-			dash_regen_timer.wait_time *= 0.5
+			dash_regen_timer.wait_time *= pow(0.5, ability.quantity)
+			dash_regen_speed *= 1 + 1 * ability.quantity
 		elif ability.ability_name == "Laser pointer":
 			weapon.laser_pointer = true
 			weapon.bullet_spread *= .5
@@ -509,7 +508,9 @@ func update_abilities():
 			move_speed *= 1 - .1 * ability.quantity
 		elif ability.ability_name == "Blood of the youth":
 			mana_regen_speed *= 1 + .5 * ability.quantity
-	
+		elif ability.ability_name == "Car":
+			car = true
+			weapon.damage *= 2 * ability.quantity
 	if max_health < 1:
 		max_health == 1
 	

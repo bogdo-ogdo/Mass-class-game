@@ -326,6 +326,8 @@ func load_map():
 					tile_map.set_cell(0,i,1,Vector2i(0, 4))
 				elif level == 3:
 					tile_map.set_cell(0,i,0,Vector2i(0, 4))
+			elif tile_map.get_cell_atlas_coords(0,i) == Vector2i(4, 3):
+				tile_map.set_cell(0,i,3,Vector2i(5,0))
 			
 			#if tile_map.get_cell_tile_data(0,i).get_custom_data("object") == "barrel":
 				#var brl = barrel.instantiate()

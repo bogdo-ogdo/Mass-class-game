@@ -2308,11 +2308,11 @@ minimap = NodePath("../../Minimap/Container/MiniMap")
 
 [node name="Shop" parent="Menus" instance=ExtResource("12_sndxk")]
 process_mode = 3
+visible = false
 avalable_abilities = Array[ExtResource("25_8w5kl")]([ExtResource("27_0148r"), ExtResource("28_1nw1y"), ExtResource("29_hwomh"), ExtResource("30_rkh6h"), ExtResource("46_ess5d"), ExtResource("31_sdbm5"), ExtResource("32_g3wgj"), ExtResource("33_pfpc2"), ExtResource("37_fbb3v"), ExtResource("38_dm0n0")])
 
 [node name="Start_menu" parent="Menus" instance=ExtResource("12_g12ls")]
 process_mode = 3
-visible = false
 
 [node name="Credits" parent="Menus" instance=ExtResource("22_2tg3p")]
 visible = false

@@ -1,18 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://c21u3b11dd227"]
+[gd_scene load_steps=13 format=3 uid="uid://c21u3b11dd227"]
 
 [ext_resource type="Script" path="res://Scenes/ui/start_menu.gd" id="1_hq4rm"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="2_3ryvb"]
 [ext_resource type="Texture2D" uid="uid://chkj1dv5ybbs5" path="res://Assets/UI/Game Logo.png" id="2_8l2ck"]
-[ext_resource type="Gradient" uid="uid://b8n6tjn4cqyto" path="res://Assets/UI/background gradient.tres" id="2_lddre"]
+[ext_resource type="Shader" path="res://Shaders/background.gdshader" id="2_34x2j"]
+[ext_resource type="Texture2D" uid="uid://dhcy3cs6eeelw" path="res://Shaders/bubbles.png" id="3_qd683"]
 [ext_resource type="Texture2D" uid="uid://t6wd82y1obf0" path="res://Assets/UI/Pause_menu_wrap.png" id="5_51jo0"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hbtyn"]
-gradient = ExtResource("2_lddre")
-width = 128
-height = 128
-fill_from = Vector2(0.4, 1)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60mrs"]
+shader = ExtResource("2_34x2j")
+shader_parameter/bottom_color = Color(0.0510291, 0.0352129, 0.0236162, 1)
+shader_parameter/top_color = Color(0.129412, 0.129412, 0.129412, 1)
+shader_parameter/layer_count = 10
+shader_parameter/time_scale = 0.2
+shader_parameter/base_intensity = 0.5
+shader_parameter/size = 0.93001
+shader_parameter/tex = ExtResource("3_qd683")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqvku"]
 
@@ -32,14 +35,14 @@ offset_right = 640.0
 offset_bottom = 360.0
 script = ExtResource("1_hq4rm")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_60mrs")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_hbtyn")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
