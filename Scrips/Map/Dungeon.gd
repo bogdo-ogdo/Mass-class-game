@@ -32,7 +32,7 @@ signal clear_floor
 @onready var credits : Control = $Menus/Credits
 @onready var music : AudioStreamPlayer = $Music
 
-@onready var lvl1_music = preload("res://audio/Level music/Green Gobby Stobby.mp3")
+@onready var lvl1_music = preload("res://audio/Level music/RE morse_ I haven't even morsed once.wav")
 @onready var lvl2_music = preload("res://audio/Level music/ZHAO_Ethan_Ambience_and_Dance_-_First_Draft.mp3")
 @onready var lvl3_music = preload("res://audio/Level music/Fuck_I_hate_being_poor.wav")
 @onready var boss_music = preload("res://audio/Boss_music/Middle.wav")
@@ -326,6 +326,8 @@ func load_map():
 					tile_map.set_cell(0,i,1,Vector2i(0, 4))
 				elif level == 3:
 					tile_map.set_cell(0,i,0,Vector2i(0, 4))
+			elif tile_map.get_cell_atlas_coords(0,i) == Vector2i(4, 3):
+				tile_map.set_cell(0,i,3,Vector2i(5,0))
 			
 			#if tile_map.get_cell_tile_data(0,i).get_custom_data("object") == "barrel":
 				#var brl = barrel.instantiate()

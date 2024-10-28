@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_rxftr")
 ability_name = "Roid Rage"
-description = "+ 1 damage + 30% projectile speed - 10% accuracy"
+description = "+ 1 damage         + 30% projectile speed               - 10% accuracy"
 texture = ExtResource("2_0x007")
 unique = false
 rarity = 0

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_f2dc6")
 ability_name = "Car"
-description = "The player moves like a car but ALL damage is doubled."
+description = "2x damage        The player moves like a car"
 texture = ExtResource("2_y18n3")
 unique = true
 rarity = 2

@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://n31opck5gme" path="res://Assets/Weapons/Charged/knifethrow.png" id="15_cmqn4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6xnq"]
+resource_local_to_scene = true
 shader = ExtResource("2_p1yaa")
 shader_parameter/progress = 0.2
 shader_parameter/noise_desnity = 20.0

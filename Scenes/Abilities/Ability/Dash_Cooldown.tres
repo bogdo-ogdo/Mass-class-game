@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_dekxt")
 ability_name = "Dash Cooldown"
-description = "Halfs the wait untill regen begins"
+description = "0.5x dash cooldown"
 texture = ExtResource("2_lbv1h")
 unique = false
 rarity = 0

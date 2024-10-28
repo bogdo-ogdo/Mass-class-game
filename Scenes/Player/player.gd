@@ -50,6 +50,7 @@ var current_health : float = 5
 var current_mana : float = 150
 var current_dashes : float
 var dash_duration : float = .15
+var dash_regen_speed : float = 0.02
 var move_speed : float = 5
 var dash_speed : float = 300
 var max_health : float = 5
@@ -72,6 +73,7 @@ var current_dash_usage : float
 var mana_regen : bool = false
 var dash_regen : bool = false
 var hit : bool = false
+var electricity : bool = false
 
 var shake_strength : float = 0.0
 var shake_fade : float = 5.0
@@ -202,12 +204,14 @@ func _physics_process(delta):
 	if shake_strength > 0:
 		shake_strength = lerpf(shake_strength,0,shake_fade*delta)
 		camera.offset = random_offset()
+	
 	if auto_aim and enemy_target != null:
 		weapon_rotate_to_mouse(enemy_target,delta)
 	else:
 		weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	bar_management()
 	move_and_slide()
+
 
 func apply_friction(delta):
 	if acceleration == Vector2.ZERO and velocity.length() < 50:
@@ -375,7 +379,7 @@ func bar_management():
 		dash_regen = false
 		current_dashes = max_dashes
 	if dash_regen:
-		current_dashes += .02
+		current_dashes += dash_regen_speed
 
 
 func reset():
@@ -471,6 +475,9 @@ func update_abilities():
 	mana_regen_speed = .25
 	highvalue = 0
 	drunkness = 0
+	dash_regen_timer.wait_time = 2
+	car = false
+	electricity = false
 	
 	for ability in abiliites:
 		#elif ability.ability_name == "":
@@ -482,12 +489,9 @@ func update_abilities():
 			weapon.piercing += ability.quantity
 			weapon.crit_chance += ability.quantity * 10
 			highvalue += ability.quantity
-			drunkness += ability.quantity * .5
+			drunkness += ability.quantity * .1
 		elif ability.ability_name == "Dash Distance":
-			dash_duration += 0.05
-		elif ability.ability_name == "Car":
-			car = true
-			weapon.damage *= 2
+			dash_duration += 0.05 * ability.quantity
 		elif ability.ability_name == "The Juice":
 			weapon.damage += 1 * ability.quantity
 		elif ability.ability_name == "Alice wonderland":
@@ -495,6 +499,11 @@ func update_abilities():
 			weapon.damage += ability.quantity * 1
 		elif ability.ability_name == "Roid Rage":
 			weapon.damage += ability.quantity
+		elif ability.ability_name == "Cold one":
+			drunkness += ability.quantity
+		elif ability.ability_name == "Blood of the youth":
+			max_mana += 50 * ability.quantity
+			max_health -= ability.quantity
 	
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":
@@ -505,7 +514,8 @@ func update_abilities():
 			weapon.damage *= .75
 			weapon.fire_rate *= 2
 		elif ability.ability_name == "Dash Cooldown":
-			dash_regen_timer.wait_time *= 0.5
+			dash_regen_timer.wait_time *= pow(0.5, ability.quantity)
+			dash_regen_speed *= 1 + 1 * ability.quantity
 		elif ability.ability_name == "Laser pointer":
 			weapon.laser_pointer = true
 			weapon.bullet_spread *= .5
@@ -514,6 +524,16 @@ func update_abilities():
 			weapon.money_shot = true
 		elif ability.ability_name == "Roid Rage":
 			weapon.bullet_speed *= 1 + .3 * ability.quantity
+		elif ability.ability_name == "Cold one":
+			max_health *= 1 + .25 * ability.quantity
+			move_speed *= 1 - .1 * ability.quantity
+		elif ability.ability_name == "Blood of the youth":
+			mana_regen_speed *= 1 + .5 * ability.quantity
+		elif ability.ability_name == "Car":
+			car = true
+			weapon.damage *= 2 * ability.quantity
+		elif ability.ability_name == "Tin foil hat":
+			electricity = true
 		elif ability.ability_name == "Dash Cooldown":
 			dash_regen_timer.wait_time *= 0.5
 		elif ability.ability_name == "Car":
@@ -522,6 +542,8 @@ func update_abilities():
 		elif ability.ability_name == "Third eye":
 			auto_aim = true
 			weapon.bullet_spread *= 0.9
+	if max_health < 1:
+		max_health == 1
 			
 	
 	update_bar_values()
@@ -555,6 +577,7 @@ func update_bar_values():
 func update_effects():
 	distortionShader.material.set_shader_parameter("distortion_strength", drunkness * .005)
 	distortionShader.material.set_shader_parameter("offset", highvalue)
+	$Electricity.set_active(electricity)
 
 
 func _on_footsteps_finished():

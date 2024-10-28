@@ -3,7 +3,7 @@ class_name Pistol
 
 
 func _ready():
-	full_auto = false
+	full_auto = true
 	bullet_type = "Large"
 	damage = 4
 	fire_rate = 3

@@ -1,38 +1,129 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1dmldm7koy0f"]
+[gd_scene load_steps=21 format=3 uid="uid://b1dmldm7koy0f"]
 
+[ext_resource type="StyleBox" uid="uid://ck57dh8aif7jf" path="res://Scenes/Shop/Shop_item.tres" id="1_dyq6t"]
+[ext_resource type="Shader" path="res://Shaders/background.gdshader" id="1_ef060"]
 [ext_resource type="Script" path="res://Scenes/Shop/Shop_item.gd" id="1_xr1hj"]
-[ext_resource type="Texture2D" uid="uid://dbrmqxj07jvdr" path="res://Assets/Abilities/background.png" id="2_oxrp2"]
 [ext_resource type="Texture2D" uid="uid://bma7s2sot24qr" path="res://Assets/Abilities/Roided man with steroids.png" id="3_2qo8v"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="3_dnvut"]
+[ext_resource type="Shader" path="res://Shaders/Item.gdshader" id="3_odd6k"]
 [ext_resource type="Texture2D" uid="uid://b0bhvub6ejsd0" path="res://Assets/Gold/dolarbill3.png" id="5_hhwpk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dywid"]
-bg_color = Color(0.253238, 0.253238, 0.253238, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nkkq1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oe4x5"]
+seamless = true
+noise = SubResource("FastNoiseLite_nkkq1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldr3q"]
+shader = ExtResource("1_ef060")
+shader_parameter/bottom_color = Color(0.701961, 0.4, 0.101961, 1)
+shader_parameter/top_color = Color(0.890257, 0.531047, 0.199909, 1)
+shader_parameter/layer_count = 16
+shader_parameter/time_scale = 0.1
+shader_parameter/base_intensity = 0.195
+shader_parameter/size = 1.0
+shader_parameter/tex = SubResource("NoiseTexture2D_oe4x5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lndak"]
+shader = ExtResource("3_odd6k")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.1
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 45.0
+shader_parameter/Distortion = 1.6
+shader_parameter/Speed = 0.6
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="Gradient" id="Gradient_e1s0o"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yan4b"]
+gradient = SubResource("Gradient_e1s0o")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0wy3"]
+bg_color = Color(1, 1, 1, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-shadow_color = Color(0.108721, 0.108721, 0.108721, 0.6)
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
+border_color = Color(0.270588, 0.270588, 0.270588, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gb1x7"]
 
-[node name="Shop_item" type="Panel"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnjck"]
+bg_color = Color(0.944281, 0.944281, 0.944281, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.241156, 0.241156, 0.241156, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fstlb"]
+bg_color = Color(0.860369, 0.860369, 0.860369, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.226707, 0.226707, 0.226707, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ib250"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.270588, 0.270588, 0.270588, 1)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="Gradient" id="Gradient_waeum"]
+offsets = PackedFloat32Array(0, 0.181172, 0.719361, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.11413)
+
+[sub_resource type="Gradient" id="Gradient_5r13g"]
+colors = PackedColorArray(0.980935, 0.738221, 0, 1, 1, 1, 1, 1)
+
+[node name="Shop_item" type="Panel" node_paths=PackedStringArray("sparkle")]
+self_modulate = Color(0.701961, 0.4, 0.101961, 1)
 custom_minimum_size = Vector2(150, 250)
 offset_right = 120.0
 offset_bottom = 190.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_dywid")
+theme_override_styles/panel = ExtResource("1_dyq6t")
 script = ExtResource("1_xr1hj")
+commonColor = Color(0.34902, 0.34902, 0.34902, 1)
+rareColor = Color(0.294118, 0.337255, 0.513726, 1)
+legendaryColor = Color(0.701961, 0.4, 0.101961, 1)
+sparkle = NodePath("Sparkle")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(25, 25)
-scale = Vector2(1.0625, 1.0625)
-texture = ExtResource("2_oxrp2")
+[node name="Fire" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ldr3q")
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 148.0
+offset_bottom = 248.0
+
+[node name="shine" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_lndak")
+offset_right = 150.0
+offset_bottom = 255.0
+texture = SubResource("GradientTexture2D_yan4b")
+expand_mode = 1
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0wy3")
 
 [node name="Icon" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 73.0
@@ -45,14 +136,18 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -96.0
-offset_top = -4.0
-offset_right = -4.0
-offset_bottom = 51.0
+offset_left = -103.0
+offset_top = 6.0
+offset_right = -31.0
+offset_bottom = 42.0
 grow_horizontal = 0
+scale = Vector2(1.4, 1.4)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -3
+theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("3_dnvut")
-theme_override_font_sizes/font_size = 32
-text = "Better Bullets"
+theme_override_font_sizes/font_size = 16
+text = "name"
 autowrap_mode = 2
 
 [node name="Description" type="RichTextLabel" parent="."]
@@ -65,12 +160,12 @@ anchor_bottom = 0.5
 offset_left = -59.0
 offset_top = -72.0
 offset_right = 54.0
-offset_bottom = 20.0
+offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_dnvut")
-theme_override_font_sizes/normal_font_size = 0
-text = "+ 20% bullet damage"
+text = "+ 1 pierce          + 10% crit chance"
 
 [node name="Buy_button" type="Button" parent="."]
 layout_mode = 1
@@ -88,6 +183,9 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_dnvut")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gb1x7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pnjck")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fstlb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ib250")
 expand_icon = true
 
 [node name="coin_icon" type="Sprite2D" parent="Buy_button"]
@@ -105,9 +203,23 @@ offset_top = -15.0
 offset_right = 43.0
 offset_bottom = 11.0
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_dnvut")
 theme_override_font_sizes/font_size = 32
 text = "500"
 horizontal_alignment = 2
+
+[node name="Sparkle" type="CPUParticles2D" parent="."]
+position = Vector2(75, 125)
+amount = 20
+emission_shape = 3
+emission_rect_extents = Vector2(80, 130)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_waeum")
+color_initial_ramp = SubResource("Gradient_5r13g")
 
 [connection signal="pressed" from="Buy_button" to="." method="_on_buy_button_pressed"]
