@@ -38,6 +38,7 @@ var wander : bool
 var spawn : bool
 var gold_spawned : bool = false
 var on_top : bool = false
+var waiting : bool = true
 
 enum {
 	APROACH,
@@ -90,7 +91,6 @@ func _physics_process(delta: float) -> void:
 	if can_attack == true:
 			visible = true
 			state = APROACH
-			on_top = true
 
 	
 	
@@ -106,10 +106,13 @@ func _physics_process(delta: float) -> void:
 		alt_animation.play("hit")
 		hit = false
 
-	if on_top:
-		position = player.position
+	if waiting:
+		pass
+	elif on_top:
+		global_position = player.global_position
+		print(position)
 	else:
-		velocity = (player.position - position).normalized()*move_speed
+		velocity = (player.global_position - global_position).normalized()*move_speed
 		move_and_slide()
 
 
@@ -130,10 +133,12 @@ func _on_attack_timer_timeout():
 	can_attack = true
 	visible = true
 	idle_timer.start(3)
+	waiting = false
 	on_top = true
 
 func _on_idle_timer_timeout():
-	damage_collider.disabled = false
+	nav_timer.start(0.5)
+	waiting = true
 	on_top=false
 
 
@@ -147,3 +152,10 @@ func _on_collision_damage_area_entered(area):
 func _on_sound_finished():
 	if gold_spawned:
 		queue_free()
+
+
+func _on_nav_timer_timeout() -> void:
+	waiting = false
+	damage_collider.disabled = false
+	modulate.a = 1.0
+	pass # Replace with function body.

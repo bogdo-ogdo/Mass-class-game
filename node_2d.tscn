@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://uk6yrsv45ei4"]
+[gd_scene load_steps=122 format=4 uid="uid://uk6yrsv45ei4"]
 
 [ext_resource type="Script" path="res://Scrips/Map/Dungeon.gd" id="1_l1dci"]
 [ext_resource type="PackedScene" uid="uid://cu5irw5yngrsi" path="res://Scenes/Player/player.tscn" id="1_l5ov3"]

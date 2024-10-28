@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cu5irw5yngrsi"]
+[gd_scene load_steps=57 format=3 uid="uid://cu5irw5yngrsi"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_fqlgg"]
 [ext_resource type="Resource" uid="uid://bq4oofxg3pous" path="res://Scenes/Abilities/Ability_inventory.tres" id="2_o8fdp"]
@@ -22,8 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://gwpwdp2bhyvw" path="res://Assets/UI/Blood_bag_blood.png" id="15_0hncy"]
 [ext_resource type="AudioStream" uid="uid://dvyxkuimg0wsy" path="res://audio/player/sad trombone.mp3" id="19_i0iom"]
 [ext_resource type="Shader" path="res://Shaders/electricity.gdshader" id="22_7afex"]
-[ext_resource type="Script" path="res://Scenes/Player/electricity.gd" id="23_dxhgl"]
 [ext_resource type="Script" path="res://Scenes/Player/auto_aim.gd" id="22_b4h6m"]
+[ext_resource type="Script" path="res://Scenes/Player/electricity.gd" id="23_dxhgl"]
 
 [sub_resource type="Animation" id="Animation_626wt"]
 length = 0.001
@@ -372,6 +372,7 @@ shader_parameter/brightness = 1.0
 shader_parameter/time_scale = 2.0
 shader_parameter/noise = SubResource("NoiseTexture2D_jlxf0")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_6rold")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8w5t1"]
 radius = 102.591
 
@@ -874,6 +875,7 @@ offset_top = 25.0
 offset_right = 175.0
 offset_bottom = 175.0
 color = Color(0.533333, 0.32549, 1, 1)
+
 [node name="auto_aim" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4

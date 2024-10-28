@@ -1,11 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cn7ioroahhggj"]
+[gd_scene load_steps=18 format=3 uid="uid://cn7ioroahhggj"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Ghost/ghost.gd" id="1_cvhwk"]
 [ext_resource type="Shader" path="res://Shaders/spawn.gdshader" id="2_i85bb"]
 [ext_resource type="Texture2D" uid="uid://dhnf3t1h1hckd" path="res://Assets/Enemy/Ghost-Sheet.png" id="3_c1v73"]
-[ext_resource type="Texture2D" uid="uid://con7ukapqwiy6" path="res://Assets/Enemy/Peasant_idle.png" id="4_acxpo"]
-[ext_resource type="Texture2D" uid="uid://qxn1k3r7wf5k" path="res://Assets/Enemy/Knight Pixel Art/Spritesheet/Hero-idle-Sheet.png" id="5_pergc"]
-[ext_resource type="Texture2D" uid="uid://c0evuycy1jr76" path="res://Assets/Enemy/Knight Pixel Art/Spritesheet/Hero-walk-Sheet.png" id="6_p364b"]
 [ext_resource type="AudioStream" uid="uid://wj6jbx6v42xb" path="res://audio/Enemy/human_die.wav" id="7_3341a"]
 [ext_resource type="Texture2D" uid="uid://2pappgmugtue" path="res://Assets/Effects/square.png" id="8_wa0a3"]
 [ext_resource type="AudioStream" uid="uid://d4c7wbcdnpbmi" path="res://audio/Weapon/gunshot.wav" id="9_570oa"]
@@ -32,6 +29,54 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_c1v73")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="Animation" id="Animation_t4o3w"]
 resource_name = "idle"
@@ -48,7 +93,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_acxpo")]
+"values": [ExtResource("3_c1v73")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -60,7 +105,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -72,7 +117,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -102,7 +147,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_pergc")]
+"values": [ExtResource("3_c1v73")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -114,7 +159,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -126,7 +171,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -156,7 +201,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_p364b")]
+"values": [ExtResource("3_c1v73")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -168,7 +213,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -180,7 +225,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -189,10 +234,10 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ybo16"]
@@ -265,12 +310,12 @@ height = 14.0
 
 [node name="Ghost" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 1
-z_as_relative = false
 y_sort_enabled = true
 collision_layer = 0
 collision_mask = 69
 script = ExtResource("1_cvhwk")
-move_speed = 1.0
+gold_drop = Vector2(2, 5)
+move_speed = 40.0
 health = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
