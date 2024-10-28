@@ -73,6 +73,7 @@ var current_dash_usage : float
 var mana_regen : bool = false
 var dash_regen : bool = false
 var hit : bool = false
+var electricity : bool = false
 
 var shake_strength : float = 0.0
 var shake_fade : float = 5.0
@@ -457,6 +458,7 @@ func update_abilities():
 	drunkness = 0
 	dash_regen_timer.wait_time = 2
 	car = false
+	electricity = false
 	
 	for ability in abiliites:
 		#elif ability.ability_name == "":
@@ -511,6 +513,8 @@ func update_abilities():
 		elif ability.ability_name == "Car":
 			car = true
 			weapon.damage *= 2 * ability.quantity
+		elif ability.ability_name == "Tin foil hat":
+			electricity = true
 	if max_health < 1:
 		max_health == 1
 	
@@ -545,6 +549,7 @@ func update_bar_values():
 func update_effects():
 	distortionShader.material.set_shader_parameter("distortion_strength", drunkness * .005)
 	distortionShader.material.set_shader_parameter("offset", highvalue)
+	$Electricity.set_active(electricity)
 
 
 func _on_footsteps_finished():

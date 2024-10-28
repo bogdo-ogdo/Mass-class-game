@@ -1,28 +1,86 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt1o23tv8qytk"]
+[gd_scene load_steps=15 format=3 uid="uid://bt1o23tv8qytk"]
 
 [ext_resource type="Script" path="res://Scenes/ui/ability_ui.gd" id="1_2kin2"]
-[ext_resource type="Texture2D" uid="uid://cbu7tg05fuy5t" path="res://Assets/Abilities/ability_background.png" id="2_5fj6r"]
+[ext_resource type="Shader" path="res://Shaders/background.gdshader" id="2_s80rd"]
 [ext_resource type="Texture2D" uid="uid://b2732iwg6kyi4" path="res://Assets/Abilities/Alice_s Cake (1).png" id="3_7myqg"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="4_83owu"]
+[ext_resource type="Shader" path="res://Shaders/Item.gdshader" id="4_j3657"]
 
-[node name="Ability_ui" type="Panel"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(22, 22)
-offset_right = 22.0
-offset_bottom = 22.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qaxm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.270588, 0.270588, 0.270588, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_17v6l"]
+frequency = 0.0017
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vbrt3"]
+seamless = true
+noise = SubResource("FastNoiseLite_17v6l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ee0yl"]
+shader = ExtResource("2_s80rd")
+shader_parameter/bottom_color = Color(0.701961, 0.4, 0.101961, 1)
+shader_parameter/top_color = Color(0.81385, 0.472528, 0.144204, 1)
+shader_parameter/layer_count = 5
+shader_parameter/time_scale = 0.2
+shader_parameter/base_intensity = 0.25
+shader_parameter/size = 0.60001
+shader_parameter/tex = SubResource("NoiseTexture2D_vbrt3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pik1e"]
+shader = ExtResource("4_j3657")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.1
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 45.0
+shader_parameter/Distortion = 1.6
+shader_parameter/Speed = 0.6
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="Gradient" id="Gradient_6eo8r"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dt5yn"]
+gradient = SubResource("Gradient_6eo8r")
+
+[sub_resource type="Gradient" id="Gradient_bksmx"]
+offsets = PackedFloat32Array(0, 0.181172, 0.719361, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.11413)
+
+[sub_resource type="Gradient" id="Gradient_5opgx"]
+colors = PackedColorArray(0.980935, 0.738221, 0, 1, 1, 1, 1, 1)
+
+[node name="Ability_ui" type="Panel" node_paths=PackedStringArray("sparkle")]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qaxm")
 script = ExtResource("1_2kin2")
+commonColor = Color(0.34902, 0.34902, 0.34902, 1)
+rareColor = Color(0.294118, 0.337255, 0.513726, 1)
+legendaryColor = Color(0.701961, 0.4, 0.101961, 1)
+sparkle = NodePath("Sparkle")
 
-[node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_5fj6r")
-centered = false
+[node name="Fire" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ee0yl")
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 38.0
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 5.0
-offset_right = 70.0
-offset_bottom = 69.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_7myqg")
 
@@ -32,22 +90,27 @@ position = Vector2(3, 3)
 texture = ExtResource("3_7myqg")
 centered = false
 
+[node name="shine" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_pik1e")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_dt5yn")
+expand_mode = 1
+
 [node name="Quantity" type="Label" parent="."]
-visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 20.0
-offset_top = 10.0
-offset_right = 21.0
-offset_bottom = 23.0
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 18.0
+offset_bottom = 12.0
 theme_override_fonts/font = ExtResource("4_83owu")
 theme_override_font_sizes/font_size = 16
-text = "1"
-horizontal_alignment = 1
+text = "1
+"
 autowrap_mode = 1
 
 [node name="Name" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -83,3 +146,17 @@ theme_override_font_sizes/normal_font_size = 16
 text = "description"
 fit_content = true
 scroll_active = false
+
+[node name="Sparkle" type="CPUParticles2D" parent="."]
+position = Vector2(20, 20)
+amount = 5
+emission_shape = 3
+emission_rect_extents = Vector2(24, 24)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+color_ramp = SubResource("Gradient_bksmx")
+color_initial_ramp = SubResource("Gradient_5opgx")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -9,6 +9,7 @@ extends Panel
 @onready var ability_inventory : Ability_Inventory = preload("res://Scenes/Abilities/Ability_inventory.tres")
 @onready var description : RichTextLabel = $Description
 @onready var ability_icon : TextureRect = $Icon
+@onready var background : Panel = $background
 @onready var price_label : Label = $Buy_button/Price
 @onready var buy_button : Button = $Buy_button
 @onready var ability_name : Label = $Name
@@ -54,6 +55,7 @@ func load_item(ability : Ability):
 
 func set_color(color : Color):
 	self_modulate = color
+	background.self_modulate = color
 	buy_button.self_modulate = color
 
 

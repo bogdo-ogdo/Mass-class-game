@@ -492,5 +492,7 @@ libraries = {
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-2, -8)
 rect = Rect2(-10, -10, 40, 40)
+enable_mode = 1
+enable_node_path = NodePath("../Sprite2D")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

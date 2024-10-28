@@ -32,7 +32,7 @@ signal clear_floor
 @onready var credits : Control = $Menus/Credits
 @onready var music : AudioStreamPlayer = $Music
 
-@onready var lvl1_music = preload("res://audio/Level music/Green Gobby Stobby.mp3")
+@onready var lvl1_music = preload("res://audio/Level music/RE morse_ I haven't even morsed once.wav")
 @onready var lvl2_music = preload("res://audio/Level music/ZHAO_Ethan_Ambience_and_Dance_-_First_Draft.mp3")
 @onready var lvl3_music = preload("res://audio/Level music/Fuck_I_hate_being_poor.wav")
 @onready var boss_music = preload("res://audio/Boss_music/Middle.wav")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://bx2pnx3us5g51"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_f2abv"]
+[ext_resource type="Texture2D" uid="uid://bkviqmtghl8tq" path="res://Assets/Abilities/Tin_foil_hat.png" id="2_2gx1l"]
+
+[resource]
+script = ExtResource("1_f2abv")
+ability_name = "Tin foil hat"
+description = "Creates a damaging electric field around you"
+texture = ExtResource("2_2gx1l")
+unique = true
+rarity = 2
+cost = 90

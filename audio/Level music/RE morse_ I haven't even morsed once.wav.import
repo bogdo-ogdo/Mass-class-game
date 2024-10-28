@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcj2tqkvy5vmp"
+path="res://.godot/imported/RE morse_ I haven't even morsed once.wav-dcf350bb5b924100914f58eb1008d7a5.sample"
+
+[deps]
+
+source_file="res://audio/Level music/RE morse_ I haven't even morsed once.wav"
+dest_files=["res://.godot/imported/RE morse_ I haven't even morsed once.wav-dcf350bb5b924100914f58eb1008d7a5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
