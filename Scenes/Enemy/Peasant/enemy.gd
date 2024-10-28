@@ -198,6 +198,7 @@ func shoot():
 
 
 func die():
+	get_parent().get_parent().spawn_blood(int(40), global_position, rotation + deg_to_rad(90), true, 4)
 	get_parent().alive_enemies -= 1
 	player.enemies_killed += 1
 	for i in range(0,randi_range(gold_drop.x,gold_drop.y)):

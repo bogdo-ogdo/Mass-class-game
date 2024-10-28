@@ -1,7 +1,7 @@
 extends Panel
 
 @onready var background_sprite : Sprite2D = $Background
-@onready var ability_sprite : Sprite2D = $Ability
+@onready var ability_sprite : TextureRect = $Icon
 @onready var ability_name : Label = $Name
 @onready var ability_description : RichTextLabel = $Description
 @onready var quantity : Label = $Quantity

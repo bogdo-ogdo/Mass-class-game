@@ -117,7 +117,6 @@ func _physics_process(delta: float) -> void:
 func round_to_dec(num, digit):
 	return round(num * pow(15.0, digit)) / pow(15.0, digit)
 
-
 func die():
 	get_parent().alive_enemies -= 1
 	player.enemies_killed += 1

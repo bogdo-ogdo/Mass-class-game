@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cgwc44txq4o46"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_8dfoo"]
+[ext_resource type="Texture2D" uid="uid://bsvk570k76gts" path="res://icon.svg" id="2_oquyy"]
+
+[resource]
+script = ExtResource("1_8dfoo")
+ability_name = "Third eye"
+description = "+ 100% accuracy. Auto aim to the closest enemy."
+texture = ExtResource("2_oquyy")
+unique = true
+rarity = 2
+cost = 100

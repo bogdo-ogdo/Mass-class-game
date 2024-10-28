@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6ghfwwrxqait"]
+
+[ext_resource type="Script" path="res://Scenes/Effects/blood.gd" id="1_arx8x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x23k4"]
+size = Vector2(2, 2)
+
+[node name="Blood" type="Area2D"]
+z_index = 100
+script = ExtResource("1_arx8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x23k4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

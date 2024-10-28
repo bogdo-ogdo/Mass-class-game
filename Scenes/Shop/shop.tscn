@@ -1,29 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://xybnlqsiurs"]
+[gd_scene load_steps=10 format=3 uid="uid://xybnlqsiurs"]
 
 [ext_resource type="Script" path="res://Scenes/Shop/shop.gd" id="1_g7f4h"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="1_tx80i"]
 [ext_resource type="PackedScene" uid="uid://b1dmldm7koy0f" path="res://Scenes/Shop/Shop_item.tscn" id="2_2jn5x"]
-[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="2_4m8xy"]
-[ext_resource type="Resource" uid="uid://bdyxg27srsgt4" path="res://Scenes/Abilities/Ability/Better_bullets.tres" id="2_cljn5"]
 [ext_resource type="Gradient" uid="uid://b8n6tjn4cqyto" path="res://Assets/UI/background gradient.tres" id="2_kdscm"]
-[ext_resource type="Resource" uid="uid://ct76npqclpoim" path="res://Scenes/Abilities/Ability/bigger_bullet.tres" id="3_0k2qg"]
-[ext_resource type="Texture2D" uid="uid://d1t8jh7ag0x6q" path="res://Assets/Gold/Coin.png" id="3_ir36f"]
-[ext_resource type="Resource" uid="uid://cesj4wh6a8g6f" path="res://Scenes/Abilities/Ability/More_health.tres" id="4_sm6su"]
-[ext_resource type="Resource" uid="uid://bhjbgtt3ew3vw" path="res://Scenes/Abilities/Ability/Double_bullet.tres" id="5_mbgjc"]
-[ext_resource type="Resource" uid="uid://dyoaun1qwjr7r" path="res://Scenes/Abilities/Ability/Faster_bullets.tres" id="6_wmkof"]
-[ext_resource type="Resource" uid="uid://vwn55v5u5d3o" path="res://Scenes/Abilities/Ability/More_mana.tres" id="7_oe24p"]
-[ext_resource type="Resource" uid="uid://cf27t3i6210u7" path="res://Scenes/Abilities/Ability/Full_Auto.tres" id="8_22f7l"]
-[ext_resource type="Resource" uid="uid://11jo6unxbwbd" path="res://Scenes/Abilities/Ability/Lucky.tres" id="9_1whxv"]
-[ext_resource type="Resource" uid="uid://b1lr4d4guac6g" path="res://Scenes/Abilities/Ability/Laser_pointer.tres" id="10_tddpc"]
-[ext_resource type="Resource" uid="uid://btb6irmyuhh81" path="res://Scenes/Abilities/Ability/Faster_receiver.tres" id="11_gsxgc"]
-[ext_resource type="Resource" uid="uid://duvhodpno2ef0" path="res://Scenes/Abilities/Ability/Belt_fed.tres" id="12_2nfs0"]
-[ext_resource type="Resource" uid="uid://cvexgwyw7hwud" path="res://Scenes/Abilities/Ability/Scope.tres" id="13_03bm0"]
-[ext_resource type="Resource" uid="uid://cwxsnmqpqfgjy" path="res://Scenes/Abilities/Ability/Metal_jacket.tres" id="15_kwkym"]
+[ext_resource type="Texture2D" uid="uid://b0bhvub6ejsd0" path="res://Assets/Gold/dolarbill3.png" id="5_ktpwa"]
+[ext_resource type="Texture2D" uid="uid://dtvg84l62m84u" path="res://Assets/Gold/dolarbilljfif.png" id="6_7ckd5"]
 [ext_resource type="Theme" uid="uid://bvblhux8phwpi" path="res://resources/ui/button.tres" id="19_tgkry"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yp7al"]
 gradient = ExtResource("2_kdscm")
-fill_from = Vector2(0.623932, 1)
+fill_from = Vector2(0.589744, 0.994302)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvkn5"]
@@ -40,7 +27,6 @@ shop_item1 = NodePath("Shop_item1")
 shop_item2 = NodePath("Shop_item2")
 shop_item3 = NodePath("Shop_item3")
 money = NodePath("Money")
-avalable_abilities = Array[ExtResource("2_4m8xy")]([ExtResource("2_cljn5"), ExtResource("3_0k2qg"), ExtResource("4_sm6su"), ExtResource("5_mbgjc"), ExtResource("6_wmkof"), ExtResource("7_oe24p"), ExtResource("8_22f7l"), ExtResource("9_1whxv"), ExtResource("10_tddpc"), ExtResource("11_gsxgc"), ExtResource("12_2nfs0"), ExtResource("13_03bm0"), ExtResource("15_kwkym")])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -101,8 +87,9 @@ icon_alignment = 2
 expand_icon = true
 
 [node name="icon" type="Sprite2D" parent="Reroll_button"]
-position = Vector2(120, 19)
-texture = ExtResource("3_ir36f")
+position = Vector2(112, 17)
+scale = Vector2(0.460938, 0.490741)
+texture = ExtResource("5_ktpwa")
 
 [node name="Money" type="Label" parent="."]
 layout_mode = 1
@@ -122,8 +109,8 @@ autowrap_mode = 2
 text_direction = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Money"]
-position = Vector2(45, 14.75)
-texture = ExtResource("3_ir36f")
+position = Vector2(72, 16.5)
+texture = ExtResource("6_7ckd5")
 
 [node name="Next_floor" type="Button" parent="."]
 layout_mode = 1

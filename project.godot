@@ -23,6 +23,7 @@ config/size/viewport_width=1920
 [autoload]
 
 dungeon_generation="*res://Scrips/Map/Dungeon_generation.gd"
+BloodTilemap="*res://Scenes/Effects/blood_tilemap.gd"
 
 [debug]
 

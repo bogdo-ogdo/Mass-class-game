@@ -1,54 +1,62 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc6254s7jvde"]
+[gd_scene load_steps=8 format=3 uid="uid://bc6254s7jvde"]
 
 [ext_resource type="Script" path="res://Scenes/Effects/Blood_splat.gd" id="1_tv3vq"]
 
-[sub_resource type="Curve" id="Curve_tk7w0"]
-min_value = 150.0
-max_value = 360.0
-_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, 150), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Gradient" id="Gradient_27hqi"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.332123, 0.800363, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.211765, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tfmwg"]
+gradient = SubResource("Gradient_27hqi")
+width = 10
+height = 10
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
 
 [sub_resource type="Curve" id="Curve_r0bya"]
-max_value = 100.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
-point_count = 3
+max_value = 500.0
+_data = [Vector2(0, 16), 0.0, 0.0, 0, 0, Vector2(0.1, 16), 0.0, 0.0, 0, 0, Vector2(0.12, 500), 0.0, 0.0, 0, 0, Vector2(1, 500), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Curve" id="Curve_jwgmx"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89547, 0.791733), -0.590831, -0.590831, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.05, 0.7), 0.0, 0.0, 0, 0, Vector2(0.1, 0.4), 0.0, 0.0, 0, 0, Vector2(0.12, 1), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_o37gg"]
 offsets = PackedFloat32Array(0, 0.666667, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.976471, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_pe57x"]
-offsets = PackedFloat32Array(0, 0.818352, 0.913858)
-colors = PackedColorArray(0.858824, 0, 0, 1, 0.858824, 0, 0, 1, 1, 0.980814, 0.909456, 1)
+offsets = PackedFloat32Array(0, 0.818352, 1)
+colors = PackedColorArray(0.784314, 0, 0, 1, 0.862745, 0, 0, 1, 1, 0.980814, 0.909456, 1)
 
 [node name="Blood_splat" type="CPUParticles2D"]
+visible = false
 top_level = true
 position = Vector2(23, 0)
-emitting = false
+scale = Vector2(0.5, 0.5)
 amount = 30
-lifetime = 2.0
-preprocess = 100.0
-explosiveness = 0.9
+lifetime = 5.0
+explosiveness = 0.95
 randomness = 0.03
-local_coords = true
-direction = Vector2(-1, 0)
-gravity = Vector2(0, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 250.0
-angular_velocity_min = 1.0
-angular_velocity_max = 1.0
-angular_velocity_curve = SubResource("Curve_tk7w0")
+lifetime_randomness = 0.1
+texture = SubResource("GradientTexture2D_tfmwg")
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(-1, -0.2)
+spread = 30.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
 damping_min = 10.0
 damping_max = 10.0
 damping_curve = SubResource("Curve_r0bya")
 angle_min = -360.0
 angle_max = 360.0
-scale_amount_min = 4.0
-scale_amount_max = 7.0
+scale_amount_min = 0.25
 scale_amount_curve = SubResource("Curve_jwgmx")
 color_ramp = SubResource("Gradient_o37gg")
 color_initial_ramp = SubResource("Gradient_pe57x")
