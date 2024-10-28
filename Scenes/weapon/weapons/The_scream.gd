@@ -1,11 +1,11 @@
 extends weapon_type
-class_name FlameThrower
+class_name The_scream
 
 
 func _ready():
 	full_auto = true
 	flamethrow = true
-	bullet_type = "Gradient"
+	bullet_type = "scream"
 	damage = .75
 	fire_rate = 60
 	mana_cost = .5
@@ -13,9 +13,9 @@ func _ready():
 	bullet_size = .2
 	bullet_speed = 4
 	bullet_spread = 1.5
-	txture = "res://Assets/Weapons/FlameThrower.png"
+	txture = "res://Assets/Weapons/The_scream.png"
 	sound = "res://audio/Weapon/flamethrower.wav"
 
 
 func Update(_delta):
-	anim_player.play("FlameThrower")
+	anim_player.play("The_scream")
