@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var weapon : CharacterBody2D = get_tree().get_first_node_in_group("Player").get_child(4)
 @onready var blood_splat = preload("res://Scenes/Effects/Blood_splat.tscn")
+@onready var blood = preload("res://Scenes/Effects/blood.tscn")
 @onready var explosion = preload("res://Scenes/Bullet/explosion.tscn")
 
 var bloodAmmount : float
@@ -123,7 +124,7 @@ func splat():
 	get_parent().add_child(bd)
 	bd.transform = transform
 	bd.scale = Vector2(.4,.4)
-
+	get_parent().spawn_blood(int(damage*2 + 1), global_position, rotation + deg_to_rad(90), false, 0)
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Enemy"):

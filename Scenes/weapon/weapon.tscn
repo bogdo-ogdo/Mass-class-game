@@ -1584,7 +1584,7 @@ libraries = {
 
 [node name="WeaponMachine" type="Node" parent="." node_paths=PackedStringArray("initial_weapon")]
 script = ExtResource("4_w1n20")
-initial_weapon = NodePath("Trench_gun")
+initial_weapon = NodePath("Pistol")
 
 [node name="Pistol" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
 script = ExtResource("5_7xyep")

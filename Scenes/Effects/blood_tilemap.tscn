@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvia0u87usrwv"]
+
+[ext_resource type="Texture2D" uid="uid://bp18atgjx844j" path="res://Assets/TileSet/bloodTileset.png" id="1_fn6bn"]
+[ext_resource type="Script" path="res://Scenes/Effects/blood_tilemap.gd" id="2_mn58t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mw5ed"]
+texture = ExtResource("1_fn6bn")
+texture_region_size = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/left_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+1:0/0/terrains_peering_bit/top_side = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSet" id="TileSet_aalrq"]
+tile_size = Vector2i(2, 2)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_mw5ed")
+
+[node name="BloodTilemap" type="TileMapLayer"]
+z_as_relative = false
+tile_set = SubResource("TileSet_aalrq")
+script = ExtResource("2_mn58t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.025
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
