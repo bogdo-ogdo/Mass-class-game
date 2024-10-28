@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://boekb5kh4i6o2"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_io2gn"]
+[ext_resource type="Texture2D" uid="uid://cmgdixf6qjniv" path="res://Assets/Abilities/duff-beer-enamel-pin-242078_800x (1).png" id="2_ar5p5"]
+
+[resource]
+script = ExtResource("1_io2gn")
+ability_name = "Cold one"
+description = "+ 25% sanity        + 1 drunkness      - 10% move speed"
+texture = ExtResource("2_ar5p5")
+unique = false
+rarity = 1
+cost = 30

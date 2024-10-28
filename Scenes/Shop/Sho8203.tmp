@@ -29,18 +29,16 @@ gradient = SubResource("Gradient_6eo8r")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gb1x7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnjck"]
-bg_color = Color(0.944281, 0.944281, 0.944281, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3r7o5"]
+bg_color = Color(0.941365, 0.941365, 0.941365, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fstlb"]
-bg_color = Color(0.860369, 0.860369, 0.860369, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnjck"]
+bg_color = Color(0.874737, 0.874737, 0.874737, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -54,8 +52,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
-shadow_size = 2
-shadow_offset = Vector2(2, 2)
 
 [sub_resource type="Gradient" id="Gradient_waeum"]
 offsets = PackedFloat32Array(0, 0.181172, 0.719361, 1)
@@ -113,7 +109,6 @@ theme_override_constants/line_spacing = -3
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("3_dnvut")
 theme_override_font_sizes/font_size = 16
-text = "name"
 autowrap_mode = 2
 
 [node name="Description" type="RichTextLabel" parent="."]
@@ -149,8 +144,8 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_dnvut")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gb1x7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3r7o5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pnjck")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_fstlb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ib250")
 expand_icon = true
 

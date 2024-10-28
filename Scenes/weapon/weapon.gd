@@ -180,7 +180,6 @@ func update_weapon_parameters():
 	crit_chance = weapon_machine.current_weapon.crit_chance
 	fire_rate = weapon_machine.current_weapon.fire_rate
 	mana_cost = weapon_machine.current_weapon.mana_cost
-	full_auto = weapon_machine.current_weapon.full_auto
 	projectiles = weapon_machine.current_weapon.projectiles
 	piercing = weapon_machine.current_weapon.piercing
 	bounces = weapon_machine.current_weapon.bounces

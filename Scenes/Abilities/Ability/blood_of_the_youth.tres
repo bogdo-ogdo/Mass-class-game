@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://dh1abye4i5can"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_ejltp"]
+[ext_resource type="Texture2D" uid="uid://cg53o8v53dsne" path="res://Assets/Abilities/Blood of the youth.png" id="2_q0qyo"]
+
+[resource]
+script = ExtResource("1_ejltp")
+ability_name = "Blood of the youth"
+description = "+ 50 max blood     + 50% blood regen  - 1 sanity"
+texture = ExtResource("2_q0qyo")
+unique = false
+rarity = 0
+cost = 30

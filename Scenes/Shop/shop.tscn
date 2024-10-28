@@ -15,7 +15,7 @@ fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvkn5"]
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("reroll_button", "shop_item1", "shop_item2", "shop_item3", "money")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("reroll_button", "shop_item1", "shop_item2", "shop_item3", "shop_item4", "money")]
 self_modulate = Color(1, 0.270588, 0.290196, 1)
 layout_mode = 3
 anchors_preset = 0
@@ -23,9 +23,10 @@ offset_right = 640.0
 offset_bottom = 360.0
 script = ExtResource("1_g7f4h")
 reroll_button = NodePath("Reroll_button")
-shop_item1 = NodePath("Shop_item1")
-shop_item2 = NodePath("Shop_item2")
-shop_item3 = NodePath("Shop_item3")
+shop_item1 = NodePath("HBoxContainer/Shop_item1")
+shop_item2 = NodePath("HBoxContainer/Shop_item2")
+shop_item3 = NodePath("HBoxContainer/Shop_item3")
+shop_item4 = NodePath("HBoxContainer/Shop_item4")
 money = NodePath("Money")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -43,27 +44,6 @@ offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("1_tx80i")
 theme_override_font_sizes/font_size = 32
 text = " Shop"
-
-[node name="Shop_item1" parent="." instance=ExtResource("2_2jn5x")]
-layout_mode = 2
-offset_left = 74.0
-offset_top = 65.0
-offset_right = 224.0
-offset_bottom = 315.0
-
-[node name="Shop_item2" parent="." instance=ExtResource("2_2jn5x")]
-layout_mode = 2
-offset_left = 244.0
-offset_top = 65.0
-offset_right = 394.0
-offset_bottom = 315.0
-
-[node name="Shop_item3" parent="." instance=ExtResource("2_2jn5x")]
-layout_mode = 2
-offset_left = 414.0
-offset_top = 65.0
-offset_right = 564.0
-offset_bottom = 315.0
 
 [node name="Reroll_button" type="Button" parent="."]
 layout_mode = 1
@@ -129,6 +109,25 @@ theme = ExtResource("19_tgkry")
 theme_override_fonts/font = ExtResource("1_tx80i")
 theme_override_font_sizes/font_size = 32
 text = "Next Floor"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 52.0
+offset_right = 640.0
+offset_bottom = 307.0
+alignment = 1
+
+[node name="Shop_item1" parent="HBoxContainer" instance=ExtResource("2_2jn5x")]
+layout_mode = 2
+
+[node name="Shop_item2" parent="HBoxContainer" instance=ExtResource("2_2jn5x")]
+layout_mode = 2
+
+[node name="Shop_item3" parent="HBoxContainer" instance=ExtResource("2_2jn5x")]
+layout_mode = 2
+
+[node name="Shop_item4" parent="HBoxContainer" instance=ExtResource("2_2jn5x")]
+layout_mode = 2
 
 [connection signal="pressed" from="Reroll_button" to="." method="_on_reroll_button_pressed"]
 [connection signal="pressed" from="Next_floor" to="." method="_on_next_floor_pressed"]

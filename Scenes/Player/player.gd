@@ -467,7 +467,7 @@ func update_abilities():
 			weapon.piercing += ability.quantity
 			weapon.crit_chance += ability.quantity * 10
 			highvalue += ability.quantity
-			drunkness += ability.quantity * .5
+			drunkness += ability.quantity * .1
 		elif ability.ability_name == "Dash Distance":
 			dash_duration += 0.05
 		elif ability.ability_name == "Car":
@@ -480,6 +480,11 @@ func update_abilities():
 			weapon.damage += ability.quantity * 1
 		elif ability.ability_name == "Roid Rage":
 			weapon.damage += ability.quantity
+		elif ability.ability_name == "Cold one":
+			drunkness += ability.quantity
+		elif ability.ability_name == "Blood of the youth":
+			max_mana += 50 * ability.quantity
+			max_health -= ability.quantity
 	
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":
@@ -499,6 +504,14 @@ func update_abilities():
 			weapon.money_shot = true
 		elif ability.ability_name == "Roid Rage":
 			weapon.bullet_speed *= 1 + .3 * ability.quantity
+		elif ability.ability_name == "Cold one":
+			max_health *= 1 + .25 * ability.quantity
+			move_speed *= 1 - .1 * ability.quantity
+		elif ability.ability_name == "Blood of the youth":
+			mana_regen_speed *= 1 + .5 * ability.quantity
+	
+	if max_health < 1:
+		max_health == 1
 	
 	update_bar_values()
 	update_effects()
