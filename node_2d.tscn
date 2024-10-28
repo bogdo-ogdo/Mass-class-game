@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=4 uid="uid://uk6yrsv45ei4"]
+[gd_scene load_steps=120 format=4 uid="uid://uk6yrsv45ei4"]
 
 [ext_resource type="Script" path="res://Scrips/Map/Dungeon.gd" id="1_l1dci"]
 [ext_resource type="PackedScene" uid="uid://cu5irw5yngrsi" path="res://Scenes/Player/player.tscn" id="1_l5ov3"]
@@ -43,6 +43,7 @@
 [ext_resource type="Resource" uid="uid://n87qr2weklrf" path="res://Scenes/Abilities/Ability/Car.tres" id="33_pfpc2"]
 [ext_resource type="Resource" uid="uid://boekb5kh4i6o2" path="res://Scenes/Abilities/Ability/Cold_one.tres" id="37_fbb3v"]
 [ext_resource type="Resource" uid="uid://dh1abye4i5can" path="res://Scenes/Abilities/Ability/blood_of_the_youth.tres" id="38_dm0n0"]
+[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="41_mol1s"]
 [ext_resource type="PackedScene" uid="uid://c6ghfwwrxqait" path="res://Scenes/Effects/blood.tscn" id="43_oub81"]
 [ext_resource type="Resource" uid="uid://b7ab6ulxilrkr" path="res://Scenes/Abilities/Ability/The Juice.tres" id="46_ess5d"]
 [ext_resource type="AudioStream" uid="uid://ch6l1heww5dda" path="res://audio/Level music/Green Gobby Stobby.mp3" id="48_pxcl6"]
@@ -1932,7 +1933,7 @@ texture_region_size = Vector2i(32, 32)
 3:3/0 = 0
 3:3/0/terrain_set = 0
 3:3/0/terrain = 0
-3:3/0/probability = 0.02
+3:3/0/probability = 0.01
 3:3/0/custom_data_0 = true
 4:3/0 = 0
 4:3/0/z_index = 2
@@ -1970,12 +1971,12 @@ texture_region_size = Vector2i(32, 32)
 2:5/0 = 0
 2:5/0/terrain_set = 0
 2:5/0/terrain = 0
-2:5/0/probability = 0.02
+2:5/0/probability = 0.01
 2:5/0/custom_data_0 = true
 3:5/0 = 0
 3:5/0/terrain_set = 0
 3:5/0/terrain = 0
-3:5/0/probability = 0.02
+3:5/0/probability = 0.01
 3:5/0/custom_data_0 = true
 4:5/0 = 0
 4:5/0/z_index = 2
@@ -2073,7 +2074,7 @@ texture_region_size = Vector2i(32, 32)
 3:6/0 = 0
 3:6/0/terrain_set = 0
 3:6/0/terrain = 0
-3:6/0/probability = 0.02
+3:6/0/probability = 0.01
 3:6/0/custom_data_0 = true
 5:0/0 = 0
 5:0/0/z_index = 2
@@ -2175,6 +2176,30 @@ pattern_19 = SubResource("TileMapPattern_qq3wn")
 pattern_20 = SubResource("TileMapPattern_qp2gm")
 pattern_21 = SubResource("TileMapPattern_wnktn")
 pattern_22 = SubResource("TileMapPattern_foweg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8owj"]
+shader = ExtResource("41_mol1s")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.05
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(640, 360)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.05
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.03
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.15
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7r3ax"]
 texture = ExtResource("13_m321k")
@@ -2292,6 +2317,14 @@ visible = false
 [node name="Credits" parent="Menus" instance=ExtResource("22_2tg3p")]
 visible = false
 
+[node name="crt" type="ColorRect" parent="Menus"]
+top_level = true
+z_index = 1
+material = SubResource("ShaderMaterial_q8owj")
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
 [node name="Minimap" type="CanvasLayer" parent="."]
 layer = 0
 
@@ -2353,7 +2386,7 @@ offset_bottom = 11713.0
 texture = SubResource("GradientTexture2D_rf46q")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(3009, 509)
+position = Vector2(3242, 634)
 scale = Vector2(508.063, 356.875)
 range_item_cull_mask = 16
 texture = SubResource("GradientTexture2D_x1btt")

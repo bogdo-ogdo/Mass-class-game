@@ -65,4 +65,4 @@ func _on_buy_button_pressed():
 		if current_ability.unique:
 			get_parent().unavalable_abilities.push_back(current_ability)
 			
-		get_parent().update_money()
+		get_parent().get_parent().update_money()

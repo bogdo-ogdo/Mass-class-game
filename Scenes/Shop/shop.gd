@@ -127,7 +127,6 @@ func reroll_items():
 
 func get_random_item():
 	var rng = randf()
-	print(rng)
 	var item : Ability = current_avalable_abilities.pick_random()
 	if rng < legendary_chance:
 		# get legendary item

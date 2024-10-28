@@ -7,6 +7,8 @@ uniform vec2 scroll = vec2(0.05, 0.05);
 uniform float distortion_strength : hint_range(-1,1) = 0.2;
 uniform float distortion_speed;
 
+
+
 void fragment() {
 	vec4 noise_col = texture(noise, UV + scroll + TIME * distortion_speed);
 	
