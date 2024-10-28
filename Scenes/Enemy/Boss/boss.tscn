@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://2pappgmugtue" path="res://Assets/Effects/square.png" id="8_l8mwi"]
 [ext_resource type="AudioStream" uid="uid://d4c7wbcdnpbmi" path="res://audio/Weapon/gunshot.wav" id="9_22r0a"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxqab"]
 size = Vector2(16, 10)
 

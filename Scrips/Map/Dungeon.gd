@@ -2,6 +2,8 @@ extends Node2D
 
 signal clear_floor
 
+@export var blood : PackedScene
+
 @export var player : CharacterBody2D
 @export var ladder : StaticBody2D
 @export var gate : PackedScene
@@ -18,6 +20,8 @@ signal clear_floor
 @export var pillar : PackedScene
 @export var bookshelf : PackedScene
 @export var tall_pillar : PackedScene
+@export var bloodTiles : blood_map
+
 
 @onready var tile_map : TileMap = $Level
 @onready var treasure : StaticBody2D = $Treasure
@@ -49,6 +53,13 @@ func _ready():
 
 func _physics_process(_delta):
 	minimap.position = Vector2(-player.global_position.x/32+64,-player.global_position.y/32+64)
+	
+	#if Input.is_action_pressed("ui_shoot"):
+		#for i in range(5):
+			#var b : Area2D = blood.instantiate()
+			#b.global_position = get_global_mouse_position()
+			#add_child(b)
+			#b.draw_surface = bloodTiles
 
 
 func load_map():
@@ -351,8 +362,8 @@ func load_map():
 
 
 func load_minimap():
-	$Minimap/Container/MiniMap/minimap_chest.position = Vector2(treasure.position.x/16+.5,treasure.position.y/16+.5)
-	$Minimap/Container/MiniMap/minimap_ladder.position = Vector2(ladder.position.x/16+.5,ladder.position.y/16+.5)
+	$Minimap/Container/MiniMap/minimap_chest.position = Vector2(treasure.position.x/32+.5,treasure.position.y/32+.5)
+	$Minimap/Container/MiniMap/minimap_ladder.position = Vector2(ladder.position.x/32+.5,ladder.position.y/32+.5)
 
 
 func _add_gate_perimeter(x,y,s):
@@ -379,6 +390,21 @@ func _on_enemies_cleared():
 	gates_up = false
 
 
+func spawn_blood(ammount : int, pos : Vector2, rot : float, circularEmission : bool, size : float):
+	for i in range(ammount):
+		var b : Area2D = blood.instantiate()
+		call_deferred("do_blood", b, pos, rot, circularEmission, size)
+
+func do_blood(b : Node, pos : Vector2, rot : float, circularEmission : bool, size : float):
+	add_child(b)
+	b.global_position = pos
+	b.draw_surface = bloodTiles
+	b.angle = rot
+	if circularEmission:
+		b.vspeed = randf_range(-size, size)
+		b.hspeed = randf_range(-size, size)
+		b.max_life = randf_range(5,30)
+
 func _on_ladder_next_floor():
 	emit_signal("clear_floor")
 	if level == 4 && dungeon_floor == 2:
@@ -389,6 +415,7 @@ func _on_ladder_next_floor():
 		minimap.clear()
 		load_map()
 		treasure.reset()
+		bloodTiles.clear_blood()
 
 
 func _on_player_restart_game():
@@ -397,10 +424,7 @@ func _on_player_restart_game():
 	minimap.clear()
 	load_map()
 	treasure.reset()
-
-
-func _on_timer_timeout():
-	pass
+	bloodTiles.clear_blood()
 
 
 func _on_pause_menu_closed():
