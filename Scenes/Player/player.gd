@@ -382,6 +382,7 @@ func bar_management():
 
 
 func reset():
+	rotation = 0
 	Engine.time_scale = 1
 	get_tree().paused = true
 	gold = 0
@@ -491,7 +492,7 @@ func update_abilities():
 			drunkness += ability.quantity * .1
 		elif ability.ability_name == "Dash Distance":
 			dash_duration += 0.05 * ability.quantity
-		elif ability.ability_name == "The Juice":
+		elif ability.ability_name == "THE JUICE":
 			weapon.damage += 1 * ability.quantity
 		elif ability.ability_name == "Alice wonderland":
 			max_health += ability.quantity * 2 

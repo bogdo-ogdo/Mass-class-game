@@ -23,6 +23,7 @@ var item4 : Ability
 
 var rare_chance : float = .2
 var legendary_chance : float = 0.05
+var juice_chance : float = 0.01
 
 
 func _process(delta):
@@ -128,7 +129,10 @@ func reroll_items():
 func get_random_item():
 	var rng = randf()
 	var item : Ability = current_avalable_abilities.pick_random()
-	if rng < legendary_chance:
+	if rng < juice_chance:
+		while item.rarity != 3:
+			item = current_avalable_abilities.pick_random()
+	elif rng < legendary_chance + juice_chance:
 		# get legendary item
 		while item.rarity != 2:
 			item = current_avalable_abilities.pick_random()

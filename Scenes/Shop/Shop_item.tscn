@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1dmldm7koy0f"]
+[gd_scene load_steps=24 format=3 uid="uid://b1dmldm7koy0f"]
 
 [ext_resource type="StyleBox" uid="uid://ck57dh8aif7jf" path="res://Scenes/Shop/Shop_item.tres" id="1_dyq6t"]
 [ext_resource type="Shader" path="res://Shaders/background.gdshader" id="1_ef060"]
@@ -23,6 +23,22 @@ shader_parameter/time_scale = 0.1
 shader_parameter/base_intensity = 0.195
 shader_parameter/size = 1.0
 shader_parameter/tex = SubResource("NoiseTexture2D_oe4x5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2l5yn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j071y"]
+seamless = true
+noise = SubResource("FastNoiseLite_2l5yn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ken2y"]
+shader = ExtResource("1_ef060")
+shader_parameter/bottom_color = Color(1, 0, 1, 1)
+shader_parameter/top_color = Color(0.109804, 0, 0.0941176, 1)
+shader_parameter/layer_count = 16
+shader_parameter/time_scale = 0.2
+shader_parameter/base_intensity = 0.1
+shader_parameter/size = 0.70001
+shader_parameter/tex = SubResource("NoiseTexture2D_j071y")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lndak"]
 shader = ExtResource("3_odd6k")
@@ -86,7 +102,8 @@ offsets = PackedFloat32Array(0, 0.181172, 0.719361, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.11413)
 
 [sub_resource type="Gradient" id="Gradient_5r13g"]
-colors = PackedColorArray(0.980935, 0.738221, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.146974, 1)
+colors = PackedColorArray(0.940009, 0.339265, 0.999999, 1, 1, 1, 1, 1)
 
 [node name="Shop_item" type="Panel" node_paths=PackedStringArray("sparkle")]
 self_modulate = Color(0.701961, 0.4, 0.101961, 1)
@@ -108,8 +125,17 @@ offset_top = 2.0
 offset_right = 148.0
 offset_bottom = 248.0
 
+[node name="purpleFire" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ken2y")
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 148.0
+offset_bottom = 248.0
+
 [node name="shine" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_lndak")
+layout_mode = 0
 offset_right = 150.0
 offset_bottom = 255.0
 texture = SubResource("GradientTexture2D_yan4b")
@@ -124,6 +150,7 @@ offset_bottom = 43.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_v0wy3")
 
 [node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 73.0
@@ -210,6 +237,19 @@ text = "500"
 horizontal_alignment = 2
 
 [node name="Sparkle" type="CPUParticles2D" parent="."]
+position = Vector2(75, 125)
+amount = 20
+emission_shape = 3
+emission_rect_extents = Vector2(80, 130)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_waeum")
+color_initial_ramp = SubResource("Gradient_5r13g")
+
+[node name="Sparklepurple" type="CPUParticles2D" parent="."]
 position = Vector2(75, 125)
 amount = 20
 emission_shape = 3

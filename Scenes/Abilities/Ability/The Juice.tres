@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_mre2j")
-ability_name = "The Juice"
-description = "+ 1 damage"
+ability_name = "THE JUICE"
+description = "????"
 texture = ExtResource("2_um7yj")
 unique = false
-rarity = 0
-cost = 30
+rarity = 3
+cost = 120

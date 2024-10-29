@@ -3,6 +3,7 @@ extends Panel
 @export var commonColor : Color
 @export var rareColor : Color
 @export var legendaryColor : Color
+@export var theJuicecolor : Color
 
 @export var sparkle : Node2D
 
@@ -24,6 +25,8 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 
 func load_item(ability : Ability):
+	$Sparklepurple.visible = false
+	$purpleFire.visible = false
 	sparkle.visible = false
 	shine.visible = false
 	$Fire.visible = false
@@ -50,7 +53,11 @@ func load_item(ability : Ability):
 		sparkle.visible = true
 		shine.visible = true
 		$Fire.visible = true
-		
+	if ability.rarity == 3:
+		$Sparklepurple.visible = true
+		shine.visible = true
+		set_color(theJuicecolor)
+		$purpleFire.visible = true
 
 
 func set_color(color : Color):
