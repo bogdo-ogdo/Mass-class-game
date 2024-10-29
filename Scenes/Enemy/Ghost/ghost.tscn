@@ -315,8 +315,10 @@ collision_layer = 0
 collision_mask = 69
 script = ExtResource("1_cvhwk")
 gold_drop = Vector2(2, 5)
-move_speed = 40.0
+move_speed = 60.0
 health = 5.0
+reload = Vector2(0, 7)
+flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 513
@@ -351,7 +353,7 @@ debug_path_custom_color = Color(10, 1, 1, 1)
 
 [node name="Nav_timer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
+one_shot = true
 
 [node name="Attack_timer" type="Timer" parent="."]
 wait_time = 10.0
@@ -359,6 +361,7 @@ one_shot = true
 
 [node name="Idle_timer" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
 visible = false
@@ -378,6 +381,7 @@ priority = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision_damage" groups=["Enemy"]]
 position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_isxod")
+disabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 visible = false
