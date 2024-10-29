@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt1o23tv8qytk"]
+[gd_scene load_steps=20 format=3 uid="uid://bt1o23tv8qytk"]
 
 [ext_resource type="Script" path="res://Scenes/ui/ability_ui.gd" id="1_2kin2"]
 [ext_resource type="Shader" path="res://Shaders/background.gdshader" id="2_s80rd"]
@@ -13,6 +13,22 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.270588, 0.270588, 0.270588, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b0w7h"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j071y"]
+seamless = true
+noise = SubResource("FastNoiseLite_b0w7h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8tjq"]
+shader = ExtResource("2_s80rd")
+shader_parameter/bottom_color = Color(1, 0, 1, 1)
+shader_parameter/top_color = Color(0.109804, 0, 0.0941176, 1)
+shader_parameter/layer_count = 8
+shader_parameter/time_scale = 0.2
+shader_parameter/base_intensity = 0.1
+shader_parameter/size = 0.70001
+shader_parameter/tex = SubResource("NoiseTexture2D_j071y")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_17v6l"]
 frequency = 0.0017
@@ -55,7 +71,15 @@ offsets = PackedFloat32Array(0, 0.181172, 0.719361, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.11413)
 
 [sub_resource type="Gradient" id="Gradient_5opgx"]
-colors = PackedColorArray(0.980935, 0.738221, 0, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.998045, 0.671435, 0.331636, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_8iicy"]
+offsets = PackedFloat32Array(0, 0.181172, 0.719361, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.11413)
+
+[sub_resource type="Gradient" id="Gradient_r4aq5"]
+offsets = PackedFloat32Array(0.146974, 1)
+colors = PackedColorArray(0.940009, 0.339265, 0.999999, 1, 1, 1, 1, 1)
 
 [node name="Ability_ui" type="Panel" node_paths=PackedStringArray("sparkle")]
 custom_minimum_size = Vector2(40, 40)
@@ -68,8 +92,17 @@ rareColor = Color(0.294118, 0.337255, 0.513726, 1)
 legendaryColor = Color(0.701961, 0.4, 0.101961, 1)
 sparkle = NodePath("Sparkle")
 
+[node name="purpleFire" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_f8tjq")
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 38.0
+
 [node name="Fire" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_ee0yl")
+layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 38.0
@@ -92,6 +125,7 @@ centered = false
 
 [node name="shine" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_pik1e")
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("GradientTexture2D_dt5yn")
@@ -157,6 +191,17 @@ gravity = Vector2(0, 0)
 initial_velocity_max = 2.0
 color_ramp = SubResource("Gradient_bksmx")
 color_initial_ramp = SubResource("Gradient_5opgx")
+
+[node name="Sparklepurple" type="CPUParticles2D" parent="."]
+position = Vector2(20, 20)
+amount = 10
+emission_shape = 3
+emission_rect_extents = Vector2(24, 24)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+color_ramp = SubResource("Gradient_8iicy")
+color_initial_ramp = SubResource("Gradient_r4aq5")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

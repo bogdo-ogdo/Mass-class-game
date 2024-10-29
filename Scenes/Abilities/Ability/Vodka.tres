@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://dgd2e6nnqrt0u"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_vi2iu"]
+[ext_resource type="Texture2D" uid="uid://cpjq3vhv70f13" path="res://Assets/Abilities/vodka.png" id="2_qv3u6"]
+
+[resource]
+script = ExtResource("1_vi2iu")
+ability_name = "Vodka"
+description = "+ 3 sanity          + 2 damage         - 30% accuracy       Makes you drunk"
+texture = ExtResource("2_qv3u6")
+unique = false
+rarity = 1
+cost = 60

@@ -12,7 +12,6 @@ func _ready():
 	bullet_size = 1
 	bullet_speed = 10
 	bullet_spread = 3
-	charge = true
 	
 	txture = "res://Assets/Weapons/pistol.png"
 

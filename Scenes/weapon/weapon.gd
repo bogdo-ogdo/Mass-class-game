@@ -90,13 +90,13 @@ func _on_player_shoot():
 			shooting = true
 			if can_shoot == true && colliding == false:
 				cooldown_timer.start(1/fire_rate)
-				can_shoot = false
 				emit_signal("mana_used")
 				if randi_range(0,100) <= crit_chance:
 					crit = true
 				else: 
 					crit = false
 				if !charge:
+					can_shoot = false
 					if !flamethrow:
 						get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
 					if projectiles == 1:
@@ -108,13 +108,13 @@ func _on_player_shoot():
 		shooting = true
 		if can_shoot == true && colliding == false:
 			cooldown_timer.start(1/fire_rate)
-			can_shoot = false
 			emit_signal("mana_used")
 			if randi_range(0,100) <= crit_chance:
 				crit = true
 			else: 
 				crit = false
 			if !charge:
+				can_shoot = false
 				if !flamethrow:
 					get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
 				if projectiles == 1:
@@ -126,7 +126,8 @@ func _on_player_shoot():
 func _on_player_shoot_stop():
 	shooting = false
 	
-	if charge:
+	if charge && can_shoot:
+		can_shoot = false
 		lastChargeState = chargeState
 		if !flamethrow:
 			get_parent().shake_strength = (weapon_machine.current_weapon.damage/5) * weapon_machine.current_weapon.projectiles + (weapon_machine.current_weapon.fire_rate/10)
@@ -170,6 +171,7 @@ func reset():
 
 
 func update_weapon_parameters():
+	can_shoot = true
 	bullet_type = weapon_machine.current_weapon.bullet_type
 	full_auto = weapon_machine.current_weapon.full_auto
 	damage = weapon_machine.current_weapon.damage
@@ -190,6 +192,8 @@ func update_weapon_parameters():
 	charge = weapon_machine.current_weapon.charge
 	chargeDamage = weapon_machine.current_weapon.chargeDamage
 	knockback = weapon_machine.current_weapon.knockback
+	
+	sprite.scale = Vector2(weapon_machine.current_weapon.scale, weapon_machine.current_weapon.scale)
 	
 	chargeState = 0
 	lastChargeState = 0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://btgr2oqg03pkf"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_e8rdu"]
+[ext_resource type="Texture2D" uid="uid://p4se6lvm06ej" path="res://Assets/Abilities/cigarette-pack-of-cigarettes-KaBV8ZD-600.png" id="2_1gjvb"]
+
+[resource]
+script = ExtResource("1_e8rdu")
+ability_name = "Cigarettes"
+description = "+ 1 damage         Reduces effects from being high or drunk"
+texture = ExtResource("2_1gjvb")
+unique = false
+rarity = 0
+cost = 30

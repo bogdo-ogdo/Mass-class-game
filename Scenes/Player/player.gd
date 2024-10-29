@@ -104,7 +104,8 @@ var traction_slow = 10
 var acceleration = Vector2.ZERO
 var steer_direction
 var auto_aim = false
-var enemy_target = null
+var enemy_target : Node2D = null
+var enemies_in_area = []
 
 func _ready():
 	ui_sprite.hide()
@@ -205,8 +206,15 @@ func _physics_process(delta):
 		shake_strength = lerpf(shake_strength,0,shake_fade*delta)
 		camera.offset = random_offset()
 	
-	if auto_aim and enemy_target != null:
-		weapon_rotate_to_mouse(enemy_target,delta)
+	if auto_aim:
+		if enemies_in_area != []:
+			var closest : Node2D = enemies_in_area[0]
+			for i in enemies_in_area:
+				if abs(global_position - i.global_position) < abs(global_position - closest.global_position):
+					closest = i
+			weapon_rotate_to_mouse(closest.global_position,delta)
+		else:
+			weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	else:
 		weapon_rotate_to_mouse(get_global_mouse_position(),delta)
 	bar_management()
@@ -251,34 +259,19 @@ func random_offset():
 
 
 func weapon_rotate_to_mouse(target, delta):
-	if not auto_aim or target == null:
-		var direction = (target - weapon.global_position) #target global position if is an entity
-		var angleTo = weapon.transform.x.angle_to(direction)
-		weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
-		weapon.b_rotation = weapon.rotation
-		if direction.x > 0:
-			if not car:
-				sprite.scale.x = 1
-			weapon.get_child(0).scale.y = 1
-		elif direction.x < 0:
-			if not car:
-				sprite.scale.x = -1
-			weapon.get_child(0).scale.y = -1
-		weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
-	else:
-		var direction = (target - weapon.global_position) #target global position if is an entity
-		var angleTo = weapon.transform.x.angle_to(direction)
-		weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
-		weapon.b_rotation = weapon.rotation
-		if direction.x > 0:
-			if not car:
-				sprite.scale.x = 1
-			weapon.get_child(0).scale.y = 1
-		elif direction.x < 0:
-			if not car:
-				sprite.scale.x = -1
-			weapon.get_child(0).scale.y = -1
-		weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
+	var direction = (target - weapon.global_position) #target global position if is an entity
+	var angleTo = weapon.transform.x.angle_to(direction)
+	weapon.rotation += (sign(angleTo) * min(delta * rotation_speed, abs(angleTo)))
+	weapon.b_rotation = weapon.rotation
+	if direction.x > 0:
+		if not car:
+			sprite.scale.x = 1
+		weapon.get_child(0).scale.y = 1
+	elif direction.x < 0:
+		if not car:
+			sprite.scale.x = -1
+		weapon.get_child(0).scale.y = -1
+	weapon.rotation_degrees = round_to_dec(weapon.rotation_degrees,-1)
 
 
 func _input(event):
@@ -468,6 +461,9 @@ func update_abilities():
 	weapon.update_weapon_parameters()
 	
 	weapon.laser_pointer = false
+	MAX_SPEED = 100
+	dash_duration = .15
+	dash_regen_speed = 0.02
 	move_speed = 5
 	max_dashes = 3
 	max_health = 5
@@ -478,6 +474,7 @@ func update_abilities():
 	dash_regen_timer.wait_time = 2
 	car = false
 	electricity = false
+	auto_aim = false
 	
 	for ability in abiliites:
 		#elif ability.ability_name == "":
@@ -490,10 +487,22 @@ func update_abilities():
 			weapon.crit_chance += ability.quantity * 10
 			highvalue += ability.quantity
 			drunkness += ability.quantity * .1
-		elif ability.ability_name == "Dash Distance":
-			dash_duration += 0.05 * ability.quantity
 		elif ability.ability_name == "THE JUICE":
-			weapon.damage += 1 * ability.quantity
+			var x = randi_range(1,5)
+			if x == 1:
+				weapon.damage += 10 * ability.quantity
+			elif x == 2:
+				max_health += 10 * ability.quantity
+			elif x == 3:
+				max_mana += 400 * ability.quantity
+				mana_regen_speed *= 3
+			elif x == 4:
+				dash_duration += .25 * ability.quantity
+				dash_regen_speed += .05 * ability.quantity
+				dash_regen_timer.wait_time *= 0.5
+			elif x == 5:
+				highvalue += 4 * ability.quantity
+				drunkness += 4 * ability.quantity
 		elif ability.ability_name == "Alice wonderland":
 			max_health += ability.quantity * 2 
 			weapon.damage += ability.quantity * 1
@@ -504,7 +513,25 @@ func update_abilities():
 		elif ability.ability_name == "Blood of the youth":
 			max_mana += 50 * ability.quantity
 			max_health -= ability.quantity
-	
+		elif ability.ability_name == "Speed":
+			highvalue += ability.quantity
+			drunkness += ability.quantity * .2
+		elif ability.ability_name == "THE THINGS UNDER THE BED":
+			weapon.damage += 50 * ability.quantity
+			var teddyBear = false
+			for i in abiliites:
+				if i.ability_name == "Teddy bear":
+					teddyBear = true
+			if !teddyBear:
+				max_health -= 1000
+		elif ability.ability_name == "Vodka":
+			weapon.damage += 2 * ability.quantity
+			max_health += 3 * ability.quantity
+		elif ability.ability_name == "Cigarettes":
+			weapon.damage += ability.quantity
+
+
+
 	for ability in abiliites:
 		if ability.ability_name == "Box mag":
 			weapon.full_auto = true
@@ -534,14 +561,22 @@ func update_abilities():
 			weapon.damage *= 2 * ability.quantity
 		elif ability.ability_name == "Tin foil hat":
 			electricity = true
-		elif ability.ability_name == "Dash Cooldown":
+		elif ability.ability_name == "Cocaine":
 			dash_regen_timer.wait_time *= 0.5
-		elif ability.ability_name == "Car":
-			car = true
-			weapon.damage *= 2
+			dash_duration *= 1 + .5 * ability.quantity
 		elif ability.ability_name == "Third eye":
 			auto_aim = true
-			weapon.bullet_spread *= 0.9
+			weapon.bullet_spread *= 0.1
+		elif ability.ability_name == "Speed":
+			move_speed *= 1 + .35 * ability.quantity
+			MAX_SPEED *= 1 + .35 * ability.quantity
+		elif ability.ability_name == "Vodka":
+			weapon.bullet_spread *= 1 + .3 * ability.quantity
+		elif ability.ability_name == "Cigarettes":
+			drunkness *= pow(.7, ability.quantity)
+			highvalue *= pow(.7, ability.quantity)
+
+			
 	if max_health < 1:
 		max_health == 1
 			
@@ -607,9 +642,9 @@ func _on_health_regen_timeout() -> void:
 
 func _on_auto_aim_area_entered(area: Node2D) -> void:
 	if area.is_in_group("Enemy"):
-		enemy_target = area.global_position
+		enemies_in_area.append(area)
 
 
 func _on_auto_aim_area_exited(area: Node2D) -> void:
 	if area.is_in_group("Enemy"):
-		enemy_target = null
+		enemies_in_area.erase(area)

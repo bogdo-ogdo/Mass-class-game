@@ -61,18 +61,32 @@ offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label15" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Programming Manager"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "William Cochrane"
+horizontal_alignment = 1
+
 [node name="Label5" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.8, 0, 1)
 theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Project Manager"
+text = "Project Managers"
 horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
-text = "Zac Sterling"
+text = "Zac Sterling  Will Dale"
 horizontal_alignment = 1
 
 [node name="Label13" type="Label" parent="VBoxContainer"]
@@ -82,16 +96,10 @@ theme_override_fonts/font = ExtResource("2_gk5bf")
 text = "Programmers"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_gk5bf")
-theme_override_font_sizes/font_size = 16
-text = "William Cochrane (manager)"
-horizontal_alignment = 1
-
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -114,19 +122,27 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.8, 0, 1)
 theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Artists"
+text = "Art Directors"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
-text = "Robbie de Groot-Tsuji (manager)"
+text = "Robbie de Groot-Tsuji  Shayn Leung"
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Artists"
 horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -144,8 +160,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
-text = "Shayn Leung
-Ed Mathers
+text = "Ed Mathers
 Oscar Chaplin
 Jesse Given
 Benson Lee
@@ -156,32 +171,19 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.8, 0, 1)
 theme_override_fonts/font = ExtResource("2_gk5bf")
-text = "Play Testing"
+text = "Music"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
-
-[node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_gk5bf")
-theme_override_font_sizes/font_size = 16
-text = "Robbie de Groot-Tsuji
-William Cochrane
-Conor Gracey
-Jayden Lim
-"
-horizontal_alignment = 1
+alignment = 1
 
 [node name="Label13" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
-text = "Aaron Zheng
-Angel Zheng
-Nicky Parker
-Benson Lee"
+text = "Jayden Lim"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
@@ -196,6 +198,47 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_gk5bf")
 theme_override_font_sizes/font_size = 16
 text = "Ainesh Jannoo"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 522.0
+offset_top = 274.0
+offset_right = 587.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Level design
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Label5"]
+offset_left = -3.0
+offset_top = 16.0
+offset_right = 71.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Cameron Martin"
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="."]
+offset_left = 513.0
+offset_top = 169.0
+offset_right = 581.0
+offset_bottom = 182.0
+theme_override_colors/font_color = Color(0, 0.8, 0, 1)
+theme_override_fonts/font = ExtResource("2_gk5bf")
+text = "Merge Manager"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Label12"]
+offset_left = -3.0
+offset_top = 16.0
+offset_right = 71.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("2_gk5bf")
+theme_override_font_sizes/font_size = 16
+text = "Aditya Bansal"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

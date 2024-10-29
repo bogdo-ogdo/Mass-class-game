@@ -34,5 +34,7 @@ func _process(_delta):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "side_gate_close" or anim_name == "x_facing_close":
+	if anim_name == "side_gate_close":
 		anim_player.play("side_gate_idle")
+	elif anim_name == "x_facing_close":
+		anim_player.play("x_facing_idle")

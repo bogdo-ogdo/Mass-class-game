@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://dod8jasqhvlc"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_w4kkb"]
+[ext_resource type="Texture2D" uid="uid://cptyhq2kna4gs" path="res://Assets/Abilities/Goblet.png" id="2_1fl2y"]
+
+[resource]
+script = ExtResource("1_w4kkb")
+ability_name = "Goblet of blood"
+description = "+ 50 max blood"
+texture = ExtResource("2_1fl2y")
+unique = false
+rarity = 0
+cost = 30

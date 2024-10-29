@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c21u3b11dd227"]
+[gd_scene load_steps=12 format=3 uid="uid://c21u3b11dd227"]
 
 [ext_resource type="Script" path="res://Scenes/ui/start_menu.gd" id="1_hq4rm"]
 [ext_resource type="FontFile" uid="uid://ejil0kwiqa3l" path="res://Assets/UI/m5x7.ttf" id="2_3ryvb"]
-[ext_resource type="Texture2D" uid="uid://chkj1dv5ybbs5" path="res://Assets/UI/Game Logo.png" id="2_8l2ck"]
 [ext_resource type="Shader" path="res://Shaders/background.gdshader" id="2_34x2j"]
 [ext_resource type="Texture2D" uid="uid://dhcy3cs6eeelw" path="res://Shaders/bubbles.png" id="3_qd683"]
 [ext_resource type="Texture2D" uid="uid://t6wd82y1obf0" path="res://Assets/UI/Pause_menu_wrap.png" id="5_51jo0"]
@@ -43,17 +42,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -50.0
-offset_right = 50.0
-offset_bottom = 100.0
-grow_horizontal = 2
-texture = ExtResource("2_8l2ck")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -212,10 +200,8 @@ F : interact (with chest or ladder)
 Rmb : shoot (hold if weapon if full auto)
 Esc : escape menu
 
-The objective of the game is to make it down nine floors (three levels of three floors) and kill the boss on floor ten without dying. In the top left of your screen you will have your health, mana, gold and dashes. Dashes and mana regenerate over time and health is fully restored at the end of each floor. At the end of each  floor you can spend the gold you collect in a shop on items that boost your stats. If you are bad and want to skip to the boss you can select Boss Battle. 
-
-IMPORTANT:
-If it runs slow on you pc go to the escape menu in game and disable shadows (they take a lot to render)"
+Sanity is your 'health'
+Blood is your 'mana'"
 autowrap_mode = 3
 
 [node name="Okay" type="Button" parent="Panel"]

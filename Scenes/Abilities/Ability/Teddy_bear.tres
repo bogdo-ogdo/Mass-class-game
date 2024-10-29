@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cw7kt0l4jabmv"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_smrs0"]
+[ext_resource type="Texture2D" uid="uid://dam4dd4bde80h" path="res://Assets/Abilities/Teddy Bear.png" id="2_ps7e6"]
+
+[resource]
+script = ExtResource("1_smrs0")
+ability_name = "Teddy bear"
+description = "Negates the negative effects of THE THINGS UNDER THE BED"
+texture = ExtResource("2_ps7e6")
+unique = false
+rarity = 1
+cost = 60

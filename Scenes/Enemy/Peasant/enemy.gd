@@ -18,6 +18,7 @@ signal player_damage
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var gun : Sprite2D = $Gun
 
+@export var invert : bool
 @export var approach_dist : float
 @export var run_dist : float 
 @export var gold_drop : Vector2
@@ -143,18 +144,32 @@ func rotate_to_player(delta):
 	gun.rotation += (sign(gunAngleTo) * min(delta * rotation_speed, abs(gunAngleTo)))
 	gun.rotation_degrees = round_to_dec(gun.rotation_degrees, -1)
 	
-	if direction.x > 0:
-		if flip_h:
-			sprite.flip_h = false
-		else:
-			sprite.flip_h = true
-		gun.scale.y = 1
-	elif direction.x < 0:
-		if flip_h:
-			sprite.flip_h = true
-		else:
-			sprite.flip_h = false
-		gun.scale.y = -1
+	if !invert:
+		if direction.x > 0:
+			if flip_h:
+				sprite.flip_h = false
+			else:
+				sprite.flip_h = true
+			gun.scale.y = 1
+		elif direction.x < 0:
+			if flip_h:
+				sprite.flip_h = true
+			else:
+				sprite.flip_h = false
+			gun.scale.y = -1
+	else:
+		if direction.x < 0:
+			if flip_h:
+				sprite.flip_h = false
+			else:
+				sprite.flip_h = true
+			gun.scale.y = 1
+		elif direction.x > 0:
+			if flip_h:
+				sprite.flip_h = true
+			else:
+				sprite.flip_h = false
+			gun.scale.y = -1
 
 
 func round_to_dec(num, digit):

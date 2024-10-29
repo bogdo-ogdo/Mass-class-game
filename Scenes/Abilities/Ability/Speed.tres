@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cs0p0jjg20w8d"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_k7gbk"]
+[ext_resource type="Texture2D" uid="uid://bja5xtvpe4ft5" path="res://Assets/Abilities/Speed (amphetamine sulphate).png" id="2_k0t7l"]
+
+[resource]
+script = ExtResource("1_k7gbk")
+ability_name = "Speed"
+description = "+ 35% move speed"
+texture = ExtResource("2_k0t7l")
+unique = false
+rarity = 0
+cost = 30

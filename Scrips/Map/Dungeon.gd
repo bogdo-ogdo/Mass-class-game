@@ -83,8 +83,8 @@ func load_map():
 	var cdor_y_en = tile_map.tile_set.get_pattern(5)
 	
 	dungeon_floor += 1
-	if dungeon_floor == 4:
-		level += 1
+	if dungeon_floor == 5:
+		level == 4
 		dungeon_floor = 1
 	
 	if level == 1:
@@ -159,13 +159,11 @@ func load_map():
 					if tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x+count,mid_pos.y)) == Vector2i(5,1):
 						tile_map.set_pattern(0,Vector2i(mid_pos.x+count,mid_pos.y),cdor_x_st)
 						_spawn_gate(mid_pos.x+count+1,mid_pos.y+3,true)
-						_spawn_gate(mid_pos.x+count+1,mid_pos.y+4,true)
 					elif tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x+count,mid_pos.y)) == Vector2i(-1,-1) or tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x+count,mid_pos.y)) == Vector2i(4,3):
 						tile_map.set_pattern(0,Vector2i(mid_pos.x+count,mid_pos.y),cdor_x_md)
 					elif tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x+count,mid_pos.y)) == Vector2i(0,1):
 						tile_map.set_pattern(0,Vector2i(mid_pos.x+count,mid_pos.y),cdor_x_en)
 						_spawn_gate(mid_pos.x+count-1,mid_pos.y+3,true)
-						_spawn_gate(mid_pos.x+count-1,mid_pos.y+4,true)
 						
 						break
 					count += 1
@@ -176,14 +174,12 @@ func load_map():
 				while true:
 					if tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x,mid_pos.y+count)) == Vector2i(1,7) or tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x,mid_pos.y+count)) == Vector2i(4,7):
 						tile_map.set_pattern(0,Vector2i(mid_pos.x,mid_pos.y+count),cdor_y_st)
-						_spawn_gate(mid_pos.x+1,mid_pos.y+count+2,false)
-						_spawn_gate(mid_pos.x+2,mid_pos.y+count+2,false)
+						_spawn_gate(mid_pos.x,mid_pos.y+count,false)
 					elif tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x,mid_pos.y+count)) == Vector2i(-1,-1) or tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x,mid_pos.y+count)) == Vector2i(4,3):
 						tile_map.set_pattern(0,Vector2i(mid_pos.x,mid_pos.y+count),cdor_y_md)
 					elif tile_map.get_cell_atlas_coords(0,Vector2i(mid_pos.x,mid_pos.y+count)) == Vector2i(1,0):
 						tile_map.set_pattern(0,Vector2i(mid_pos.x,mid_pos.y+count),cdor_y_en)
-						_spawn_gate(mid_pos.x+1,mid_pos.y+count+1,false)
-						_spawn_gate(mid_pos.x+2,mid_pos.y+count+1,false)
+						_spawn_gate(mid_pos.x,mid_pos.y+count,false)
 						break
 					count += 1
 		
@@ -409,7 +405,7 @@ func do_blood(b : Node, pos : Vector2, rot : float, circularEmission : bool, siz
 
 func _on_ladder_next_floor():
 	emit_signal("clear_floor")
-	if level == 4 && dungeon_floor == 2:
+	if level == 4 && dungeon_floor == 1:
 		player.win = true
 	else:
 		shop.open()
