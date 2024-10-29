@@ -115,6 +115,11 @@ func _physics_process(delta: float) -> void:
 		if !animation.current_animation == "jump":
 			animation.play("p_run")
 	
+	if velocity.x > 0:
+		sprite.flip_h = false
+	elif velocity.x < 0:
+		sprite.flip_h = true
+	
 
 
 func round_to_dec(num, digit):
@@ -130,6 +135,7 @@ func die():
 
 
 func _on_attack_timer_timeout():
+	use_parent_material = true
 	can_attack = true
 	visible = true
 	idle_timer.start(3)
@@ -137,6 +143,7 @@ func _on_attack_timer_timeout():
 	on_top = true
 
 func _on_idle_timer_timeout():
+	use_parent_material = false
 	nav_timer.start(0.5)
 	waiting = true
 	on_top=false
