@@ -285,12 +285,12 @@ position = Vector2(39, -3)
 shape = SubResource("RectangleShape2D_3bsid")
 
 [node name="Gate" parent="." instance=ExtResource("5_nx421")]
-position = Vector2(-16, -929)
-scale = Vector2(2, 1)
+position = Vector2(-33, -931)
+scale = Vector2(0.5, 0.5)
 
 [node name="Gate2" parent="." instance=ExtResource("5_nx421")]
-position = Vector2(-16, -1345)
-scale = Vector2(2, 1)
+position = Vector2(-32, -1410)
+scale = Vector2(0.5, 0.5)
 
 [node name="Lights" type="Node2D" parent="."]
 
