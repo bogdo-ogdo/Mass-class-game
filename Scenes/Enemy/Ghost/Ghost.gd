@@ -94,14 +94,6 @@ func _physics_process(delta: float) -> void:
 
 	
 	
-	
-	if velocity.length() < 2:
-		if !animation.current_animation == "jump":
-			animation.play("p_idle")
-	else:
-		if !animation.current_animation == "jump":
-			animation.play("p_run")
-	
 	if hit == true:
 		alt_animation.play("hit")
 		hit = false
@@ -110,11 +102,24 @@ func _physics_process(delta: float) -> void:
 		pass
 	elif on_top:
 		global_position = player.global_position
+		velocity = Vector2(0,0)
 		print(position)
 	else:
 		velocity = (player.global_position - global_position).normalized()*move_speed
 		move_and_slide()
 
+	if velocity.length() < 2:
+		if !animation.current_animation == "jump":
+			animation.play("p_idle")
+	else:
+		if !animation.current_animation == "jump":
+			animation.play("p_run")
+	
+	if velocity.x > 0:
+		sprite.flip_h = false
+	elif velocity.x < 0:
+		sprite.flip_h = true
+	
 
 
 func round_to_dec(num, digit):
@@ -130,6 +135,7 @@ func die():
 
 
 func _on_attack_timer_timeout():
+	use_parent_material = true
 	can_attack = true
 	visible = true
 	idle_timer.start(3)
@@ -137,6 +143,7 @@ func _on_attack_timer_timeout():
 	on_top = true
 
 func _on_idle_timer_timeout():
+	use_parent_material = false
 	nav_timer.start(0.5)
 	waiting = true
 	on_top=false
