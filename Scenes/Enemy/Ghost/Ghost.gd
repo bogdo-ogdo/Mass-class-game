@@ -82,6 +82,7 @@ func _physics_process(delta: float) -> void:
 			$sound.play()
 			gold_spawned = true
 		spawn_value += .02
+		waiting = true
 		velocity = Vector2.ZERO
 		sprite.material.set_shader_parameter("progress", spawn_value)
 		$collision_damage.monitoring = false
@@ -135,7 +136,8 @@ func die():
 
 
 func _on_attack_timer_timeout():
-	use_parent_material = true
+	sprite.use_parent_material = true
+	animation.play("p_idle")
 	can_attack = true
 	visible = true
 	idle_timer.start(3)
@@ -143,8 +145,8 @@ func _on_attack_timer_timeout():
 	on_top = true
 
 func _on_idle_timer_timeout():
-	use_parent_material = false
-	nav_timer.start(0.5)
+	sprite.use_parent_material = false
+	nav_timer.start(0.6)
 	waiting = true
 	on_top=false
 
