@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://c423s0gblg4s1"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_4i1tt"]
+[ext_resource type="Texture2D" uid="uid://d0bt77umijg1g" path="res://Assets/Abilities/brick-cocaine-1.png.png" id="2_kgwlc"]
+
+[resource]
+script = ExtResource("1_4i1tt")
+ability_name = "Cocaine"
+description = "0.5x dash cooldown + 50% dash distance  Makes you high"
+texture = ExtResource("2_kgwlc")
+unique = false
+rarity = 0
+cost = 30

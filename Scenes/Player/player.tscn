@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://b0bhvub6ejsd0" path="res://Assets/Gold/dolarbill3.png" id="8_lwfhe"]
 [ext_resource type="Texture2D" uid="uid://c3qegx508us5s" path="res://Assets/UI/barwrap.png" id="8_nqdjf"]
 [ext_resource type="Texture2D" uid="uid://vf5lk5uc6imm" path="res://Assets/UI/barfiller.png" id="9_5lgrf"]
-[ext_resource type="Texture2D" uid="uid://068l4w1maiff" path="res://Assets/UI/heart.png" id="10_ucnwq"]
 [ext_resource type="Texture2D" uid="uid://dekv4rrpxepfg" path="res://Assets/UI/sprint_bar_wrap.png" id="12_l8jfh"]
 [ext_resource type="Texture2D" uid="uid://oohfcgut53a" path="res://Assets/UI/sprint_bar_filler.png" id="13_dtjdo"]
+[ext_resource type="Texture2D" uid="uid://dxcmk05faae1a" path="res://Assets/UI/Brain.png" id="13_hhcoa"]
 [ext_resource type="Texture2D" uid="uid://18spp4qoqnfe" path="res://Assets/UI/Blood_bag_empty.png" id="14_gku6q"]
 [ext_resource type="PackedScene" uid="uid://dxyosoat6icc4" path="res://Scenes/Player/dash.tscn" id="14_gqmwi"]
 [ext_resource type="Texture2D" uid="uid://dh3qy7jaxjh5e" path="res://Assets/UI/dash_icon.png" id="14_yvwd1"]
@@ -470,7 +470,7 @@ stretch_margin_bottom = 3
 texture_over = ExtResource("8_nqdjf")
 texture_progress = ExtResource("9_5lgrf")
 tint_over = Color(0.247059, 0.247059, 0.247059, 1)
-tint_progress = Color(0.87451, 0.0941176, 0.0784314, 1)
+tint_progress = Color(0.932795, 0.545253, 2.31028e-06, 1)
 
 [node name="Damaged_bar" type="TextureProgressBar" parent="ui/Health_bar"]
 z_index = -1
@@ -492,11 +492,12 @@ stretch_margin_bottom = 3
 texture_under = ExtResource("9_5lgrf")
 texture_progress = ExtResource("9_5lgrf")
 tint_under = Color(0.101961, 0.117647, 0.164706, 1)
-tint_progress = Color(0.952941, 0.533333, 0.513726, 1)
+tint_progress = Color(1, 0.74827, 0.519947, 1)
 
 [node name="heart" type="Sprite2D" parent="ui/Health_bar"]
-position = Vector2(3.5, 3)
-texture = ExtResource("10_ucnwq")
+position = Vector2(-5, 2.5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_hhcoa")
 
 [node name="HLabel" type="Label" parent="ui"]
 offset_left = 27.0

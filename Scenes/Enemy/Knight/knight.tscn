@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2mi006v0avas"]
+[gd_scene load_steps=21 format=3 uid="uid://d2mi006v0avas"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Peasant/enemy.gd" id="1_je01r"]
 [ext_resource type="Shader" path="res://Shaders/spawn.gdshader" id="2_m0ukp"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://tr62bj3li6jm" path="res://Assets/Weapons/Ak-47.png" id="6_qiyen"]
 [ext_resource type="AudioStream" uid="uid://wj6jbx6v42xb" path="res://audio/Enemy/human_die.wav" id="6_upke0"]
 [ext_resource type="Texture2D" uid="uid://2pappgmugtue" path="res://Assets/Effects/square.png" id="7_enmli"]
-[ext_resource type="AudioStream" uid="uid://d4c7wbcdnpbmi" path="res://audio/Weapon/gunshot.wav" id="9_t3l6a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r8fwc"]
 resource_local_to_scene = true
@@ -219,7 +218,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "audio"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("sound")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -280,7 +279,7 @@ collision_mask = 69
 script = ExtResource("1_je01r")
 approach_dist = 300.0
 run_dist = 60.0
-gold_drop = Vector2(4, 6)
+gold_drop = Vector2(6, 8)
 move_speed = 50.0
 health = 20.0
 damage = 1.0
@@ -373,14 +372,13 @@ collision_mask = 2
 
 [node name="Hit" type="PointLight2D" parent="."]
 light_mask = 512
-position = Vector2(5.96046e-08, 1.5)
-scale = Vector2(0.375, 0.65625)
+position = Vector2(-1, 1.5)
+scale = Vector2(0.4375, 0.65625)
 color = Color(3, 0, 0, 1)
 range_item_cull_mask = 512
 texture = ExtResource("7_enmli")
 
 [node name="sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_t3l6a")
 
 [connection signal="timeout" from="Nav_timer" to="." method="_on_nav_timer_timeout"]
 [connection signal="timeout" from="Attack_timer" to="." method="_on_attack_timer_timeout"]

@@ -3,6 +3,7 @@ extends Panel
 @export var commonColor : Color
 @export var rareColor : Color
 @export var legendaryColor : Color
+@export var theJuiceColor : Color
 
 @export var sparkle : Node2D
 
@@ -15,6 +16,8 @@ extends Panel
 var current_ability : Ability
 
 func update(ability : Ability):
+	$Sparklepurple.visible = false
+	$purpleFire.visible = false
 	current_ability = ability
 	sparkle.visible = false
 	shine.visible = false
@@ -36,6 +39,11 @@ func update(ability : Ability):
 			sparkle.visible = true
 			shine.visible = true
 			$Fire.visible = true
+		if ability.rarity == 3:
+			set_color(theJuiceColor)
+			$Sparklepurple.visible = true
+			$purpleFire.visible = true
+			shine.visible = true
 		
 		if ability.quantity > 1:
 			quantity.visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bjwsafueqhnss"]
+[gd_scene load_steps=44 format=3 uid="uid://bjwsafueqhnss"]
 
 [ext_resource type="Script" path="res://Scenes/Bullet/bullet.gd" id="1_r4se3"]
 [ext_resource type="Texture2D" uid="uid://hs8sm1r1snpn" path="res://Assets/Bullet/Plasma_ball.png" id="2_3cxrp"]
@@ -12,10 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://dch3fe0ug3qv2" path="res://Assets/Bullet/Laser.png" id="2_neq5t"]
 [ext_resource type="Shader" path="res://Shaders/Blood.gdshader" id="2_p1yaa"]
 [ext_resource type="Texture2D" uid="uid://ctw4ibpo4yr67" path="res://Assets/Bullet/bb.png" id="2_vaxdt"]
+[ext_resource type="Texture2D" uid="uid://dlyt215f8eknh" path="res://Assets/Weapons/ZIPbobm.png" id="3_bkk50"]
 [ext_resource type="Texture2D" uid="uid://cq1qos1st2i30" path="res://Assets/Weapons/Charged/syringethrow.png" id="3_elu7p"]
-[ext_resource type="Texture2D" uid="uid://dlsilcyqsvaem" path="res://Assets/Weapons/The_scream.png" id="3_pn1uq"]
+[ext_resource type="Texture2D" uid="uid://w6o3rd4coafe" path="res://Assets/Weapons/Shuriken (1).png" id="3_pefap"]
+[ext_resource type="Texture2D" uid="uid://btbyleswuqies" path="res://Assets/Weapons/hot-dog.png" id="3_pso41"]
 [ext_resource type="Texture2D" uid="uid://c4dnd5828rcox" path="res://Assets/Bullet/Red_small.png" id="4_woddr"]
 [ext_resource type="Texture2D" uid="uid://n31opck5gme" path="res://Assets/Weapons/Charged/knifethrow.png" id="15_cmqn4"]
+[ext_resource type="Texture2D" uid="uid://bl0h5qbd241pp" path="res://Assets/Weapons/scream.png" id="16_rnx7d"]
+[ext_resource type="Texture2D" uid="uid://cbg6fk82ugsqe" path="res://Assets/Weapons/Knockback/chair.png" id="20_id31k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6xnq"]
 resource_local_to_scene = true
@@ -716,7 +720,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_pn1uq")]
+"values": [ExtResource("16_rnx7d")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -725,10 +729,10 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [0]
+"values": []
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -807,10 +811,252 @@ tracks/2/keys = {
 "values": [Vector2(0.5, 0.5)]
 }
 
+[sub_resource type="Animation" id="Animation_uu8dy"]
+resource_name = "Shuriken"
+length = 0.6667
+loop_mode = 1
+step = 0.333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_pefap")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.75, 2.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_wqa7q"]
+resource_name = "ZipBomb"
+length = 1.00005
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_bkk50")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1.333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.513726, 0.513726, 0.513726, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_lswhp"]
+resource_name = "BBQ"
+length = 1.00005
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_pso41")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1.333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.513726, 0.513726, 0.513726, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_v0f82"]
+resource_name = "Chair"
+length = 0.50005
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_id31k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1.333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.513726, 0.513726, 0.513726, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i28gg"]
 _data = {
 "BB": SubResource("Animation_umth3"),
+"BBQ": SubResource("Animation_lswhp"),
 "Banana": SubResource("Animation_46ixs"),
+"Chair": SubResource("Animation_v0f82"),
 "Gradient": SubResource("Animation_r7vhi"),
 "Knife": SubResource("Animation_g1auj"),
 "Large": SubResource("Animation_y0udl"),
@@ -819,8 +1065,10 @@ _data = {
 "Plasma_ball": SubResource("Animation_rcqxp"),
 "Poo": SubResource("Animation_ymoc7"),
 "RESET": SubResource("Animation_spka2"),
+"Shuriken": SubResource("Animation_uu8dy"),
 "Slime": SubResource("Animation_0565d"),
 "Syringe": SubResource("Animation_xemwi"),
+"ZipBomb": SubResource("Animation_wqa7q"),
 "coin": SubResource("Animation_6wjyo"),
 "scream": SubResource("Animation_cyaw3"),
 "small": SubResource("Animation_ay4f7")
@@ -840,9 +1088,10 @@ script = ExtResource("1_r4se3")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.513726, 0.513726, 0.513726, 1)
 material = SubResource("ShaderMaterial_p6xnq")
 scale = Vector2(3, 3)
-texture = ExtResource("3_pn1uq")
+texture = ExtResource("20_id31k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -850,7 +1099,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(2.75, 2.75)
+scale = Vector2(1, 1.333)
 collision_layer = 4
 collision_mask = 5
 monitoring = false

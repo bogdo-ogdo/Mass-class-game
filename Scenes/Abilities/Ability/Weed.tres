@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_iao05")
 ability_name = "Weed"
-description = "+ 1 pierce          + 10% crit chance"
+description = "+ 1 pierce          + 10% crit chance Makes you high"
 texture = ExtResource("2_6gme4")
 unique = false
 rarity = 1

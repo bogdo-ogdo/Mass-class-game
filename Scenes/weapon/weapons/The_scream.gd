@@ -13,7 +13,7 @@ func _ready():
 	bullet_size = .2
 	bullet_speed = 4
 	bullet_spread = 1.5
-	txture = "res://Assets/Weapons/The_scream.png"
+	txture = "res://Assets/Weapons/scream.png"
 	sound = "res://audio/Weapon/flamethrower.wav"
 
 

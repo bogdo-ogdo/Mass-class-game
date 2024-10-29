@@ -1,21 +1,15 @@
-[gd_scene load_steps=31 format=3 uid="uid://cknh7bpsakn48"]
+[gd_scene load_steps=26 format=3 uid="uid://cknh7bpsakn48"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Peasant/enemy.gd" id="1_m1mju"]
 [ext_resource type="Shader" path="res://Shaders/spawn.gdshader" id="2_5k7qk"]
-[ext_resource type="Texture2D" uid="uid://01xhh0im3r1x" path="res://Assets/Enemy/Mage/Run/Run4.png" id="3_b4bfd"]
 [ext_resource type="Texture2D" uid="uid://h5ns50o2vbj" path="res://Assets/Enemy/Mage/Decomposing/Decomposing1.png" id="3_ffwtd"]
-[ext_resource type="Texture2D" uid="uid://dygiun3csg6j8" path="res://Assets/Enemy/Mage/Idle/Idle2.png" id="5_3kwnv"]
 [ext_resource type="Texture2D" uid="uid://dld3woh2ctgly" path="res://Assets/Enemy/Mage/Decomposing/Decomposing2.png" id="5_6ro26"]
 [ext_resource type="Texture2D" uid="uid://bjxtnvgtw2jkd" path="res://Assets/Enemy/Mage/Decomposing/Decomposing3.png" id="6_rd71b"]
-[ext_resource type="Texture2D" uid="uid://dp8m5dg70cn7b" path="res://Assets/Enemy/Mage/Idle/Idle3.png" id="6_u4m6j"]
 [ext_resource type="Texture2D" uid="uid://cqil3tptcxjd5" path="res://Assets/Enemy/Mage/Decomposing/Decomposing4.png" id="7_bp7n5"]
 [ext_resource type="Texture2D" uid="uid://csxmtgc5lrkar" path="res://Assets/Enemy/Mage/Decomposing/Decomposing5.png" id="8_x4pn5"]
 [ext_resource type="Texture2D" uid="uid://cls7ca2npak3h" path="res://Assets/Enemy/Mage/Decomposing/Decomposing6.png" id="9_mwa0r"]
 [ext_resource type="Texture2D" uid="uid://v7i5cjrs0aa0" path="res://Assets/Enemy/Mage/Run/Run1.png" id="10_5k4cu"]
-[ext_resource type="Texture2D" uid="uid://b8icdq817yijr" path="res://Assets/Enemy/Mage/Run/Run2.png" id="11_tmqg5"]
-[ext_resource type="Texture2D" uid="uid://c6e8d274mrw2a" path="res://Assets/Enemy/Mage/Run/Run3.png" id="12_ddyr8"]
-[ext_resource type="Texture2D" uid="uid://crhj7ox8egomx" path="res://Assets/Enemy/Mage/Run/Run5.png" id="13_vahcq"]
-[ext_resource type="Texture2D" uid="uid://bmkkv2xe15uem" path="res://Assets/Enemy/Mage/Run/Run6.png" id="14_8bupw"]
+[ext_resource type="Texture2D" uid="uid://c3r5pepq4g1v2" path="res://Assets/Enemy/Clown-Sheet.png" id="12_66ign"]
 [ext_resource type="Texture2D" uid="uid://bjoao34ohdxcj" path="res://Assets/Weapons/Blunderbuss.png" id="15_quehi"]
 [ext_resource type="Texture2D" uid="uid://2pappgmugtue" path="res://Assets/Effects/square.png" id="16_mu4a8"]
 [ext_resource type="AudioStream" uid="uid://wj6jbx6v42xb" path="res://audio/Enemy/human_die.wav" id="17_qh3kd"]
@@ -93,10 +87,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_3kwnv"), ExtResource("6_u4m6j")]
+"values": [ExtResource("12_66ign")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,40 +102,129 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_m4lcf"]
 resource_name = "p_run"
-length = 0.60001
+length = 0.400005
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_5k4cu"), ExtResource("11_tmqg5"), ExtResource("12_ddyr8"), ExtResource("3_b4bfd"), ExtResource("13_vahcq"), ExtResource("14_8bupw")]
+"values": [5]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("Sprite2D:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_66ign")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_fvjlg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:vframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_5k4cu")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ewpy5"]
 _data = {
+"RESET": SubResource("Animation_fvjlg"),
 "p_die": SubResource("Animation_v51pr"),
 "p_idle": SubResource("Animation_nbu06"),
 "p_run": SubResource("Animation_m4lcf")
@@ -164,7 +247,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "audio"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("sound")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -213,8 +296,8 @@ shader_parameter/beam_size = null
 shader_parameter/color = Vector4(0, 1.02, 1.2, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isxod"]
-radius = 6.0
-height = 12.0
+radius = 8.0
+height = 16.0
 
 [node name="Mage" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 1
@@ -224,7 +307,7 @@ collision_mask = 69
 script = ExtResource("1_m1mju")
 approach_dist = 300.0
 run_dist = 60.0
-gold_drop = Vector2(3, 5)
+gold_drop = Vector2(5, 7)
 move_speed = 50.0
 health = 14.0
 damage = 1.0
@@ -234,16 +317,16 @@ shots = Vector2(4, 4)
 flip_h = true
 delay = 0.02
 spread = 50.0
-spawn_value = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(64.2471, 128.498, 128.498, 1)
 light_mask = 513
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_r8fwc")
-position = Vector2(0, 1)
-texture = ExtResource("12_ddyr8")
+position = Vector2(1, -4)
+texture = ExtResource("10_5k4cu")
 offset = Vector2(0, -5)
+hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -317,8 +400,8 @@ collision_mask = 2
 
 [node name="Hit" type="PointLight2D" parent="."]
 light_mask = 512
-position = Vector2(1.66893e-06, -3)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-1, -8)
+scale = Vector2(0.75, 0.9375)
 color = Color(3, 0, 0, 1)
 range_item_cull_mask = 512
 texture = ExtResource("16_mu4a8")

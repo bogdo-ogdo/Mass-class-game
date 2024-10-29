@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cc5o8sgvqj8d2"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Ability.gd" id="1_r155q"]
+[ext_resource type="Texture2D" uid="uid://75rbq8bhsfii" path="res://Assets/Abilities/The things under his bed.png" id="2_3vnwc"]
+
+[resource]
+script = ExtResource("1_r155q")
+ability_name = "THE THINGS UNDER THE BED"
+description = "???"
+texture = ExtResource("2_3vnwc")
+unique = false
+rarity = 4
+cost = 120

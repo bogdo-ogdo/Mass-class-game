@@ -12,6 +12,7 @@ var water : bool = false
 var money_shot : bool = false
 var bullet_type : String
 
+var scale : float = 1
 var damage : float
 var fire_rate : float
 var mana_cost : float

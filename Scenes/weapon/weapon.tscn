@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c6rheyijs8n4l"]
+[gd_scene load_steps=80 format=3 uid="uid://c6rheyijs8n4l"]
 
 [ext_resource type="Script" path="res://Scenes/weapon/weapon.gd" id="1_6mjeb"]
 [ext_resource type="PackedScene" uid="uid://bjwsafueqhnss" path="res://Scenes/Bullet/bullet.tscn" id="2_nq1jh"]
@@ -23,7 +23,10 @@
 [ext_resource type="Shader" path="res://Shaders/Blood.gdshader" id="3_vuk6g"]
 [ext_resource type="Texture2D" uid="uid://b4c2bn83wwen" path="res://Assets/Weapons/ThombsonSMG.png" id="3_y1gln"]
 [ext_resource type="Texture2D" uid="uid://n31opck5gme" path="res://Assets/Weapons/Charged/knifethrow.png" id="4_0tmsi"]
+[ext_resource type="Texture2D" uid="uid://dlyt215f8eknh" path="res://Assets/Weapons/ZIPbobm.png" id="4_c1av7"]
 [ext_resource type="Texture2D" uid="uid://cq1qos1st2i30" path="res://Assets/Weapons/Charged/syringethrow.png" id="4_gvpnk"]
+[ext_resource type="Texture2D" uid="uid://0lgknfkvgcty" path="res://Assets/Weapons/Food Flingers.png" id="4_ir7p6"]
+[ext_resource type="Texture2D" uid="uid://w6o3rd4coafe" path="res://Assets/Weapons/Shuriken (1).png" id="4_vnml3"]
 [ext_resource type="Script" path="res://Scenes/weapon/WeaponMachine.gd" id="4_w1n20"]
 [ext_resource type="Texture2D" uid="uid://bl0h5qbd241pp" path="res://Assets/Weapons/scream.png" id="4_wukjr"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/pistol.gd" id="5_7xyep"]
@@ -32,11 +35,18 @@
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Shotgun.gd" id="11_vme88"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/M16.gd" id="14_0xlbf"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Laser_pistol.gd" id="23_fp5uh"]
+[ext_resource type="Texture2D" uid="uid://ci5figbbcfrno" path="res://Assets/Weapons/TF2syringegun.png" id="27_q5bou"]
+[ext_resource type="Texture2D" uid="uid://cbg6fk82ugsqe" path="res://Assets/Weapons/Knockback/chair.png" id="30_a6fog"]
+[ext_resource type="Script" path="res://Scenes/weapon/weapons/Auto/Shuriken.gd" id="38_nlufb"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Banana.gd" id="39_cx250"]
+[ext_resource type="Script" path="res://Scenes/weapon/weapons/Auto/SyringeGun.gd" id="39_mapsu"]
+[ext_resource type="Script" path="res://Scenes/weapon/weapons/Charged/ZipBomb.gd" id="40_7fh43"]
 [ext_resource type="Texture2D" uid="uid://bpp6pjr5rgsjl" path="res://Assets/Effects/Laser_pointer.png" id="40_a4qrn"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Slimer.gd" id="41_kp4hx"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Toilet.gd" id="42_uipah"]
+[ext_resource type="Script" path="res://Scenes/weapon/weapons/Charged/MeatTongs.gd" id="44_pn0fv"]
 [ext_resource type="AudioStream" uid="uid://d4c7wbcdnpbmi" path="res://audio/Weapon/gunshot.wav" id="45_sxgo1"]
+[ext_resource type="Script" path="res://Scenes/weapon/weapons/Charged/Chair.gd" id="46_ar7kb"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Charged/SyringeWeapon.gd" id="46_lvcfk"]
 [ext_resource type="Script" path="res://Scenes/weapon/weapons/Charged/KnifeWeapon.gd" id="47_gqkao"]
 
@@ -1268,58 +1278,46 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Shake/Sprite2D:frame")
+tracks/1/path = NodePath("Muzzle:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Muzzle:position")
+tracks/2/path = NodePath("Shake/Sprite2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(15, 0)]
+"values": [Vector2(20, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Shake/Sprite2D:position")
+tracks/3/path = NodePath("RayCast2D:target_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(20, 0)]
+"values": [Vector2(30, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RayCast2D:target_position")
+tracks/4/path = NodePath("Shake/Sprite2D:offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(30, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Shake/Sprite2D:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1518,16 +1516,362 @@ tracks/4/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_0cvlo"]
+resource_name = "Shuriken"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shake/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_vnml3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shake/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Muzzle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shake/Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RayCast2D:target_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shake/Sprite2D:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ulcfd"]
+resource_name = "SyringeGun"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shake/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_q5bou")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shake/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RayCast2D:target_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shake/Sprite2D:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_w5rtr"]
+resource_name = "ZipBomb"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shake/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_c1av7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shake/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Muzzle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shake/Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RayCast2D:target_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shake/Sprite2D:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_xi8y5"]
+resource_name = "MeatTongs"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shake/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ir7p6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shake/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RayCast2D:target_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shake/Sprite2D:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ulrw7"]
+resource_name = "Chair"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shake/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("30_a6fog")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shake/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RayCast2D:target_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shake/Sprite2D:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0lp1"]
 _data = {
 "Auto_shotgun": SubResource("Animation_q5s8p"),
 "Banana": SubResource("Animation_gttan"),
+"Chair": SubResource("Animation_ulrw7"),
 "Derringer": SubResource("Animation_10ohr"),
 "Garand": SubResource("Animation_tsesf"),
 "Grenade_launcher": SubResource("Animation_jelbp"),
 "Knife": SubResource("Animation_g5aki"),
 "Laser_pistol": SubResource("Animation_q8ctb"),
 "M16": SubResource("Animation_sftwc"),
+"MeatTongs": SubResource("Animation_xi8y5"),
 "MiniGun": SubResource("Animation_lm6s8"),
 "Money_gun": SubResource("Animation_funx2"),
 "Mouser": SubResource("Animation_tpscf"),
@@ -1536,13 +1880,16 @@ _data = {
 "Plasma_gun": SubResource("Animation_c08kc"),
 "RESET": SubResource("Animation_uo3w6"),
 "Shotgun": SubResource("Animation_4qjmp"),
+"Shuriken": SubResource("Animation_0cvlo"),
 "Slimer": SubResource("Animation_xhicu"),
 "Sniper": SubResource("Animation_sei5l"),
 "Syringe": SubResource("Animation_i6sx6"),
+"SyringeGun": SubResource("Animation_ulcfd"),
 "The_scream": SubResource("Animation_qoxwj"),
 "Thompson": SubResource("Animation_kgwtd"),
 "Toilet": SubResource("Animation_2sek0"),
-"Trench_gun": SubResource("Animation_n4ojb")
+"Trench_gun": SubResource("Animation_n4ojb"),
+"ZipBomb": SubResource("Animation_w5rtr")
 }
 
 [node name="Weapon" type="CharacterBody2D" node_paths=PackedStringArray("cooldown_timer", "weapon_machine", "raycast", "shot_interval", "sound", "sprite", "shake") groups=["Weapon"]]
@@ -1562,8 +1909,8 @@ shake = NodePath("Shake")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shake"]
 material = SubResource("ShaderMaterial_m0a54")
-position = Vector2(20, 0)
-texture = ExtResource("4_wukjr")
+texture = ExtResource("30_a6fog")
+offset = Vector2(0, -1.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1572,7 +1919,7 @@ libraries = {
 
 [node name="WeaponMachine" type="Node" parent="." node_paths=PackedStringArray("initial_weapon")]
 script = ExtResource("4_w1n20")
-initial_weapon = NodePath("The_scream")
+initial_weapon = NodePath("Pistol")
 
 [node name="Shotgun" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
 script = ExtResource("11_vme88")
@@ -1618,12 +1965,32 @@ anim_player = NodePath("../../AnimationPlayer")
 script = ExtResource("47_gqkao")
 anim_player = NodePath("../../AnimationPlayer")
 
+[node name="Zip_Bomb" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("40_7fh43")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="Syringe_gun" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("39_mapsu")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="Shuriken" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("38_nlufb")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="MeatTongs" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("44_pn0fv")
+anim_player = NodePath("../../AnimationPlayer")
+
+[node name="Chair" type="Node" parent="WeaponMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("46_ar7kb")
+anim_player = NodePath("../../AnimationPlayer")
+
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(15, 0)
+position = Vector2(10, 0)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-3, 0)
-target_position = Vector2(30, 0)
+target_position = Vector2(15, 0)
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.1
